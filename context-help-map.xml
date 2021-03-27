@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+   <appContext helpID="carMaintenance" path="tasks/carMaintenance.html"/>
+   <appContext helpID="changeoil" path="tasks/changingtheoil.html"/>
+   <appContext helpID="washcar" path="tasks/washingthecar.html"/>
+   <appContext helpID="taskconcept" path="tasks/garagetaskoverview.html"/>
+   <appContext helpID="organize" path="tasks/organizing.html"/>
+   <appContext helpID="shovellingsnow" path="tasks/shovellingsnow.html"/>
+   <appContext helpID="spraypaint" path="tasks/spraypainting.html"/>
+   <appContext helpID="takinggarbage" path="tasks/takinggarbage.html"/>
+   <appContext helpID="conceptconcept" path="concepts/garageconceptsoverview.html"/>
+   <appContext helpID="lawnmowerconcept" path="concepts/lawnmower.html"/>
+   <appContext helpID="oilconcept" path="concepts/oil.html"/>
+   <appContext helpID="paintconcept" path="concepts/paint.html"/>
+   <appContext helpID="shelvingconcept" path="concepts/shelving.html"/>
+   <appContext helpID="snowshovelconcept" path="concepts/snowshovel.html"/>
+   <appContext helpID="toolboxconcept" path="concepts/toolbox.html"/>
+   <appContext helpID="toolsconcept" path="concepts/tools.html"/>
+   <appContext helpID="waterhoseconcept" path="concepts/waterhose.html"/>
+   <appContext helpID="wheelbarrow" path="concepts/wheelbarrow.html"/>
+   <appContext helpID="workbenchconcept" path="concepts/workbench.html"/>
+   <appContext helpID="wwfluidconcept" path="concepts/wwfluid.html"/>
+</map>
