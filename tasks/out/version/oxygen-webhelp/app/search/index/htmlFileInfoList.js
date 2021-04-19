@@ -1,0 +1,3 @@
+define(function () {
+return ["c_synch_pattern.html@@@null@@@...","carMaintenance.html@@@null@@@...","changingtheoil.html@@@null@@@...","garagetaskoverview.html@@@null@@@...","organizing.html@@@null@@@...","oxy_ex-1/concepts/oil.html@@@null@@@...","oxy_ex-1/concepts/paint.html@@@Paint@@@Paint is useful for refreshing the look of rooms and furniture...","oxy_ex-1/concepts/wwfluid.html@@@null@@@..."];
+});

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_associate_virtualservice" xml:lang="en-US">
+    <title>Associating virtual services resources with components</title>
+    <shortdesc>After creating components in the system model, you can navigate to a project in the
+        Team space to associate the virtual service resources in the project repositories with the
+        components in the system model.</shortdesc>
+    <taskbody>
+        <prereq id="prereq_ejm_qhs_x4b">
+            <ul id="ul_ftd_kqy_x4b">
+                <li>You must have created components.</li>
+                <li>You must be a member of the project that contains the virtual services
+                    resources.</li>
+            </ul>
+        </prereq>
+        <steps>
+            <step>
+                <cmd>Click <uicontrol>Projects</uicontrol>.</cmd>
+                <info>
+                    <p>The <uicontrol>Projects</uicontrol> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the project that contains the virtual services resources that you want to
+                    associate with components.</cmd>
+            </step>
+            <step>
+                <cmd>Click <menucascade>
+                        <uicontrol>Model</uicontrol>
+                        <uicontrol>System Model</uicontrol>
+                    </menucascade>.</cmd>
+            </step>
+            <step>
+                <cmd>Click the component that you want to associate with virtual service
+                    resources.</cmd>
+                <info>
+                    <p>The component details are displayed in the right pane.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Associate</uicontrol> tab.</cmd>
+                <info>
+                    <p>The <uicontrol>Virtualized Services</uicontrol> page is displayed.</p>
+                    <note>This <uicontrol>Virtualized Services</uicontrol> page lists all the
+                        virtual services resources that are available in the project as displayed in <menucascade>
+                            <uicontrol>Virtualization</uicontrol>
+                            <uicontrol>Resources page</uicontrol>
+                        </menucascade>.</note>
+                </info>
+            </step>
+            <step>
+                <cmd>Select one or more virtual services resources.</cmd>
+                <info>
+                    <p>You can use the <uicontrol>Search</uicontrol> field to search for virtual
+                        services resources by using the virtual services resources name.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Add</uicontrol>. </cmd>
+            </step>
+        </steps>
+        <result id="result_bv3_fmj_2mb">You have associated components with the virtual services
+            resources.</result>
+    </taskbody>
+</task>

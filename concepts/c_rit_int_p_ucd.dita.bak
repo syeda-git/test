@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="c_ucd_p">
+    <title><keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RIT_full"/> and <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_full"/></title>
+    <titlealts>
+        <navtitle><ph audience="ibm">Rational Integration Tester and UrbanCode Deploy</ph><ph audience="hcl">HCL OneTest and UrbanCode Deploy</ph></navtitle>
+    </titlealts>
+    <shortdesc>When you use <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_full"/> (<keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/>) for automating application deployments of your application, you can run tests created for your application that are created in <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RIT_fam"/>. You can run the tests from <keyword
+            conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> by using the <ph id="ph_both_ucd"><ph id="ph_plugin_ucd_api"><keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> plugin for <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RIT_fam"/></ph> or the <ph id="ph_plugin_ucd_virt"><keyword
+                    conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> plugin for <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTVS_fam"/></ph></ph></shortdesc>
+    <conbody>
+        <section id="section_cvk_q3w_cnb">
+            <title><ph conref="#c_ucd_p/ph_plugin_ucd_api"/></title>
+            <p>With the <ph conref="#c_ucd_p/ph_plugin_ucd_api"/>, you can run <ph audience="hcl">a test or a test suite</ph><ph audience="ibm">a test, a test suite, or a performance test</ph> defined in <ph audience="ibm">a</ph><ph audience="hcl">an</ph>
+                <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RIT_fam"/> project.</p>
+        </section>
+        <section id="section_ubk_3jw_cnb">
+            <title><ph conref="#c_ucd_p/ph_plugin_ucd_virt"/></title>
+            <p>Service Virtualization helps you to automate the testing of integration in complex application environments much earlier in the development life cycle. You can use the <ph><keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> plugin for <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTVS_fam"/></ph> for creating virtual services that model the services on which your application depends. You can
+                virtualize services that are accessed through various technologies, including HTTP, MQ, JMS, JDBC, TCP/IP, CICS-TG, IMS Connect, SAP, and Software AG web methods.</p>
+        </section>
+        <section id="section_l4r_pjw_cnb">
+            <title>Task flow for integrating with <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_full"/></title>
+            <p>The following table shows the task flow for integrating <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RIT_fam"/> with <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_full"/> by using the <ph conref="#c_ucd_p/ph_both_ucd"/>. You must perform these tasks in sequence.<table frame="all" rowsep="1" colsep="1" id="table_d3b_jkw_cnb">
+                    <tgroup cols="3" align="left">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="3.52*"/>
+                        <colspec colname="c3" colnum="3" colwidth="2.25*"/>
+                        <thead>
+                            <row>
+                                <entry/>
+                                <entry>
+                                    <p>Tasks</p>
+                                </entry>
+                                <entry>
+                                    <p>More information</p>
+                                </entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>
+                                    <p>1.</p>
+                                </entry>
+                                <entry>
+                                    <p>Create tests for the application that you want to test in <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RIT_fam"/>.</p>
+                                </entry>
+                                <entry>
+                                    <p><xref href="../../com.ibm.rational.rit.gs.doc/topics/c_ritov_building_tests.dita"/></p>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <p>2.</p>
+                                </entry>
+                                <entry>
+                                    <p>Install the latest version of the <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> agent on the <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> server, which runs the tests.</p>
+                                </entry>
+                                <entry>
+                                    <p><ph audience="ibm"><xref href="https://www.ibm.com/support/knowledgecenter/SS4GSP_7.1.0/com.ibm.udeploy.install.doc/topics/agent_install_ov.html" format="html" scope="external">Installing the agents</xref></ph><ph audience="hcl"><xref href="https://urbancode.hcldoc.com/deploy/7.0.5/#com.udeploy.install.doc/topics/agent_install_ov/" format="html" scope="external">Installing the agents</xref></ph></p>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <p>3.</p>
+                                </entry>
+                                <entry>
+                                    <p>Download the latest version of the <ph conref="#c_ucd_p/ph_both_ucd"/>.<note>Do not extract the compressed file contents.</note></p>
+                                </entry>
+                                <entry>
+                                    <p><ph audience="ibm"><xref href="http://www.testworkbench-community.com/resources.html" format="html" scope="external">Test Workbench Resource Community</xref></ph><ph audience="hcl"><xref href="https://hclsoftware.flexnetoperations.com/flexnet/operationsportal/logon.do" format="html" scope="external">HCL License and Delivery Portal</xref></ph></p>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <p>4.</p>
+                                </entry>
+                                <entry>
+                                    <p>Install the latest version of the <ph conref="#c_ucd_p/ph_both_ucd"/> on the <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> server.</p>
+                                </entry>
+                                <entry>
+                                    <p><xref href="t_rit_int_ucd_install_plugin.dita"/></p>
+                                </entry>
+                            </row>
+                            <row>
+                                <entry>
+                                    <p>5.</p>
+                                </entry>
+                                <entry>
+                                    <p>Run tests by using the <ph conref="#c_ucd_p/ph_both_ucd"/> on the <keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_fam"/> server.</p>
+                                </entry>
+                                <entry>
+                                    <p><xref href="t_rit_int_ucd_run_tests.dita"/></p>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table></p>
+        </section>
+    </conbody>
+    <related-links>
+        <link href="http://www.ibm.com/support/knowledgecenter/SS4GSP/ucd_welcome.html" format="html" scope="external" audience="ibm">
+            <linktext><keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_full"/> documentation</linktext>
+        </link>
+        <link href="https://urbancode.hcldoc.com/deploy/7.0.5/" format="html" scope="external" audience="hcl">
+            <linktext><keyword conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/UCD_full"/> documentation</linktext>
+        </link>
+    </related-links>
+</concept>

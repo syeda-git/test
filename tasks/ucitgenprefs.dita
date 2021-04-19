@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "..\dtd\reference.dtd">
+<reference id="ucitgenprefs" xml:lang="en-us">
+<title>Citrix test generation preferences</title>
+<shortdesc>Test generation preferences control how Citrix performance
+tests are generated, such as how tests will process verification points,
+data correlation, and options of the generated test elements.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>Citrix<indexterm>test generation preferences</indexterm></indexterm>
+<indexterm>preferences<indexterm>test generation<indexterm>Citrix
+overview</indexterm></indexterm></indexterm><indexterm>tests<indexterm>Citrix
+preference settings</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section><dl id="gensettings"><dlentry>
+<dt>Recording Optimization Options</dt>
+<dd>These settings specify how mouse and window events are interpreted
+in the generated test.<dl><dlentry>
+<dt>Window activate recording</dt>
+<dd>Specify whether to record no, last, or all window-activate actions
+when a sequence of similar actions is detected. <ul>
+<li><uicontrol>none</uicontrol> disables recording of window-activate
+events.</li>
+<li><uicontrol>last</uicontrol> records only the last of an uninterrupted
+sequence of window events. This eliminates redundant window-activate
+actions from the recording.</li>
+<li><uicontrol>all</uicontrol> records all events of the sequence.</li>
+</ul></dd>
+</dlentry><dlentry>
+<dt>Mouse move recording</dt>
+<dd>This setting specifies which mouse move events are recorded. <uicontrol>Relevant</uicontrol> is
+the default setting.<ul>
+<li><uicontrol>All</uicontrol> records an uninterrupted sequence of
+mouse movements in the generated test. </li>
+<li><uicontrol>Relevant</uicontrol> records only the mouse movements
+that generate a response, such as hover text. </li>
+<li><uicontrol>First and last</uicontrol> records a simplified mouse-move
+action. </li>
+</ul></dd>
+</dlentry></dl></dd>
+</dlentry><dlentry>
+<dt>Automatic Generation</dt>
+<dd>These settings specify test elements that are automatically generated
+after recording the test.<dl><dlentry>
+<dt>Verification point on every window title change</dt>
+<dd>When enabled, this option generates a window title verification
+point whenever the caption changes. If this option is disabled, the
+window title is verified only when a new window is created. This option
+is disabled by default.</dd>
+</dlentry><dlentry>
+<dt>Response times for main windows</dt>
+<dd>When enabled, this option generates response time measurements
+for all recorded main window-create events. A main window is a window
+that is created at the top level of the test contents tree and contains
+user actions. The generated response time measurement starts with
+the keyboard or mouse action that immediately precedes the window-create
+event. This option is enabled by default.</dd>
+</dlentry></dl></dd>
+</dlentry><dlentry>
+<dt>Window event synchronization criteria</dt>
+<dd>Use this option to disable window recognition on the window position,
+size, or title. Disable any of these options if the test produces
+synchronization timeouts because a window changes its position, size,
+or title between or during test runs.</dd>
+</dlentry><dlentry>
+<dt>Default Test Execution Delays</dt>
+<dd>This page specifies the default keyboard and mouse delays for
+the test client. Do not change these settings unless you are experiencing
+problems with events that do not run correctly.<dl><dlentry>
+<dt>Synchronization timeout delay</dt>
+<dd>This is the delay after which a timeout error is produced when a window event or an image
+         synchronization element is not recognized during test runs. The default value is 15000
+         milliseconds. The specified delay is for synchronizations that are set as conditional.
+         Mandatory synchronizations use a delay of three times the specified delay. Optional
+         synchronizations use a fixed delay of 2 seconds.<note>In the generated test, the
+           <uicontrol>Override synchronization timeout</uicontrol> for a particular window creation
+          event will be enabled with the corresponding recorded time only if it is greater than what
+          is specified in this preference.</note><?Pub Caret 22?></dd>
+</dlentry><dlentry>
+<dt>If think time is under x ms, then replace with</dt>
+<dd>If the delay between two events is above the specified limit,
+then it is handled as a think time. If the delay is below the limit,
+then the test generator replaces the think time with one of the following
+delays. The think time is the delay spent by a virtual user before
+performing an action. The default limit is 20&nbsp;000 milliseconds.<note>In
+the generated test, the think time for a particular user action will
+be enabled only when the recorded think time is greater than the value
+specified for this preference.</note></dd>
+</dlentry><dlentry>
+<dt>Delay between mouse down and mouse up in a click</dt>
+<dd>This is the default delay used to generate a mouse click action
+using a mouse down and a mouse up action. The default value is 20
+milliseconds.</dd>
+</dlentry><dlentry>
+<dt>Delay between two mouse clicks in a double click</dt>
+<dd>This is the default delay used to generate a double-click action
+using two mouse clicks. The default value is 50 milliseconds.</dd>
+</dlentry><dlentry>
+<dt>Delay between key down and a key up in a stroke</dt>
+<dd>This is the default delay used to generate a key-stroke action
+using a key-down and a key-up action. The default value is 20 milliseconds.</dd>
+</dlentry><dlentry>
+<dt>Delay between two keyboard strokes in a text input</dt>
+<dd>This is the default delay used to generate a text input action
+using multiple key stroke actions. The default value is 50 milliseconds.</dd>
+</dlentry></dl></dd>
+</dlentry><dlentry>
+<dt>Default OCR settings</dt>
+<dd>This page specifies the settings for text extraction by optical
+character recognition in image synchronizations. You might need to
+experiment with various settings to obtain good results. These settings
+define the default behavior for new image synchronizations. You can
+change the behavior for individual image synchronization elements
+by changing the <uicontrol>OCR settings</uicontrol> in the test editor.<dl>
+<dlentry>
+<dt>OCR default language</dt>
+<dd>This is the language of the dictionary that is used to recognize
+words for the application that you are testing. This setting defines
+the subset of languages that will be available in image synchronization
+elements in the test editor.</dd>
+</dlentry><dlentry>
+<dt>OCR default zoom factor</dt>
+<dd>This is the enlargement factor that is applied to the image. The default setting is medium for
+standard font sizes. Increase the zoom factor to improve recognition of smaller fonts or decrease
+for <xref href="#ucitgenprefs/table_njf_dpv_znb"/>larger fonts.</dd>
+</dlentry><dlentry>
+<dt>OCR default brightness</dt>
+<dd>This is the brightness level from 0 to 250 that is applied to
+the image. The default setting is 70 for text with normal contrast.
+Increase the brightness setting to improve recognition of darker images
+or decrease for lighter images.</dd>
+</dlentry><dlentry>
+<dt>OCR default recognition rate</dt>
+<dd>This is the rate of recognition that is required for the extracted
+string to match the expected text. Decrease the recognition rate to
+tolerate a proportion of mismatching characters in the recognized
+text. The default is 100%, which means that an exact match is required.</dd>
+</dlentry></dl></dd>
+</dlentry></dl>
+<p>
+<table frame="all" rowsep="1" colsep="1" id="table_njf_dpv_znb">
+<title>Areas</title>
+<tgroup cols="2">
+<colspec colname="c1" colnum="1" colwidth="1*"/>
+<colspec colname="c2" colnum="2" colwidth="1*"/>
+<thead>
+<row>
+<entry/>
+<entry/>
+</row>
+</thead>
+<tbody>
+<row>
+<entry/>
+<entry/>
+</row>
+<row>
+<entry/>
+<entry/>
+</row>
+<row>
+<entry/>
+<entry/>
+</row>
+</tbody>
+</tgroup>
+</table>
+</p></section>
+</refbody>
+<?tm 1322517892 0?>
+</reference>
+<?Pub *0000007575?>

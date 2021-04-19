@@ -1,0 +1,26 @@
+========================================================================
+IBM Corporation : ID Workbench V4.7.0-D46 (05/25/2018)
+                : ID Workbench BOM V2.2.1 (04/09/97)
+========================================================================
+Created: 12/16/20 15:32:59
+========================================================================
+Process: DITA input to XHTML output
+========================================================================
+PRCCELL
+ <PATH> C:\TEMP\IDWB\idwt1694876418\test\garage\tasks
+TRANSFORMPKG
+ ID Workbench Transforms V4.7.0-D46 (05/25/2018)
+PRIMARYFILE (Input File)
+ <URL>  <PATH> D:\test\garage\tasks <FILE> ucitgenprefs.dita <SIZE> 8241 <DATE> 12-16-20 15:32:09
+PRIMARYFILE (DITA Default Search File)
+ <URL>  <PATH> C:\TEMP\IDWB\idwt1694876418\test\garage\tasks <FILE> ditadflt.dsh <SIZE> 26 <DATE> 12-16-20 15:33:01
+DEPENDFILE (Style Sheet)
+ <URL>  <PATH> C:\DITATools\IDWB\dita\plugins\AuthoringTools\xsl <FILE> ibmdita.css <SIZE> 13843 <DATE> 05-23-18 23:15:36
+OUTPUTFILE (Output File)
+ <URL>  <PATH> D:\test\garage\tasks\out <FILE> ucitgenprefs.html <SIZE> 10706 <DATE> 12-16-20 15:33:09
+OUTPUTFILE (Log)
+ <URL>  <PATH> D:\test\garage\tasks <FILE> ucitgenprefsxhm.log <SIZE> 8522 <DATE> 12-16-20 15:33:09
+OUTPUTFILE (Bom)
+ <URL>  <PATH> D:\test\garage\tasks <FILE> ucitgenprefsxhm.bom <SIZE>  <DATE> 
+<<< END OF BOM FILE >>>
+========================================================================

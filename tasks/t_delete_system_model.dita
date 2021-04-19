@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_delete_system_model" xml:lang="en-US">
+    <title>Deleting a system model</title>
+    <shortdesc>When you want to remove an existing system model to create a new system model, you
+        can delete the existing system model.</shortdesc>
+    <taskbody>
+        <prereq id="prereq_ejm_qhs_x4b">You must have ensured that a system model exists in the
+            initial Team Space.</prereq>
+        <steps>
+            <step>
+                <cmd>Log in to .</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>System Model</uicontrol>.</cmd>
+                <info>
+                    <p>The <wintitle>System Model</wintitle> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Open action menu</uicontrol> icon  in the right-pane.
+                </cmd>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Delete</uicontrol> icon .</cmd>
+                <info>
+                    <p>The <wintitle>Delete System Model</wintitle> dialog box is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Delete</uicontrol>.</cmd>
+            </step>
+        </steps>
+        <result id="result_bv3_fmj_2mb">You have deleted the system model from the Team Space
+            repository.</result>
+        <!--<postreq>You must publish the changes to the Team Space repository. See <xref href="t_sm_publish.dita"/>.</postreq>-->
+    </taskbody>
+</task>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_associate_component" xml:lang="en-US">
+    <title>Creating and associating child  components</title>
+    <shortdesc>You can create child components to associate one component with another component.
+        The child components can be related to each other. You can also create child components for
+        a component which is a child of another component.</shortdesc>
+    <taskbody>
+        <prereq id="prereq_ejm_qhs_x4b">You must have a created a component.</prereq>
+        <context id="context_d2x_xfs_x4b">You can create multiple child components. After you create
+            a child for a component, the child is represented as a white dot on the system model.
+            The number of white dots on a component denotes the number of child components that are
+            available for a component. You can specify the dependency among the components. For a
+            component, you can associate as many as child components as you want. </context>
+        <steps>
+            <step>
+                <cmd>Log in to <keyword
+                        conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTAS_fam"
+                    />.</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>System Model</uicontrol>.</cmd>
+                <info>
+                    <p>The <wintitle>System Model</wintitle> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the component.</cmd>
+                <info>
+                    <p>The component details are displayed in the right pane.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Add child</uicontrol> icon <image
+                        href="../images/icon_add.png" id="image_gp3_fhf_z4b">
+                        <alt>Image of the add icon.</alt>
+                    </image> in the right pane of the component.</cmd>
+                <info>
+                    <p>The <uicontrol>Add child</uicontrol> dialog box is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Enter a name for the child component.</cmd>
+            </step>
+            <step>
+                <cmd>Select one of the following types for the child component:</cmd>
+                <info>
+                    <ul id="ul_dg1_z1s_x4b">
+                        <li><uicontrol>Service</uicontrol></li>
+                        <li><uicontrol>Database</uicontrol></li>
+                        <li><uicontrol>UI</uicontrol></li>
+                    </ul>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Add</uicontrol>.</cmd>
+            </step>
+        </steps>
+        <result id="result_bv3_fmj_2mb">A component is created and it is associated as a child with
+            the selected component and the name of the child is displayed in the
+                <uicontrol>Children</uicontrol> section. </result>
+    </taskbody>
+</task>

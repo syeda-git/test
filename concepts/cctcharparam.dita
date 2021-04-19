@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="cctcharparam" xml:lang="en-us">
+   <title>Simulating Functions with char* parameters</title>
+   <conbody>
+      <p>You can use Component Testing for C to stub
+functions that take a parameter of the <i>char*</i> type<i>.</i>
+      </p>
+      <p>This feature applies to Component Testing for C.</p>
+      <p>The <i>char*</i>
+type causes problems with the Component Testing feature because of
+the ambiguity built into the C programming language. The <i>char*</i> type can represent:</p>
+      <ul>
+         <li>
+            <p>Pointers</p>
+         </li>
+         <li>
+            <p>Pointers to a single <i>char</i>
+            </p>
+         </li>
+         <li>
+            <p>Arrays of characters of indeterminate
+size</p>
+         </li>
+         <li>
+            <p>Arrays of characters of which the last
+character is the character <b>\0</b>, a C string.</p>
+         </li>
+      </ul>
+      <p>By default, the product treats all variables of
+this type as C strings. To specify a different behavior, you must
+use one of the following methods.</p>
+      <section>
+         <title>Pointers</title>
+         <p>Use the <b>FORMAT</b> command to specify that
+the test required is that of a pointer. For example:</p>
+         <p>HEADER charp, ,</p>
+         <p>#extern int CharPointer(char* pChar);</p>
+         <p>BEGIN</p>
+         <p>DEFINE STUB CH</p>
+         <p>#int CharPointer(void* pChar);</p>
+         <p>END DEFINE</p>
+         <p>SERVICE CharPointer1</p>
+         <p>#char  *Chars;</p>
+         <p>#int ret;</p>
+         <p>TEST 1</p>
+         <p>ELEMENT</p>
+         <p>FORMAT Chars = void*</p>
+         <p>VAR Chars,   init = NIL,  ev =
+init</p>
+         <p>VAR ret,     init = 0,
+   ev = 0</p>
+         <p>STUB CharPointer(NIL)0</p>
+         <p>#ret = CharPointer(Chars);</p>
+         <p>END ELEMENT</p>
+         <p>END TEST -- TEST 1</p>
+         <p>END SERVICE -- CharPointer1</p>
+      </section>
+      <section>
+         <title>Pointers to a Single <i>char</i>
+         </title>
+         <p>Define the type as <b>_inout</b>, as in the following
+example.</p>
+         <p>HEADER charp, ,</p>
+         <p>#extern int CharPointer(char* pChar);</p>
+         <p>BEGIN</p>
+         <p>DEFINE STUB CH</p>
+         <p>#int CharPointer(char Char);</p>
+         <p>END DEFINE</p>
+         <p>SERVICE CharPointer1</p>
+         <p>#char  AChar;</p>
+         <p>#int ret;</p>
+         <p>TEST 1</p>
+         <p>ELEMENT</p>
+         <p>VAR AChar,  init = 'A', ev = init</p>
+         <p>VAR ret,    init = 0,   ev
+= 'A'</p>
+         <p>STUB CharPointer('A')'A'</p>
+         <p>#ret = CharPointer(&amp;AChar);</p>
+         <p>END ELEMENT</p>
+         <p>END TEST -- TEST 1</p>
+         <p>END SERVICE -- CharPointer1</p>
+      </section>
+      <section>
+         <title>Arrays of Characters of Indeterminate Size</title>
+         <p>Use the <b>FORMAT</b> command to specify that
+the array is in fact an array of unsigned chars not chars, as the
+product considers that char arrays are C strings. For example:</p>
+         <p>HEADER charp, ,</p>
+         <p>#extern int CharPointer(char* pChar);</p>
+         <p>BEGIN</p>
+         <p>DEFINE STUB CH</p>
+         <p>#int CharPointer(unsigned char Chars[4]);</p>
+         <p>END DEFINE</p>
+         <p>SERVICE CharPointer1</p>
+         <p>#char  Chars[4];</p>
+         <p>#int ret;</p>
+         <p>TEST 1</p>
+         <p>ELEMENT</p>
+         <p>FORMAT Chars = unsigned char[4]</p>
+         <p>ARRAY Chars,  init = {'a','b','c','d'},
+ ev = init</p>
+         <p>VAR ret,    init = 0,
+                 ev
+= 'a'</p>
+         <p>STUB CharPointer({'a','b','c','d'})0</p>
+         <p>#ret = CharPointer(Chars);</p>
+         <p>END ELEMENT</p>
+         <p>END TEST -- TEST 1</p>
+         <p>END SERVICE -- CharPointer1</p>
+      </section>
+      <section>
+         <title>C strings</title>
+         <p>Use an array of characters in which the last
+character is the character '\0', a C string.</p>
+         <p>HEADER charp, ,</p>
+         <p>#extern int CharPointer(char* pChar);</p>
+         <p>BEGIN</p>
+         <p>DEFINE STUB CH</p>
+         <p>#int CharPointer(char* pChar);</p>
+         <p>END DEFINE</p>
+         <p>SERVICE CharPointer1</p>
+         <p>#char  Chars[10];</p>
+         <p>#int ret;</p>
+         <p>TEST 1</p>
+         <p>ELEMENT</p>
+         <p>VAR Chars,  init = "Hello",  ev  =
+init  </p>
+         <p>VAR ret,    init = 0,
+       ev = 'H'</p>
+         <p>STUB CharPointer("Hello")'H'</p>
+         <p>#ret = CharPointer(Chars);</p>
+         <p>END ELEMENT</p>
+         <p>END TEST -- TEST 1</p>
+         <p>END SERVICE -- CharPointer1</p>
+         <p> </p>
+      </section>
+   </conbody>
+</concept>

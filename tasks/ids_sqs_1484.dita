@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<?Pub Sty _display FontColor="red"?>
+<?Pub Inc?>
+<reference id="ids_sqs_1484" xml:lang="en-us">
+<title>DBINFO Function</title><?Pub Caret -2?>
+<prolog><metadata>
+<keywords><indexterm>DBINFO function</indexterm><indexterm>Functions,
+SQL<indexterm>DBINFO</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section><p>The following diagram shows the syntax of the <b>DBINFO</b> function. </p>
+<p>
+<syntaxdiagram expanse="page" id="syntaxdiagram_wtg_twd_34b">
+     <synnote id="difu001"><keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ds"/> extension </synnote>
+     <fragment>
+      <title>DBINFO Function</title>
+      <groupseq>
+       <kwd>DBINFO</kwd>
+      </groupseq>
+      <groupseq>
+       <delim>(</delim>
+       <groupchoice>
+        <groupseq>
+         <kwd>'dbspace'</kwd>
+         <delim>,</delim>
+         <groupchoice>
+          <var>tblspace_num</var>
+          <var>expression</var>
+         </groupchoice>
+        </groupseq>
+        <groupchoice>
+         <kwd>'sqlca.sqlerrd1'</kwd>
+         <kwd>'sqlca.sqlerrd2'</kwd>
+        </groupchoice>
+        <groupchoice>
+         <synnoteref href="#ids_sqs_1484/difu001"/>
+         <groupseq>
+          <kwd>'sessionid'</kwd>
+         </groupseq>
+         <groupseq>
+          <!--224001 IH 4/8/11-->
+          <kwd>'cdrsession'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'dbname'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'dbhostname'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'serial8'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'bigserial'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'get_tz'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'utc_current'</kwd>
+         </groupseq>
+         <groupseq>
+          <kwd>'utc_to_datetime'</kwd>
+          <delim>,</delim>
+          <groupchoice>
+           <var>utc_value</var>
+           <var>table.column</var>
+          </groupchoice>
+         </groupseq>
+         <groupchoice>
+          <groupseq>
+           <kwd>'version'</kwd>
+           <delim>,</delim>
+           <var>'parameter'</var>
+          </groupseq>
+         </groupchoice>
+        </groupchoice>
+       </groupchoice>
+       <delim>)</delim>
+      </groupseq>
+     </fragment>
+    </syntaxdiagram>
+<table frame="topbot" pgwide="1" id="table_xtg_twd_34b">
+<tgroup cols="4" colsep="0" rowsep="1">
+<colspec colname="1" colnum="1" colsep="0" colwidth="15*"/>
+<colspec colname="2" colnum="2" colsep="0" colwidth="29*"/>
+<colspec colname="3" colnum="3" colsep="0" colwidth="34*"/>
+<colspec colname="4" colnum="4" colsep="0" colwidth="14*"/>
+<thead>
+<row>
+<entry align="left" colname="1">Element</entry>
+<entry align="left" colname="2">Description</entry>
+<entry align="left" colname="3">Restrictions</entry>
+<entry align="left" colname="4">Syntax</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry colname="1"><i>column</i></entry>
+<entry colname="2">Name of a column in the <i>table</i></entry>
+<entry colname="3">Must exist in <i>table</i></entry>
+<entry colname="4"><xref href="ids_sqs_1660.dita#ids_sqs_1660"/></entry>
+</row>
+<row>
+<entry colname="1"><i>expression</i></entry>
+<entry colname="2">Expression that evaluates to <i>tblspace_num</i></entry>
+<entry colname="3">Can contain column names, SPL variables, host variables, or subqueries, but must
+return a numeric value</entry>
+<entry colname="4"><xref href="ids_sqs_1425.dita#ids_sqs_1425"/></entry>
+</row>
+<row>
+<entry colname="1"><i>parameter</i></entry>
+<entry colname="2">Quoted string that specifies which part of the <i>version</i> string to return </entry>
+<entry colname="3">For valid <i>parameter</i> values, see <xref href="ids_sqs_1491.dita"
+                                                  format="dita" scope="peer">Using the 'version'
+                                                  Option</xref></entry>
+<entry colname="4">See the <b>Restrictions</b> column.</entry>
+</row>
+<row>
+<entry colname="1"><i>table</i></entry>
+<entry colname="2">Table for which to display the dbspace name or containing an integer
+<i>column</i> of UTC values.</entry>
+<entry colname="3">Must match the name of a table in the FROM clause of the query</entry>
+<entry colname="4"><xref href="ids_sqs_1660.dita#ids_sqs_1660"/></entry>
+</row>
+<row>
+<entry colname="1"><i>tblspace_num</i></entry>
+<entry colname="2">Tblspace number (partition number) of a table </entry>
+<entry colname="3">Must exist in the <b>partnum</b> column of the <b>systables</b> table for the
+database</entry>
+<entry colname="4"><xref href="ids_sqs_1603.dita#ids_sqs_1603"/></entry>
+</row>
+<row>
+<entry colname="1"><i>utc_value</i></entry>
+<entry colname="2">A UTC value to be converted to the DATETIME equivalent</entry>
+<entry colname="3"
+><!--Updated as part of the fix for APAR idsdb00206484 ( = this can be a general SQL numeric expression) [TH 30 April 2010]-->Must
+be a numeric expression that evaluates to the number of seconds since 1970-01-01
+00:00:00+00:00</entry>
+<entry colname="4"><xref href="ids_sqs_1425.dita#ids_sqs_1425"/>, <xref
+href="ids_sqs_1603.dita#ids_sqs_1603"/></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</p></section>
+</refbody>
+<?tm 1410994554 0?>
+</reference>
+<?Pub *0000004611?>

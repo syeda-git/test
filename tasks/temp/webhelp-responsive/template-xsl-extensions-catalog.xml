@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <uri name="template:xsl/com.oxygenxml.webhelp.xsl.createMainPage" uri="file:/D:/GitHub/build-resources/HCL/xsl/custom-content-after-search.xsl"/>
+    <uri name="template:xsl/com.oxygenxml.webhelp.xsl.createSearchPage" uri="file:/D:/GitHub/build-resources/HCL/xsl/custom-content-after-search.xsl"/>
+    <uri name="template:xsl/com.oxygenxml.webhelp.xsl.dita2webhelp" uri="file:/D:/GitHub/build-resources/HCL/xsl/custom-content-after-search.xsl"/>
+    <nextCatalog catalog="file:/C:/Program%20Files/Oxygen%20XML%20Author%2021/frameworks/dita/DITA-OT3.x/plugins/com.oxygenxml.webhelp.responsive/xsl/template_catalog.xml"/>
+</catalog>

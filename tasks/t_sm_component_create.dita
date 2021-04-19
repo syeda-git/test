@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_create_component" xml:lang="en-US">
+    <title>Creating components</title>
+    <shortdesc>The first step in building a system model is to create components. The components
+        serve as the building blocks for the system model.</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>Log in to .</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>System Model</uicontrol>.</cmd>
+                <info>
+                    <p>The <wintitle>System Model</wintitle> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Add a component</uicontrol> icon
+                    <!--<image href="../images/icon_add.png" id="image_gp3_fhf_z4b"><alt>Image of the add icon.</alt></image>-->.</cmd>
+                <info>
+                    <p>The <wintitle>Add a component</wintitle> dialog box is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Enter a name for the component in the <uicontrol>Name</uicontrol> field.</cmd>
+            </step>
+            <step>
+                <cmd>Select the component type from the <uicontrol>Type</uicontrol> field.</cmd>
+                <info>
+                    <p>The following component types are available:<ul id="ul_dg1_z1s_x4b">
+                            <li><uicontrol>Service</uicontrol></li>
+                            <li><uicontrol>Database</uicontrol></li>
+                            <li><uicontrol>UI</uicontrol></li>
+                        </ul></p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Add</uicontrol>.</cmd>
+            </step>
+        </steps>
+        <result id="result_bv3_fmj_2mb">You have created a new component.</result>
+        <!--<postreq> You can associate child components and define the relationship between the components. See <xref href="t_sm_component_associate.dita"/> and .</postreq>-->
+    </taskbody>
+</task>

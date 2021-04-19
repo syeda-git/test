@@ -1,0 +1,4 @@
+define(function () {
+// Auto generated index for searching.
+return {"6000":"2*9*-1","avoid":"1*9*-1","car":"1*20*0,2*29*-1$3,5*9*-1,7*9*-1","car's":"5*9*-1,7*9*-1","change":"2*9*-1","changing":"2*20*0","clean":"7*9*-1","constantly":"1*9*-1","costly":"1*9*-1","customer":"6*0*3","defines":"0*9*-1","delivery":"0*60*-1$-1$-1$-1","direction":"0*9*-1","dirty":"3*9*-1","documentation":"1*0*6,3*0*3,4*0*4,6*0*2","engine":"5*9*-1","every":"2*9*-1","exchange":"0*18*-1$-1","export":"0*30*-1$-1","family":"0*9*-1","fluid":"7*29*-1$2","furniture":"6*10*-1$e","garage":"3*29*-1$0,4*18*-1$-1,6*0*i","get":"3*9*-1","go":"3*9*-1","hands":"3*9*-1","have":"7*9*-1","hcl":"1*20*2,6*0*5","insect":"7*9*-1","keep":"4*18*-1$-1,7*9*-1"};
+});

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_view_sm" xml:lang="en-US">
+    <title>Viewing the system model</title>
+    <shortdesc>You can view an existing system model or you can create a system model if a system
+        model does not exist on the <wintitle>System Model</wintitle> page. </shortdesc>
+    <taskbody>
+        <prereq id="prereq_ejm_qhs_x4b">You must be a licensed user.</prereq>
+        <steps>
+            <step>
+                <cmd>Log in to <keyword
+                        conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTAS_fam"
+                    />.</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>System Model</uicontrol>.</cmd>
+                <info>
+                    <p>The <wintitle>System Model</wintitle> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Perform any of the following actions:</cmd>
+                <info>
+                    <ul id="ul_jln_q2h_z4b">
+                        <li>Add a Team Space repository, if no repository is configured as the Team
+                            Space repository.</li>
+                        <li>Create a system model, if no model is created or exists.</li>
+                        <li>View the system model that exists.</li>
+                        <li>Modify the existing system model.</li>
+                    </ul>
+                </info>
+            </step>
+        </steps>
+        <result id="result_rgc_tgh_z4b">You have viewed an existing system model from the
+                <wintitle>System Model</wintitle> page.</result>
+        <postreq id="postreq_vv1_wgh_z4b">From the <wintitle>System Model</wintitle> page, you can
+            perform any of the following tasks:<ul id="ul_mqh_xgh_z4b">
+                <li>Add a Team Space repository, if no repository is configured as the Team Space
+                    repository. See <xref
+                        href="../../com.hcl.test.server.admin.doc/topics/t_repo_system_model.dita"
+                    />.</li>
+                <li>Create a system model, if no model is created or exists. See <xref
+                        href="r_taskflow_system_model.dita#r_taskflow_system_model/sec_tf_create_sm"
+                    />.</li>
+                <li>Modify the existing system model. See <xref
+                        href="r_taskflow_system_model.dita#r_taskflow_system_model/sec_tf_edit_sm"
+                    />.</li>
+            </ul></postreq>
+    </taskbody>
+</task>

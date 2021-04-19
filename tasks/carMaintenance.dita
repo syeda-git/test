@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="carMaintenance">
+    <title>Car Maintenance <keyword
+            conref="../com.ibm.help.sourcedita.doc/topics/prodnamesHCL.dita#auroraproducts/RFT_full"
+        /></title>
+    <shortdesc>Avoid costly repairs by constantly performing simple maintenance tasks.</shortdesc>
+    <taskbody>
+        <context id="context_sny_gsn_4mb">
+            <p>┌──────┐</p>
+            <p>│      Compose   │</p>
+            <p>│ Compose        │</p>
+            <p>└──────┘</p>
+            <p conref="changingtheoil.dita#changeoil/123"/>
+            <p>This is a <xref href="c_synch_pattern.dita"/> link. This is a
+                    <cmdname>Commandname</cmdname>.</p>
+            <p>
+                <ul id="ul_mx1_z2r_rnb">
+                    <li><xref href="changingtheoil.dita"/></li>
+                    <li><xref href="garagetaskoverview.dita"></xref></li>
+                    <li><xref href="organizing.dita"></xref></li>
+                </ul>
+            </p>
+        </context>
+        <steps id="steps_pm4_4vr_4mb">
+            <step>
+                <cmd/>
+            </step>
+        </steps>
+    </taskbody>
+</task>

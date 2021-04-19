@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<?Pub Sty _display FontColor="red"?>
+<reference id="auditcp" xml:lang="en-us">
+<title>AUTHDEF</title>
+<titlealts>
+<searchtitle>AUTHDEF</searchtitle>
+</titlealts>
+<prolog><metadata>
+<keywords><indexterm>AUTHDEF initialization statement<indexterm>description</indexterm
+></indexterm><indexterm>initialization statements<indexterm>AUTHDEF<indexterm
+>definition</indexterm></indexterm></indexterm><indexterm>APARs<indexterm
+>PK41519</indexterm></indexterm><indexterm>APARs<indexterm>PK40969</indexterm
+></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section><title>Purpose</title> <p>The AUTHDEF statement specifies the
+    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> resources
+    that are defined to a security product. For a description about how you use
+    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> security
+    features to protect
+    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> functions
+    and data, see <!--<xref href="eqqc1impsecurity.dita"/>-->.</p><p>You can specify this statement for a
+    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->, a
+    standby <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->,
+    or a <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->.</p><p>AUTHDEF is defined in the member of the EQQPARM library as
+specified by the PARM parameter on the JCL EXEC statement.</p> </section>
+<refsyn><title>Format</title> <syntaxdiagram>
+<groupseq><kwd>AUTHDEF</kwd></groupseq>
+<groupseq importance="optional"><kwd>CLASS</kwd><delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">OPCCLASS</kwd>
+<var>name of resource class</var>
+</groupchoice>
+<delim>)</delim></groupseq>
+<groupseq importance="optional" otherprops="v93spe3" rev="v93spe3"><kwd
+>COMMAND1, ...., COMMAND9</kwd><delim>(</delim>
+<groupchoice importance="required">
+<var>list of commands</var>
+</groupchoice>
+<delim>)</delim></groupseq>
+<groupseq importance="optional"><kwd>LISTLOGGING</kwd><delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">ALL</kwd>
+<kwd>FIRST</kwd>
+<kwd>NONE</kwd>
+</groupchoice>
+<delim>)</delim></groupseq>
+<groupseq importance="optional"><kwd>SUBRESOURCES</kwd><delim>(</delim>
+<groupchoice importance="required" rev="tws811">
+<repsep>,</repsep>
+<kwd>AD.ADNAME</kwd>
+<kwd>AD.ADGDDEF</kwd>
+<kwd>AD.GROUP</kwd>
+<kwd>AD.JOBNAME</kwd>
+<kwd>AD.NAME</kwd>
+<kwd>AD.OWNER</kwd>
+<!--APAR PM66337-->
+<kwd rev="v86apars">AD.RESNAME</kwd>
+<kwd rev="sysaut">AD.SECELEM</kwd>
+<kwd rev="v86">AD.UFVAL</kwd>
+<kwd>CL.CALNAME</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.ADD</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.ADDOPER</kwd>
+<kwd>CP.ADNAME</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.COMMAND1, ...., CP.COMMAND9</kwd>
+<kwd>CP.CPGDDEF</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.DELETE</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.DELOPER</kwd>
+<kwd>CP.GROUP</kwd>
+<kwd>CP.JOBNAME</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.MODDEP</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.MODIFY</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.MODOPER</kwd>
+<kwd otherprops="v93spe3" rev="v93spe3">CP.MODOPSTAT</kwd>
+<kwd>CP.NAME</kwd>
+<kwd>CP.OWNER</kwd>
+<kwd rev="sysaut">CP.SECELEM</kwd>
+<kwd rev="v86">CP.UFVAL</kwd>
+<kwd>CP.WSNAME</kwd>
+<kwd>CP.ZWSOPER</kwd>
+<kwd>ET.ADNAME</kwd>
+<kwd>ET.ETNAME</kwd>
+<kwd rev="v86">JL.DSNAME</kwd>
+<kwd rev="v86">JL.MEMBER</kwd>
+<kwd>JS.ADNAME</kwd>
+<kwd>JS.GROUP</kwd>
+<kwd>JS.JOBNAME</kwd>
+<kwd>JS.OWNER</kwd>
+<kwd>JS.WSNAME</kwd>
+<kwd>JV.OWNER</kwd>
+<kwd>JV.TABNAME</kwd>
+<kwd>LT.ADNAME</kwd>
+<kwd>LT.LTGDDEF</kwd>
+<kwd>LT.OWNER</kwd>
+<kwd>OI.ADNAME</kwd>
+<kwd>PR.PERNAME</kwd>
+<kwd>RD.RDNAME</kwd>
+<kwd rev="v91">RG.RGNAME</kwd>
+<kwd rev="v91">RG.OWNER</kwd>
+<kwd>RL.ADNAME</kwd>
+<kwd>RL.GROUP</kwd>
+<kwd>RL.OWNER</kwd>
+<kwd>RL.WSNAME</kwd>
+<kwd>RL.WSSTAT</kwd>
+<!--APAR PH09531-->
+<kwd rev="95_spe1">RP.REPTYPE</kwd>
+<kwd>SR.SRNAME</kwd>
+<kwd>WS.WSNAME</kwd>
+</groupchoice>
+<delim>)</delim></groupseq>
+<groupseq importance="optional"><kwd>TRACE</kwd><delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<kwd>4</kwd>
+<kwd>8</kwd>
+</groupchoice>
+<delim>)</delim></groupseq>
+</syntaxdiagram> </refsyn>
+<section><title>Parameters</title> <parml><plentry id="authdefclass">
+<pt>CLASS(<synph><var>name of resource class</var></synph>|<synph
+><kwd importance="default">OPCCLASS</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>AUTHDEF<indexterm>CLASS
+        keyword</indexterm></indexterm></indexterm><indexterm>AUTHDEF initialization
+        statement<indexterm>CLASS keyword</indexterm></indexterm><indexterm>CLASS, keyword of
+       AUTHDEF</indexterm>Defines the name of the security resource class that protects
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>-->
+      resources. The value is valid until you specify a different value and restart the
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> address
+      space. <p>Consider the following checklist when using this parameter: <ul>
+        <li>The resource class must be defined in the <tm tmtype="reg" trademark="RACF">RACF</tm>
+         class descriptor and routing tables.</li>
+        <li>New definitions in the <tm tmtype="reg" trademark="RACF">RACF</tm> class descriptor and
+         routing tables require an IPL.</li>
+        <li>If multiple controller subsystems require separate policies, they require separate
+         classes.</li>
+        <li>IBMOPC is a predefined class that you can use with no need for an IPL if only one class
+         is required.</li>
+        <li>After a <tm tmtype="reg" trademark="RACF">RACF</tm> migration, consider redefining any
+         class you defined in a previous version of <tm tmtype="reg" trademark="RACF"
+         >RACF</tm>.</li>
+        <li>The default class OPCCLASS is not already defined in <tm tmtype="reg" trademark="RACF"
+          >RACF</tm>. Before using this class, make sure there are the necessary entries in the <tm
+          tmtype="reg" trademark="RACF">RACF</tm> class descriptor and routing tables.</li>
+       </ul></p></pd>
+</plentry><plentry otherprops="v93spe3" rev="v93spe3">
+<pt>COMMAND1, ..., COMMAND9(<synph><var>list of commands</var></synph
+>) </pt>
+<pd><indexterm>initialization statements<indexterm>AUTHDEF<indexterm
+>COMMANDn keyword</indexterm></indexterm></indexterm><indexterm>AUTHDEF
+initialization statement<indexterm>COMMANDn keyword</indexterm></indexterm
+><indexterm>COMMANDn, keyword of AUTHDEF</indexterm>Defines the list
+of commands to which you want to authorize a user. If the same command
+is listed in more than one COMMAND<i>n</i> parameter and different
+levels of authorization are assigned, the authorization with the higher
+level of privileges is always applied to the command.<p>You can specify
+any combinations of the following occurrence and operation commands:<table
+pgwide="0"><title>Occurrence commands that you can specify in the <b
+>Commandn</b> parameter</title>
+<tgroup cols="2"><colspec colname="col1" colwidth="34*"/><colspec
+colname="col2" colwidth="64*"/>
+<thead>
+<row valign="bottom">
+<entry colname="col1">Command</entry>
+<entry colname="col2">Description</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry colname="col1">C</entry>
+<entry colname="col2">Complete an occurrence </entry>
+</row>
+<row>
+<entry colname="col1">CG</entry>
+<entry colname="col2">Complete group</entry>
+</row>
+<row>
+<entry colname="col1">DG</entry>
+<entry colname="col2">Delete group</entry>
+</row>
+<row>
+<entry colname="col1">R</entry>
+<entry colname="col2">Rerun</entry>
+</row>
+<row>
+<entry colname="col1">RG </entry>
+<entry colname="col2">Remove from group </entry>
+</row>
+<row>
+<entry colname="col1">W</entry>
+<entry colname="col2">Set waiting </entry>
+</row>
+</tbody>
+</tgroup>
+</table><?Pub Caret -2?><table><title>Operation commands that you
+can specify in the <b>Commandn</b> parameter</title>
+<tgroup cols="2"><colspec colname="col1" colwidth="34*"/><colspec
+colname="col2" colwidth="65*"/>
+<thead>
+<row valign="bottom">
+<entry colname="col1">Command</entry>
+<entry colname="col2">Description</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry colname="col1">ARC</entry>
+<entry colname="col2">Attempt Automatic Recovery</entry>
+</row>
+<row>
+<entry colname="col1">BND</entry>
+<entry colname="col2">Bind Operation</entry>
+</row>
+<row>
+<entry colname="col1">DJ</entry>
+<entry colname="col2">Delete JCL</entry>
+</row>
+<row>
+<entry colname="col1">EX</entry>
+<entry colname="col2">Execute</entry>
+</row>
+<row>
+<entry colname="col1">J</entry>
+<entry colname="col2">Edit JCL</entry>
+</row>
+<row>
+<entry colname="col1">JR</entry>
+<entry colname="col2">JR, Fast Path JR</entry>
+</row>
+<row>
+<entry colname="col1">K</entry>
+<entry colname="col2">Kill (K and KR)</entry>
+</row>
+<row>
+<entry colname="col1">MH</entry>
+<entry colname="col2">Manual Hold</entry>
+</row>
+<row>
+<entry colname="col1">MR</entry>
+<entry colname="col2">Manual Release</entry>
+</row>
+<row>
+<entry colname="col1">NP</entry>
+<entry colname="col2">NOP</entry>
+</row>
+<row otherprops="zc">
+<entry colname="col1">RI</entry>
+<entry colname="col2">Recovery Info (PY and PN)</entry>
+</row>
+<row>
+<entry colname="col1">SC</entry>
+<entry colname="col2">SC, Fast Path SC</entry>
+</row>
+<row>
+<entry colname="col1">SJR</entry>
+<entry colname="col2">Simple Job Restart</entry>
+</row>
+<row>
+<entry colname="col1">SR</entry>
+<entry colname="col2">SR, Fast Path SR</entry>
+</row>
+<row>
+<entry colname="col1">UN</entry>
+<entry colname="col2">UN NOP</entry>
+</row>
+</tbody>
+</tgroup>
+</table><!--<dl><dlentry>
+<dt>Occurrence commands</dt>
+<dd><dl><dlentry>
+<dt>C</dt>
+<dd>Complete an occurrence (also addressed??? named??? as CMP in the
+ISPF panels)</dd>
+</dlentry><dlentry>
+<dt>CG</dt>
+<dd>Complete group</dd>
+</dlentry><dlentry>
+<dt>DG</dt>
+<dd>Delete group</dd>
+</dlentry><dlentry>
+<dt>R</dt>
+<dd>Rerun</dd>
+</dlentry><dlentry>
+<dt>RG</dt>
+<dd>Remove from group</dd>
+</dlentry><dlentry>
+<dt>W</dt>
+<dd>Set waiting (also addressed as WOC in the ISPF panels)
+</dd>
+</dlentry></dl></dd>
+</dlentry><dlentry>
+<dt>Operation commands</dt>
+<dd><dl><dlentry>
+<dt>J</dt>
+<dd>Edit JCL </dd>
+</dlentry><dlentry>
+<dt>MH</dt>
+<dd>Manual Hold</dd>
+</dlentry><dlentry>
+<dt>MR</dt>
+<dd>Manual Release</dd>
+</dlentry><dlentry>
+<dt>NP</dt>
+<dd>NOP</dd>
+</dlentry><dlentry>
+<dt>RC</dt>
+<dd>Restart and Cleanup</dd>
+</dlentry><dlentry>
+<dt>UN</dt>
+<dd>UN NOP</dd>
+</dlentry></dl></dd>
+</dlentry></dl>--> </p></pd>
+</plentry><plentry>
+<pt>LISTLOGGING(<synph><kwd>FIRST</kwd></synph>|<synph><kwd>NONE</kwd
+></synph>|<synph><kwd importance="default">ALL</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>AUTHDEF<indexterm>LISTLOGGING
+        keyword</indexterm></indexterm></indexterm><indexterm>AUTHDEF initialization
+        statement<indexterm>LISTLOGGING keyword</indexterm></indexterm><indexterm>LISTLOGGING,
+       keyword of AUTHDEF</indexterm>In the resource profile, you define how data is logged for
+      accesses to a resource. If you restrict access to
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> data on
+      the record level by specifying subresources, a request to list
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> data can
+      result in several access violations being recorded for those records that satisfy the filter
+      criteria but to which the user is not permitted access. LISTLOGGING lets you alter the amount
+      of data that is logged for list requests. <p>Specify FIRST when logging is performed only for
+       the first read attempt to a resource. Logging occurs only for the first entry that has a
+       profile, which specifies that logging should occur. Specify NONE if no logging is performed.
+       Specify ALL if logging is performed as specified in the profile for the resource. ALL is the
+       default value.</p></pd>
+</plentry><plentry>
+<pt>SUBRESOURCES(<synph><var>resource,...,resource</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>AUTHDEF<indexterm>SUBRESOURCES
+         keyword</indexterm></indexterm></indexterm><indexterm>AUTHDEF initialization
+        statement<indexterm>SUBRESOURCES keyword</indexterm></indexterm><indexterm>SUBRESOURCES,
+       keyword of AUTHDEF</indexterm>Defines whether
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> checks on
+      the record level if a user is authorized to access information in an
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> VSAM
+      file. <p otherprops="v93spe3" rev="v93spe3">In the list of resources you can specify one or
+       more of the items shown in the syntax diagram. For a description of all the fixed resources
+       and subresources, see
+       <!--<xref href="eqqc1functionsdataprotect.dita#functionsdataprotect/resors"/>-->.</p><p>Whenever
+       a user accesses a record, for example in the AD file,
+       <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> checks
+       if the user is authorized to access the record in the manner intended. To do this, a resource
+       name is generated, and a request is sent through SAF (system authorization facility) to the
+       security system to test the user authority. For example, if you specify AD.ADNAME, the
+       application name is retrieved from the record, and the prefix <b>ADA.</b> is added to create
+       the resource name. The security system is then called to test if this resource exists in the
+       resource class defined by the CLASS keyword and if the user is authorized to access it. The
+       default resource list for the SUBRESOURCES keyword is the empty list. This means that the
+       default is to use already established authority and not to check the user authority to access
+       individual VSAM records.</p><note>If you have specified OPCHOST(NO) in the
+       <!--<xref href="eqqc1noerror.dita"/>--> statement, only the RL.WSNAME, RL.WSSTAT, and
+       SR.SRNAME subresources are relevant. AD.SECELEM and CP.SECELEM are relevant only if you run
+       System Automation V3.1 (with the appropriate maintenance level installed), or later. When
+       set, they protect the whole System Automation information in the AD segment and CP33 record,
+       respectively.</note></pd>
+</plentry><plentry>
+<pt>TRACE(<synph><kwd>4</kwd></synph>|<synph><kwd>8</kwd></synph>|<synph
+><kwd importance="default">0</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>AUTHDEF<indexterm>TRACE
+        keyword</indexterm></indexterm></indexterm><indexterm>AUTHDEF initialization
+        statement<indexterm>TRACE keyword</indexterm></indexterm><indexterm>TRACE<indexterm>keyword
+        of AUTHDEF</indexterm></indexterm>Defines if
+      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> writes
+      trace information to the message log (EQQMLOG) each time the RACROUTE macro is invoked.
+      Specify 0, which is the default value, if you do not want trace information. Specify 4 if you
+      want partial trace information. Specify 8 if you want full trace information.</pd>
+</plentry></parml> </section>
+<example><title>Examples</title><indexterm>initialization statements<indexterm
+>AUTHDEF<indexterm>example of</indexterm></indexterm></indexterm><indexterm
+>AUTHDEF initialization statement<indexterm>example of</indexterm
+></indexterm> <fig frame="all">
+<codeblock> AUTHDEF CLASS(OPCCLASS)                    1
+         SUBRESOURCES(AD.ADNAME,WS.WSNAME)  2</codeblock>
+</fig> <p>In this example of an AUTHDEF statement:   <dl><dlentry>
+<dt>1</dt>
+<dd>The default resource class is used.</dd>
+</dlentry><dlentry>
+<dt>2</dt>
+<dd><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> will verify
+       authorization for application descriptions (by checking the application name) and
+       workstations (by checking the workstation name).</dd>
+</dlentry></dl></p> </example>
+</refbody>
+</reference>
+<?Pub *0000015920?>

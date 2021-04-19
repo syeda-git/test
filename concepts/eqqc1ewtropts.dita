@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<?Pub Sty _display FontColor="red"?>
+<reference id="ewtropts" xml:lang="en-us">
+<title>EXITS</title>
+<titlealts>
+<searchtitle>EXITS</searchtitle>
+</titlealts>
+<prolog><metadata>
+<keywords><indexterm>APARs<indexterm>PK41519</indexterm></indexterm>
+<indexterm>EXITS initialization statement<indexterm>definition</indexterm></indexterm>
+<indexterm>initialization statements<indexterm>EXITS<indexterm> definition</indexterm></indexterm></indexterm>
+<indexterm>APARs<indexterm>PK40969</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section><title>Purpose</title><indexterm>APARs<indexterm>PK25979</indexterm></indexterm>
+      <p rev="sysaut">The EXITS statement defines exit options to
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>-->. It
+        applies to
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> exits
+        whose names are prefixed with EQQUX0. You can use the EXITS statement to stop
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> from
+        attempting to load a particular exit. You can also use EXITS to change the default name of
+        the load module. By default, the
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->
+        attempts to load the EQQUX000, EQQUX004, EQQUX005, and EQQUX006 exits. By default, the
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+        attempts to load the EQQUX000, EQQUX001, EQQUX002, EQQUX003, EQQUX007, EQQUX009, EQQUX011,
+        EQQUX013, <ph>EQQUX014</ph> and EQQUXSAZ exits. </p><?Pub Caret 476?>
+      <p>EXITS is defined in the member of the EQQPARM library as specified by the PARM parameter on
+        the JCL EXEC statement.</p>
+    </section>
+<refsyn><title>Format</title> <syntaxdiagram>
+<groupseq><kwd>EXITS</kwd></groupseq>
+<groupseq importance="optional">
+<repsep></repsep>
+<kwd>CALL</kwd><var>nn</var><delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+<kwd>X</kwd>
+</groupchoice>
+<delim>)</delim></groupseq>
+<groupseq importance="optional">
+<repsep></repsep>
+<kwd>LOAD</kwd><var>nn</var><delim>(</delim>
+<groupchoice importance="required"><groupseq importance="default"><kwd>EQQUX0</kwd>
+<var>nn</var></groupseq>
+<var>module name</var>
+</groupchoice>
+<delim>)</delim></groupseq>
+</syntaxdiagram> </refsyn>
+<section><title>Parameters</title> <parml><plentry>
+<pt>CALL<synph><var>nn</var></synph>(<synph><kwd>NO</kwd></synph>|<synph><kwd>X</kwd></synph>|<synph><kwd
+importance="default">YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>EXITS<indexterm>CALLnn
+                keyword</indexterm></indexterm></indexterm><indexterm>EXITS initialization
+                statement<indexterm>CALLnn keyword</indexterm></indexterm><indexterm>CALLnn, keyword
+              of EXITS</indexterm>Specifies whether an exit should be loaded. The exit is either the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>-->
+            exit with suffix <synph><var>nn</var></synph>, or its alternative as specified by the
+            LOAD <synph><var>nn</var></synph> keyword. The value 'X' allows EQQUX007 to see the
+            extended status 'X' (waiting for special resource). If you specify this value with the
+            CALL07 statement, exit EQQUX007 is called and every time an operation changes its
+            status,
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>-->
+            scans the chain of special resources to see if an operation is waiting for any of them.
+            Use this feature only when strictly necessary so as not to decrease performance.<p
+              rev="93_refresh"><indexterm>APARs<indexterm>PI81106</indexterm></indexterm>Use the
+              CALL12 statement to disable the loading of System Automation exit EQQUXSAZ. Consider,
+              however, that by setting CALL12(NO) you will not be able to use any System Automation
+              functions.</p></pd>
+</plentry><plentry>
+<pt>LOAD<synph><var>nn</var></synph>(<synph><var>module name</var></synph>|<synph><kwd
+importance="default">EQQUX0</kwd></synph><synph><var>nn</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>EXITS<indexterm>LOADnn
+keyword</indexterm></indexterm></indexterm><indexterm>EXITS initialization
+statement<indexterm>LOADnn keyword</indexterm></indexterm><indexterm>LOADnn,
+keyword of EXITS</indexterm>Specifies an alternative load module,
+which is called instead of the default exit named EQQUX0<synph><var>nn</var></synph>.</pd>
+</plentry></parml> </section>
+<example><title>Examples</title><indexterm>initialization
+            statements<indexterm>EXITS<indexterm>example
+        of</indexterm></indexterm></indexterm><indexterm>EXITS initialization
+          statement<indexterm>example of</indexterm></indexterm>
+      <fig frame="all">
+        <codeblock rev="tws811"> EXITS CALL04(NO)        1
+       LOAD00(TWS00)     2</codeblock>
+      </fig>
+      <p>In this example of an EXITS statement, which applies to a
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->: <dl>
+          <dlentry>
+            <dt>1</dt>
+            <dd>The EQQUX004 exit is not loaded.</dd>
+          </dlentry>
+          <dlentry rev="tws811">
+            <dt>2</dt>
+            <dd>A module called TWS00 is loaded instead of exit EQQUX000.</dd>
+          </dlentry>
+        </dl></p>
+      <p>The subsystem attempts to load exits EQQUX005 and EQQUX006 by default.</p>
+      <p>For more information about
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc2"/>--> exits,
+        see <!--<xref href="eqqc1exits1.dita#exits1"/>-->. </p>
+    </example>
+</refbody>
+</reference>
+<?Pub *0000005387?>

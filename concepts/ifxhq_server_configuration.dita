@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<?Pub Sty _display FontColor="red"?>
+<?Pub Inc?>
+<concept xml:lang="en-us" id="ifxhq_server_configuration">
+    <title><keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore Server
+        Configuration</title>
+    <?Pub Caret -2?>
+    <conbody>
+        <p>A properties file is required to run the <keyword
+                conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server. When starting
+            the <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server, you
+            can pass the properties file name as part of the start command. Otherwise, <keyword
+                conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore will look for a
+            properties file named <filepath>OneDB Explore-server.properties</filepath> in the
+            classpath.</p>
+        <p>An example configuration file documenting all supported <keyword
+                conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server configuration
+            properties can be found in <filepath>$INFORMIXDIR/hq/OneDB
+                Explore-server-example.properties</filepath>.</p>
+        <p>
+            <ul id="ul_wgp_gdw_pnb">
+                <li>Required configuration properties on initial startup<ul id="ul_xgp_gdw_pnb">
+                        <li><xref href="#ifxhq_server_configuration/inadpwd" format="dita"/></li>
+                    </ul></li>
+                <li>Optional configuration properties<ul id="ul_ygp_gdw_pnb">
+                        <li><xref href="#ifxhq_server_configuration/alertcheck" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/alertstarnumber" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/datasource" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/hostname" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/http" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/https" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/h2encryptalgoth" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/h2encryptenable" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/h2encryptpwd" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/poolconnection" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/poolmax" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/poolmin" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/poolidle" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/redirecthttp" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/restssn" format="dita"/></li>
+                        <!--IFMX-1284: Hidden-->
+                        <li otherprops="hide"><xref href="#ifxhq_server_configuration/rstsql"
+                                format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/ssl.keystore" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/sslkeystorepwd" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/sslkeypwd" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/userpwdmaxage" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/userpwdmin" format="dita"/></li>
+                        <li><xref href="#ifxhq_server_configuration/usepwdlwcase" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/usepwdreqnum" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/userpwdspchfrom" format="dita"
+                            /></li>
+                        <li><xref href="#ifxhq_server_configuration/usepwdrucase" format="dita"
+                                >user.password.requireUpperCase</xref></li>
+                    </ul></li>
+            </ul>
+        </p>
+        <section id="inadpwd">
+            <title>initialAdminPassword</title>
+            <p>When starting the <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/>
+                Explore server for the first time, an <b>admin</b> user will be created with the
+                password specified in the <b>initialAdminPassword</b> property. This user will have
+                system administrative privileges on the <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server which
+                includes the ability to create other users, grant privileges, and make configuration
+                changes to the server.</p>
+            <p>This property is only required the very first time you start the <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server. For
+                security reasons, it is recommended that you remove this property from your OneDB
+                Explore server configuration file after the <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server has been
+                initialized for the first time.</p>
+        </section>
+        <section id="alertstarnumber">
+            <title>alert.startNumberAlertSendThreads</title>
+            <p>Configures the number of threads in the thread pool that processes and dispatches
+                alert notifications (by email, Twilio, Pager Duty, etc.) when an alerting incident
+                occurs. The default number of threads is 4.</p>
+        </section>
+        <section id="alertcheck">
+            <title>alert.numberConditionCheckThreads</title>
+            <p>Configures the number of threads in the thread pool that checks whether alerting
+                conditions have been violated whenever new monitoring data comes in. The default
+                number of threads is 4.</p>
+        </section>
+        <section id="datasource">
+            <title>dataSource.IFX_ISOLATION_LEVEL</title>
+            <p>Specifies the isolation level to set on JDBC connections to the various Informix
+                database servers. The default value is 1.</p>
+        </section>
+        <section id="hostname">
+            <title>hostname</title>
+            <p>The host name of the <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/>
+                Explore server. The host name determines the network adapter or interface that the
+                    <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server
+                binds the server socket to.</p>
+            <p>The default value is an empty string. When set to an empty string, the <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server will bind to
+                all available network interfaces on the host machine.</p>
+        </section>
+        <section id="http">
+            <title>httpPort</title>
+            <p>The HTTP port to run the <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"
+                /> Explore server on. This port will serve both the OneDB Explore web UI and the
+                    <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore REST API.
+                Set this value to -1 to disable the HTTP protocol for <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore. If httpPort is set
+                to -1, make sure that httpsPort is set to something other than -1.The default value
+                is 8080.</p>
+        </section>
+        <section id="https">
+            <title>httpsPort</title>
+            <p>The HTTPS port to run the <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"
+                /> Explore server on. This port will serve both the <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore web UI and the
+                    <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore REST
+                API.</p>
+            <p>Set this value to -1 to disable the HTTPS protocol for <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore. If httpsPort is
+                set to -1, make sure that httpPort is set to something other than -1. </p>
+            <p>If httpsPort is something other than -1, you must set the <b>ssl.keystore.file</b>
+                and <b> ssl.keystore.password</b> properties, and potentially also the
+                    <b>ssl.key.password</b> property if your key password is different from the
+                keystore password.</p>
+            <p>The default value is -1 indicating that HTTPS is disabled by default.</p>
+        </section>
+        <section id="h2encryptalgoth">
+            <title>h2.encrypt.algorithm</title>
+            <p>Sets the algorithm for H2 database file encryption. The encryption algorithms
+                supported by H2 are AES, XTEA, and FOG. The default value is AES.</p>
+        </section>
+        <section id="h2encryptenable">
+            <title>h2.encrypt.enable</title>
+            <p>Controls whether the H2 database file which holds <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server's internal
+                metdata is encrypted. If you set this property to true, you must also set the
+                h2.encrypt.password property. The default value is false.</p>
+        </section>
+        <section id="h2encryptpwd">
+            <title>h2.encrypt.password</title>
+            <p>Sets the password to use for H2 database file encryption. If h2.encrpyt.enable is set
+                to true, you must set the password for encryption.</p>
+        </section>
+        <section id="poolconnection">
+            <title>pool.connectionTimeout</title>
+            <p>Specifies the number of milliseconds to wait for a JDBC connection to an Informix
+                database server to be established before it times out. The default value is 5000 (5
+                seconds).</p>
+        </section>
+        <section id="poolidle">
+            <title>pool.idleTimeout</title>
+            <p>Specifies the number of milliseconds that a JDBC connection can be idle in the
+                connection pool before it is closed. The default value is 60000 (1 minute).</p>
+        </section>
+        <section id="poolmax">
+            <title>pool.maximumPoolSize</title>
+            <p>The maximum number of JDBC connections in each connection pool. The <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server will
+                maintain a connection pool for each Informix database that it needs to connect to.
+                The <b>pool.maximumPoolSize</b> puts a cap on the total number of open JDBC
+                connections that can be established to each database.</p>
+            <p>The default value is 5.</p>
+        </section>
+        <section id="poolmin">
+            <title>pool.minimumIdle</title>
+            <p>The minimum number of idle JDBC connections in each connection pool. The <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server will
+                maintain a connection pool for each Informix database server that it needs to
+                connect to. Setting <b>pool.minimumIdle</b> to zero indicates that all JDBC
+                connections in the connection pool should be closed when they have been sitting idle
+                for longer than the <b>pool.idleTimeout</b> threshold. Setting
+                    <b>pool.minimumIdle</b> to a positive integer indicates the number of
+                connections that should be kept open in the connection pool even when they exceed
+                the <b>pool.idleTimeout</b>. The default and recommended value is 0.</p>
+        </section>
+        <section id="redirecthttp">
+            <title>redirectHTTPtoHTTPS</title>
+            <p>If set to true, HTTP traffic to <keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore will automatically
+                be redirected to HTTPS. This will include web socket communication between the
+                    <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server and
+                agent. If this value is set to true, you will be required to configure SSL in your
+                agent configuration properties.</p>
+            <p>The default value is false.</p>
+        </section>
+        <section id="restssn">
+            <title>rest.session.timeout</title>
+            <p>Specifies the number of milliseconds that a REST session can be idle before it is
+                closed. The default value is 3600000 (60 minutes).</p>
+        </section>
+        <!--IFMX-1284: Hidden-->
+        <section id="rstsql" otherprops="hide">
+            <title>rest.sql.session.timeout</title>
+            <p>Specifies the number of milliseconds that a SQL session connected through REST can be
+                idle before it is closed. SQL sessions are used to run free-form SQL queries through
+                the OneDB Explore REST interface, and are used by the SQL console page in the
+                    OneDB<keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore web
+                UI. Each SQL session holds exclusive access to a JDBC connection object for the
+                duration of that session. The default value is 120000 (2 minutes).</p>
+        </section>
+        <section id="ssl.keystore">
+            <title>ssl.keystore.file</title>
+            <p>The path to the keystore file that contains the certificate to use for network
+                encryption. This property must be set if <b>httpsPort</b> is set to something other
+                than -1.</p>
+        </section>
+        <section id="sslkeystorepwd">
+            <title>ssl.keystore.password</title>
+            <p>The password to unlock the keystore file for network encryption. If this property is
+                not set and the HTTPS is configured, you will be prompted on the command line to
+                enter the keystore password when starting the OneDB<keyword
+                    conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore server.</p>
+        </section>
+        <section id="sslkeypwd">
+            <title>ssl.key.password</title>
+            <p>The password to unlock the entry into the keystore. The default value is no password,
+                which means to use the keystore password. If the entry into the keystore requires a
+                password that is different from the keystore password, set this property to the
+                entry password.</p>
+        </section>
+        <section id="userpwdmaxage">
+            <title>user.password.maxAge</title>
+            <p>Controls the maximum age (in days) of a user password. User passwords that are older
+                than the max age will be considered as expired. Setting this property to zero, which
+                is the default value, specifies that user passwords never expire. Setting this
+                property to a value greater than zero specifies the maximum age (in days) of a user
+                password before it expires. A user will start receiving notifications in the
+                    <keyword conref="../1common/ids_cm_ref.dita#ids_cm_ref/ids"/> Explore UI when
+                the difference between the current date and the password expiration date is less
+                than or equal to 15 days.</p>
+        </section>
+        <section id="userpwdmin">
+            <title>user.password.minLength</title>
+            <p>Controls the minimum length for a user password. The default value is 8.</p>
+        </section>
+        <section id="usepwdlwcase">
+            <title>user.password.requireLowerCase</title>
+            <p>Controls whether user passwords are required to include at least one lowercase
+                character. The default value is true.</p>
+        </section>
+        <section id="usepwdreqnum">
+            <title>user.password.requireNumber</title>
+            <p>Controls whether user passwords are required to include at least one number. The
+                default value is true.</p>
+        </section>
+        <section id="userpwdspchfrom">
+            <title>user.password.requireSpecialCharacterFromSet</title>
+            <p>Controls whether user passwords are required to include at least one special
+                character. An empty string indicates that no special characters are required.
+                Setting this value to “!@#$%^&amp;*()? would require user passwords to include at
+                least one of those characters. The default value is an empty string.</p>
+        </section>
+        <section id="usepwdrucase">
+            <title>user.password.requireUpperCase</title>
+            <p>Controls whether user passwords are required to include at least one uppercase
+                character. The default value is true.</p>
+        </section>
+    </conbody>
+    <?tm 1410306536 0?>
+</concept>
+<?Pub *0000004307?>
