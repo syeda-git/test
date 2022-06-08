@@ -1,0 +1,22 @@
+name: CI
+'on':
+  push:
+    branches:
+      - master
+jobs:
+  build-dita:
+    name: Build DITA
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Build HTML5
+        uses: dita-ot/dita-ot-action@master
+        with:
+            build: |
+                dita -i garage.ditamap -o out -f html5
+      - name: Upload DITA Output to a ZIP file
+        uses: actions/upload-artifact@v2
+        with:
+          name: dita-artifact
+          path: 'out'
