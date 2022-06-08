@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "..\dtd\concept.dtd">
+<?Pub Sty _display FontColor="red"?>
+<concept id="cexcusttes" xml:lang="en-us">
+<title outputclass="id_title_id">Controlling loops</title>
+<shortdesc outputclass="id_shortdesc_id">This example demonstrates
+extending test execution by using custom code to control loops. It
+provides sample code that shows how you can manipulate the behavior
+of loops within a test to better analyze and verify test results.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>loops<indexterm>controlling</indexterm></indexterm>
+<indexterm>tests<indexterm>extending<indexterm>controlling loops</indexterm></indexterm></indexterm>
+<indexterm>custom Java code<indexterm>controlling loops</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<conbody>
+<p>This example uses a recording of a stock purchase transaction using the Trade application. The
+concepts shown here can be used in tests of other applications.</p>
+<p>The test begins with a recording of a stock purchase transaction, using dataset substitution for
+			the login IDs. The pages are wrapped in a five-iteration loop, as shown in the following
+			figure:</p>
+<p><image
+alt="Performance Test buy Loop 5 iterations containes 3 custom code files"
+href="../images/tesloopex1.gif" outputclass="id_image_id1"><alt></alt>
+</image></p>
+<p>Notice that among the various pages of the test, three items of
+custom code exist (indicated by the green circles with "C"s in them).
+This example explores these items of custom code.</p>
+		<p conref="ctesinterfaces.dita#ctesinterfaces/javadoc_note"/>
+<p>The first piece of custom code, <codeph>InitializeBuyTest</codeph>,
+is mentioned here:</p>
+<p><!--minor 7.0.1 change: InitializeBuyTest code now uses VU random number generator, per RATLC00987067 --><codeblock>package customcode;
+
+import java.util.Random;
+
+import com.ibm.rational.test.lt.kernel.IDataArea;
+import com.ibm.rational.test.lt.kernel.services.ITestExecutionServices;
+import com.ibm.rational.test.lt.kernel.services.IVirtualUserInfo;
+
+/**
+ * @author unknown
+ */
+public class InitializeBuyTest implements
+		com.ibm.rational.test.lt.kernel.custom.ICustomCode2 {
+
+	/**
+	 * Instances of this will be created using the no-arg constructor.
+	 */
+	public InitializeBuyTest() {
+	}
+
+	/**
+	 * For description of ICustomCode2 and ITestExecutionServices interfaces,
+	 * see the Javadoc.<!--<xref format="html" href="http://pic.dhe.ibm.com/infocenter/rtwhelp/v8r5m0/topic/com.ibm.rational.test.lt.tes.doc.isv/reference/api/IBM_RPT_TES/overview-summary.html" scope="external">Javadoc information</xref>-->. */
+	public String exec(ITestExecutionServices tes, String[] args) {
+		// Get the test's data area and set a flag indicating that nothing
+		// has failed yet. This flag will be used later to break out
+		// of the schedule loop as soon as a failure is encountered.
+		IDataArea dataArea = tes.findDataArea(IDataArea.TEST);
+		dataArea.put("failedYet", "false");
+
+		// Get the virtual users's data area
+		IDataArea vda = tes.findDataArea(IDataArea.VIRTUALUSER);
+		
+		// Randomly select a stock to purchase from the set of s:0 to s:499.
+	    IVirtualUserInfo vuInfo = (IVirtualUserInfo) vda.get(IVirtualUserInfo.KEY);
+	    Random rand = vuInfo.getRandom();
+		String stock = "s:" + Integer.toString(rand.nextInt(499));
+
+		// Persist the name of the stock in the virtual user's data area.
+		vda.put("myStock", stock);
+
+		return stock;
+	}
+
+</codeblock><?Pub Caret 567?></p>
+<p>This custom code is located in the method <codeph>exec()</codeph>.</p>
+<p>First, the data area for the test is acquired to store a flag value,
+in this case a string of text, to be used later to stop the test loop
+when an error is discovered. Data stored in this way can be persisted
+across tests.</p>
+<p>Then a randomly generated stock string is created. The value is
+stored as the variable <varname>stock</varname>, and is passed back
+as the return value for the method. This return value is used as a
+substitute in a request later, as shown in the following figure:</p>
+<p><image alt="Substitute window" href="../images/tesloopex2.gif"
+outputclass="id_image_id2"><alt></alt></image></p>
+<p>The highlighted item uses a substitution (<systemoutput>s%3A716</systemoutput>),
+which is the value returned by the <codeph>InitializeBuyTest</codeph> custom
+code item. We are using custom code to drive the direction of our
+test.</p>
+<p>The next lines of code in <codeph>InitializeBuyTest</codeph> use
+the Virtual User data area to store the name of the stock for later
+reference. Again, data stored in this way can persist across tests.</p>
+<p>The second piece of custom code is called <codeph>CheckStock</codeph>.
+Its contents are as follows (listing only the <codeph>exec()</codeph> method
+this time):</p>
+<p><codeblock>public String exec(ITestExecutionServices tes, String[] args) {
+
+		// Get the actual and requested stock purchased.
+		String actualStock = args[0].replaceAll("&lt;B>", "");
+ 		actualStock = actualStock.substring(0, actualStock.indexOf("&lt;"));
+		String requestedStock = args[1];
+
+  		// Set the log level to ALL.
+ 		IDataArea dataArea = tes.findDataArea(IDataArea.TEST);
+ 		ITestInfo testInfo = (ITestInfo)dataArea.get(ITestInfo.KEY);
+ 		testInfo.setTestLogLevel(ITestLogManager.ALL);
+
+ 		// If the log level is set to ALL, report the actual and requested stock
+		// purchased.
+ 		ITestLogManager testLogManager = tes.getTestLogManager();
+		if (testLogManager.wouldReport(ITestLogManager.ALL)) {
+ 			testLogManager.reportMessage("Actual stock purchased: "
+ 					+ actualStock + ". Requested stock: " + requestedStock
+					+ ".");
+ 		}  		
+
+		// If the actual and requested stock don't match, submit a FAIL verdict.
+ 		if (testLogManager.wouldReport(ITestLogManager.ALL)) { 
+			if (!actualStock.equalsIgnoreCase(requestedStock)) {
+ 				testLogManager.reportVerdict(
+						"Actual and requested purchase stock do not match.",
+ 						VerdictEvent.VERDICT_FAIL);
+
+ 				// Use the test's data area to record the fact that an error has 			
+				// occurred.
+ 				dataArea.put("failedYet", "true");
+ 			} 		
+		}
+  		return null;
+	}</codeblock></p>
+<p>This code begins by extracting two arguments that have been passed
+to the code. A part of the response in the original recording is highlighted
+and used as a reference, as shown in the following figure.</p>
+<p><image alt="Highlighted response" href="../images/tesloopex3.gif"
+outputclass="id_image_id3"><alt></alt></image></p>
+<p>Some string manipulation is needed to acquire the text of interest;
+in this case, the name of the stock that was actually purchased. This
+newly created reference is then passed into <codeph>CheckStock</codeph> as
+an argument, as shown in the following figure:</p>
+<p><image alt="CheckStock custom code item with purchased stock argument"
+href="../images/tesloopex4.gif" outputclass="id_image_id4"><alt></alt>
+</image></p>
+<p>Note that the return value of <codeph>InitializeBuyTest</codeph> is
+passed in as an argument as well.</p>
+<p>The <codeph>CheckStock</codeph> custom code item uses these values
+to verify that the randomly chosen stock generated by <codeph>InitializeBuyTest</codeph> is
+actually purchased during the execution of the test.</p>
+<p><codeph>CheckStock</codeph> then sets the test log level, reports
+the actual and requested stock purchase, and raises a FAIL verdict
+if they do not match. <codeph>CheckStock</codeph> also stores a <codeph>true</codeph> value
+associated with the tag <codeph>failedYet</codeph> in the test's data
+area.</p>
+<p>The third piece of custom code (<codeph>exec()</codeph> method
+only) is mentioned here:</p>
+<p><codeblock>public String exec(ITestExecutionServices tes, String[] args) {
+
+		// Get the test log manager.
+		ITestLogManager testLogManager = tes.getTestLogManager();
+		
+		// Get the test's data area and get a flag indicating to
+		// see if anything has failed yet. If so, stop the loop.
+		IDataArea dataArea = tes.findDataArea(IDataArea.TEST);
+		String failedYet = (String) dataArea.get("failedYet");
+
+		// Break out of the loop if an error has been encountered.
+		if (failedYet.equalsIgnoreCase("true")) {
+			tes.getLoopControl().breakLoop();
+
+			if (testLogManager.wouldReport(ITestLogManager.ALL)) {
+				testLogManager.reportMessage("Loop stopped.");
+			}
+		}
+
+		return null;
+	}
+</codeblock></p>
+<p>This code uses the test's data area to determine the user-defined
+value associated with the tag <codeph>failedYet</codeph>. If <codeph>failedYet</codeph> is <codeph>true</codeph>, <codeph>StopLoopCheck</codeph> breaks
+out of the test loop.</p>
+</conbody>
+<?tm 1322577647 0?>
+</concept>
+<?Pub *0000008636?>

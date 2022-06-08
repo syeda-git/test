@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_disassociate_component" xml:lang="en-US">
+    <title>Publishing the system model</title>
+    <shortdesc>When you create, delete, or modify a system model, the changes are saved locally and
+        it is not visible to the other users of the Team Space. You must publish the system model
+        changes to the Team Space repository to make your changes visible for all users of the Team
+        Space.</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>Log in to <keyword
+                        conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTAS_fam"
+                    />.</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>System Model</uicontrol>.</cmd>
+                <info>
+                    <p>The <wintitle>System Model</wintitle> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Perform any of the following actions:</cmd>
+                <info>
+                    <ul id="ul_rpd_qjh_z4b">
+                        <li>Create a system model.</li>
+                        <li>Delete a system model.</li>
+                        <li>Modify a system model.</li>
+                    </ul>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Publish</uicontrol> icon <image
+                        href="../images/icon_sm_publish.png" id="image_m1s_cjf_z4b">
+                        <alt>Image of the publish icon.</alt>
+                    </image> to update the changes made in the <uicontrol>System Model</uicontrol>
+                    page to the Team Space repository.</cmd>
+                <info>
+                    <p>The <uicontrol>Modified components and associations</uicontrol> dialog box is
+                        displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Select the components and associations that you want to commit.</cmd>
+                <info>
+                    <note>If you want to remove any changes that you made, you can select the
+                        component and click <uicontrol>Discard</uicontrol>. The changes are then
+                        removed from the system model.</note>
+                </info>
+            </step>
+            <step>
+                <cmd>Enter a message in the <uicontrol>Publish message</uicontrol> field.</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>Publish</uicontrol>.</cmd>
+            </step>
+        </steps>
+        <result id="result_bv3_fmj_2mb">
+            <p>You have published the system model changes to the Team Space repository.</p>
+        </result>
+    </taskbody>
+</task>

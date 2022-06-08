@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN"
+ "task.dtd">
+<!-- This file is part of the DITA Open Toolkit project hosted on 
+     Sourceforge.net. See the accompanying license.txt file for 
+     applicable licenses.-->
+<!-- (C) Copyright IBM Corporation 2001, 2005. All Rights Reserved.
+ *-->
+<task id="changeoil" xml:lang="en-us">
+<title>Changing the oil in your car</title>
+<shortdesc>Once every 6000 kilometers or three months, change the oil in
+your car.</shortdesc>
+<taskbody>
+<context>
+      <p id="123">Changing the oil regularly will help keep the engine in good condition. This is
+          <cmdname>PUT COMMAND</cmdname>.</p>
+    </context>
+<steps>
+      <stepsection>To change the oil:</stepsection>
+      <step>
+        <cmd>Remove the old oil filter at <filepath>C:\program files</filepath>.</cmd>
+      </step>
+      <step>
+        <cmd>Drain the old oil.<codeph>This is codeph.</codeph></cmd>
+      </step>
+      <step>
+        <cmd><?oxy_insert_start author="Tom" timestamp="20160412T115013+0300"?>Recycle the oil and
+          oil filter by taking <?oxy_insert_end?><cmdname>mycommand</cmdname>
+          <?oxy_insert_start author="Tom" timestamp="20160412T115013+0300"?>them to the nearest
+          service station or auto shop.<?oxy_insert_end?></cmd>
+      </step>
+      <?oxy_insert_start author="Tom" timestamp="20160412T115005+0300"?>
+      <step>
+        <cmd>Install the drain plug.</cmd>
+      </step>
+      <?oxy_insert_end?>
+      <step>
+        <cmd>Install a new oil filter and
+          gasket.<?oxy_insert_start author="Tom" timestamp="20160412T115150+0300"?> Most oil filters
+          need to be tightened by hand. Overtightening them might damage the
+          gasket.<?oxy_insert_end?></cmd>
+      </step>
+      <step>
+        <cmd>Add new oil to the engine.</cmd>
+      </step>
+      <step>
+        <cmd>Check the air filter and replace or clean it.</cmd>
+      </step>
+      <step>
+        <cmd>Top up the windshield washer
+          fluid.<?oxy_insert_start author="ATTAULLAH.S" timestamp="20200825T153506+0530"?><xref href="../concepts/paint.html" format="html"/><?oxy_insert_end?></cmd>
+      </step>
+    </steps>
+    <result id="result_mbb_wpn_2nb">You have changed the oil of the car.</result>
+</taskbody>
+<related-links>
+<link href="../concepts/oil.dita" format="dita" type="concept"></link>
+<link href="../concepts/wwfluid.dita" format="dita" type="concept"></link>
+</related-links>
+</task>
+
+

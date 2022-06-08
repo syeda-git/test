@@ -1,0 +1,169 @@
+========================================================================
+IBM Corporation : ID Workbench V4.7.0-D46 (05/25/2018)
+========================================================================
+PROCESS INFORMATION : 
+   Start Time    : 12/16/20 15:32:59
+   O/S           : Windows 10 10.0
+   REXX Ver      : unknown
+   Client Name   : LP2-AP-51628164.PROD.HCLPNP.COM
+   Process       : DITA input to XHTML output
+   Processor     : dit2xhtml
+   User          : ATTAULLAH.S
+   Base Dir      : D:\test\garage\tasks
+   Temp Dir      : C:\TEMP\IDWB\idwt1694876418\test\garage\tasks
+   Bgn Drv Spc   : 63687 M
+   FileAdd       : xhm
+   IDWBCODE      : C:\DITATools\IDWB\bin
+   LOCPATH       : C:\DITATools\IDWB\locale;
+   file.encoding : Cp1252
+   Processors    : 8
+   JVM MaxMemory : 1797 M
+   Jar version   : UNKNOWN
+   Internal BOM  : idwbtmlt.bom
+   Internal LOG  : idwbtmlt.log
+   Parameters    : "D:\test\garage\tasks\ucitgenprefs.dita" /OUTDIR:".\out" /WL:ERROR /COPYCSS /OUTEXT:html /VO /L
+      Parm: Input File                  (/I:)  [/IDINPUTFILE] Value: D:\test\garage\tasks\ucitgenprefs.dita
+      Parm: Output directory            (/OUTDIR:)  [/IDOUTDIR] Value: .\out
+      Parm: Warning Level               (/WL:)  [/IDWL] Value: ERROR
+      Parm: Copy Cascading Style Sheet  (/COPYCSS)  [/XHTML_IDCOPYCSS] Value: ON
+      Parm: Default Output Extension    (/OUTEXT:)  [/XHTML_IDOUTEXT] Value: html
+      Parm: View Output                 (/VO)  [/IDVO] Value: ON
+      Parm: Local Processing            (/L)  [/IDL]   Value: ON
+      Parm: Placement of files in the output directory (/OUTDIRSCOPE:)  [/XHTML_IDOUTDIRSCOPE] Value: ADJUST
+------------------------------------------------------------------------
+<<< BEGIN DITA Search file contents. (ditadflt.dsh)
+DIR:D:\test\garage\tasks
+<<< END DITA Search file contents.
+ ... ID Initialization/Verification Complete ... (0)                  15:33:01
+(START) -------------------- Step: 1 of 11 --------------------
+Target idwbinit:
+ Start Process: 1 of 11 ...                                           15:33:02
+ End Process: 1 of 11 (0)                                             15:33:02
+(END) -------------------- Step: 1 of 11 --------------------
+(START) -------------------- Step: 2 of 11 --------------------
+Target resolvesidefiles:
+ Start Process: 2 of 11 ...                                           15:33:02
+ End Process: 2 of 11 (0)                                             15:33:02
+(END) -------------------- Step: 2 of 11 --------------------
+(START) -------------------- Step: 3 of 11 --------------------
+Target ditapreprocess:
+ Start Process: 3 of 11 ...                                           15:33:02
+    Your files are being retrieved. They are not all being shown in   15:33:02
+    this console in order to speed up the processing and retrieval of 15:33:02
+    the files. For the complete list of files, see the processing log 15:33:02
+....................DITA Preprocessor Exec Command Information Process Log ....................
+Executing 'C:\DITATools\IDWB\bin\omspvm.exe' with arguments:
+'-load'
+'C:\DITATools\IDWB\bin\hrefscan.xvc'
+'-licto'
+'3600'
+'-f'
+'C:\TEMP\IDWB\idwt1694876418\test\garage\tasks\omni1762795454.args'
+
+The ' characters around the executable and arguments are
+not part of the command.
+
+Omnimark args file contents
+-l C:\DITATools\IDWB\dita\plugins\AuthoringTools\dtd\
+-l C:\TEMP\IDWB\idwt1694876418\test\garage\tasks\
+-library C:\DITATools\IDWB\dita\plugins\AuthoringTools\dtd\dita.lib
+-library C:\DITATools\IDWB\dita\usertest.lib
+-library C:\DITATools\IDWB\dita\plugins\installedspec.lib
+-d inputFile ucitgenprefs.dita
+-d IDPROCESSOR dit2xhtml
+-d mainTempDir C:\TEMP\IDWB\idwt1694876418\test\garage\tasks\
+-d workingDirectory \TEMP\IDWB\idwt1694876418\test\garage\tasks\
+-d final-output-type XHTML
+-d fmgr-prog-filename C:\DITATools\IDWB\bin\idwbfmgr.exe
+-d startFromPath test\garage\tasks\
+-d searchPathFile ditadflt.dsh
+-d copynondita NONE
+-d op-system WINDOWS
+-d userdir D:\test\garage\tasks\
+-d pluginInstallFile C:\DITATools\IDWB\install\plugin_install.xml
+-log C:\TEMP\IDWB\idwt1694876418\test\garage\tasks\id508859111.log.out
+....................DITA Preprocessor Exec Command Information Process Log ....................
+
+..................... DITA Preprocessor Error Log .....................
+
+<I>Source used for build:
+DITA files: 1
+Topics: 1
+..................... DITA Preprocessor Error Log .....................
+
+....................Fix job.xml file directory issues Exec Command Information Process Log ....................
+Executing 'C:\DITATools\IDWB\bin\omspvm.exe' with arguments:
+'-load'
+'C:\DITATools\IDWB\bin\fixjob.xvc'
+'-licto'
+'3600'
+
+The ' characters around the executable and arguments are
+not part of the command.
+
+Omnimark args file contents
+....................Fix job.xml file directory issues Exec Command Information Process Log ....................
+
+ End Process: 3 of 11 (0)                                             15:33:06
+(END) -------------------- Step: 3 of 11 --------------------
+(START) -------------------- Step: 4 of 11 --------------------
+Target conreftopic:
+ Start Process: 4 of 11 ...                                           15:33:06
+ End Process: 4 of 11 (0)                                             15:33:06
+(END) -------------------- Step: 4 of 11 --------------------
+(START) -------------------- Step: 5 of 11 --------------------
+Target init-URIResolver:
+ Start Process: 5 of 11 ...                                           15:33:06
+ End Process: 5 of 11 (0)                                             15:33:06
+(END) -------------------- Step: 5 of 11 --------------------
+(START) -------------------- Step: 6 of 11 --------------------
+Target dost_coderef:
+ Start Process: 6 of 11 ...                                           15:33:06
+ End Process: 6 of 11 (0)                                             15:33:06
+(END) -------------------- Step: 6 of 11 --------------------
+(START) -------------------- Step: 7 of 11 --------------------
+Target resolvekeyref:
+ Start Process: 7 of 11 ...                                           15:33:06
+ End Process: 7 of 11 (0)                                             15:33:06
+(END) -------------------- Step: 7 of 11 --------------------
+(START) -------------------- Step: 8 of 11 --------------------
+Target topicpull:
+ Start Process: 8 of 11 ...                                           15:33:06
+ End Process: 8 of 11 (0)                                             15:33:08
+(END) -------------------- Step: 8 of 11 --------------------
+(START) -------------------- Step: 9 of 11 --------------------
+Target flagtopics:
+ Start Process: 9 of 11 ...                                           15:33:08
+ End Process: 9 of 11 (0)                                             15:33:08
+(END) -------------------- Step: 9 of 11 --------------------
+(START) -------------------- Step: 10 of 11 --------------------
+Target ditatoxhtml:
+ Start Process: 10 of 11 ...                                          15:33:08
+ End Process: 10 of 11 (0)                                            15:33:09
+(END) -------------------- Step: 10 of 11 --------------------
+(START) -------------------- Step: 11 of 11 --------------------
+Target dit2xhtml:
+ Start Process: 11 of 11 ...                                          15:33:09
+    Post processing                                                   15:33:09
+    Copying 1 output file to the output directory D:\test\garage\tasks\out 15:33:09
+    Copying 1 css file to the output directory D:\test\garage\tasks\out 15:33:09
+Output File ucitgenprefs.html copied to D:\test\garage\tasks\out\ucitgenprefs.html
+Output File ibmdita.css copied to D:\test\garage\tasks\out\ibmdita.css
+ End Process: 11 of 11 (0)                                            15:33:09
+(END) -------------------- Step: 11 of 11 --------------------
+ BUILD SUCCESSFUL. 10 seconds                                         15:33:09
+<I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I>
+BUILD SUCCESSFUL. Total build time: 10 seconds
+<I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I><I>
+ 
+*** STATISTICS ***
+Number of Fatals Reported: 0
+Number of Errors Reported: 0
+Number of Warnings Reported: 0
+Number of Information messages: 0
+ 
+ INFO: Log Name is: ucitgenprefsxhm.log                               15:33:09
+Log File C:\TEMP\IDWB\idwt1694876418\test\garage\tasks\idwbtmlt.log copied to D:\test\garage\tasks\ucitgenprefsxhm.log
+Bom File C:\TEMP\IDWB\idwt1694876418\test\garage\tasks\idwbtmlt.bom copied to D:\test\garage\tasks\ucitgenprefsxhm.bom
+End Time: 12/16/20 15:33:09
+<<< END OF LOG FILE >>>

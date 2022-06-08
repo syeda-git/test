@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Arbortext, Inc., 1988-2006, v.4002-->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="synch_pattern" xml:lang="en-us">
+<title>Synchronization pattern</title>
+<shortdesc>The synchronization pattern for a family defines which replicas
+exchange update packets and the direction of exchange.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm> replicas<indexterm>synchronizing<indexterm>delivery
+patterns </indexterm></indexterm></indexterm><indexterm>export operations<indexterm> update
+packet delivery patterns</indexterm></indexterm><indexterm> update packets<indexterm>topology
+for<?Pub Caret?></indexterm></indexterm></keywords>
+</metadata></prolog>
+<conbody>
+<p>
+<xref href="c_synch_replicas_in_fam.dita#synch_replicas_in_fam/sii-intro-16629">Figure 1</xref> in
+<xref href="c_synch_replicas_in_fam.dita#synch_replicas_in_fam">Replica synchronization in a
+family</xref> shows a simple synchronization pattern, involving one point-to-point update. All
+updates need not be point to point, however, because they are cumulative. Suppose that the following
+updates take place among three replicas:</p>
+<p>Update 1: Replica <b>1</b> sends changes to Replica <b>2</b> Update 2:
+Replica <b>2</b> sends changes to Replica <b>3</b> </p>
+<p>There is no need for Replica <b>1</b> to update Replica <b>3</b> directly,
+because the changes from Update 1 are included in Update 2. This feature gives
+you flexibility in devising update strategies and patterns. For efficiency,
+a single update can be targeted at multiple replicas, for example, all other
+replicas in a family.</p>
+<p>In general, you can implement any update topology, as dictated by organizational structures,
+communications or transportation costs, and so on. <xref href="#synch_pattern/sii-planning-15319"
+>Figure 1</xref> shows a simple peer-to-peer synchronization pattern, and <xref
+href="#synch_pattern/sii-planning-44063">Figure 2</xref> shows a double-hub hierarchical pattern.
+<fig expanse="column" id="sii-planning-15319">
+<title>Peer-to-peer synchronization pattern</title>
+<image height="257" href="../image/carwash.gif" placement="break" width="472">
+     <alt/>
+    </image>
+</fig>
+</p>
+        <?linebreak?>
+  
+<p>
+<fig expanse="column" id="sii-planning-44063">
+<title>Hierarchical synchronization pattern</title>
+<image height="261" href="../image/carwash.jpg" placement="break" width="469">
+     <alt/>
+    </image>
+</fig>
+</p>
+<p>Your choice of pattern depends on the following factors:  <ul>
+<li>Bandwidth between sites</li>
+<li>Network topology</li>
+<li>Latency of changes: how quickly changes made at one replica need to be
+received at another replica in the family</li>
+<li>Failure tolerance</li>
+</ul></p>
+<p>The following topics describe unidirectional and bidirectional exchanges
+and the most common synchronization patterns.</p>
+</conbody>
+</concept>
+<?Pub *0000002755?>

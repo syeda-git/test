@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="t_disassociate_component" xml:lang="en-US">
+    <title>Disassociating a child component</title>
+    <shortdesc>When the parent-child relationship between the components is not valid, then you can
+        disassociate the child component from the parent component. You can then either make the
+        child component as a child to another component or delete the child component.</shortdesc>
+    <taskbody>
+        <prereq id="prereq_ejm_qhs_x4b">You must have a child component.</prereq>
+        <steps>
+            <step>
+                <cmd>Log in to <keyword
+                        conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTAS_fam"
+                    />.</cmd>
+            </step>
+            <step>
+                <cmd>Click <uicontrol>System Model</uicontrol>.</cmd>
+                <info>
+                    <p>The <wintitle>System Model</wintitle> page is displayed.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Click the component for which you want to remove the child component.</cmd>
+                <info>
+                    <p>The component details are displayed in the right pane.</p>
+                </info>
+            </step>
+            <step>
+                <cmd>Select the child component listed in the <uicontrol>Children</uicontrol>
+                    section.</cmd>
+                <info>
+                    <note>The <uicontrol>Edit</uicontrol> and <uicontrol>Delete</uicontrol> icons
+                        are enabled for this child component.</note>
+                </info>
+            </step>
+            <step>
+                <cmd>Complete the steps for the task that you want to perform as listed in the
+                    following table:</cmd>
+                <info>
+                    <simpletable frame="all" relcolwidth="6.48* 6.08*" id="simpletable_qny_33s_x4b">
+                        <sthead>
+                            <stentry><option>Task</option></stentry>
+                            <stentry><option>Action</option></stentry>
+                        </sthead>
+                        <strow>
+                            <stentry>Delete the child component</stentry>
+                            <stentry>Click the <uicontrol>Delete</uicontrol> icon.</stentry>
+                        </strow>
+                        <strow>
+                            <stentry>Associate this child component to another parent</stentry>
+                            <stentry>
+                                <ol id="ol_ylj_x3s_x4b">
+                                    <li>Click the <uicontrol>Edit</uicontrol> icon.<p>The
+                                                <uicontrol>Change parent</uicontrol> dialog box is
+                                            displayed.</p></li>
+                                    <li>Select a parent from the list, and then click
+                                            <uicontrol>Change</uicontrol>.</li>
+                                </ol>
+                            </stentry>
+                        </strow>
+                    </simpletable>
+                </info>
+            </step>
+        </steps>
+        <result id="result_bv3_fmj_2mb">You have disassociated the child component from the parent
+            component.</result>
+    </taskbody>
+</task>

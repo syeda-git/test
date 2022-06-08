@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference">
+    <title>reference</title>
+    <shortdesc>adgfgg</shortdesc>
+    <refbody>
+        <section id="section_xc3_spn_2nb">
+            <title>Section 1</title>
+            <p>adfdfaadfdaf afdf adfdgd adfadg adfdghh adf adgdg <xref
+                    href="#reference/table_rtf_b1n_znb" format="dita" type="table"/>
+            </p>
+        </section>
+        <section id="section_b2z_tpn_2nb">
+            <title>Section 2</title>
+            <p>
+                <table frame="all" rowsep="1" colsep="1" id="table_rtf_b1n_znb">
+                    <title>Table title</title>
+                    <tgroup cols="2">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry/>
+                                <entry/>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry/>
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry/>
+                                <entry/>
+                            </row>
+                            <row>
+                                <entry/>
+                                <entry/>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </p>
+        </section>
+    </refbody>
+</reference>

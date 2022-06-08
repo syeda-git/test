@@ -1,0 +1,2790 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<?Pub Sty _display FontColor="red"?>
+<reference id="jccopts" xml:lang="en-us">
+<title>JTOPTS</title>
+<titlealts>
+<searchtitle>JTOPTS</searchtitle>
+</titlealts>
+<prolog><metadata>
+<keywords><indexterm>APARs<indexterm>PK41519</indexterm></indexterm>
+<indexterm>JTOPTS initialization statement<indexterm>definition</indexterm></indexterm>
+<indexterm>initialization statements<indexterm>JTOPTS<indexterm>definition</indexterm></indexterm></indexterm>
+<indexterm>APARs<indexterm>PK40969</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section><title>Purpose</title>
+      <p otherprops="v92spe" rev="v92spe">The JTOPTS statement defines how operations behave at
+        workstations and how they are submitted and tracked. This statement is used by a primary,
+        backup, or standby
+        <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->.</p>
+      <p>JTOPTS is defined in the member of the EQQPARM library as specified by the PARM parameter
+        on the JCL EXEC
+          statement.</p><indexterm>APARs<indexterm>PQ77970</indexterm></indexterm><indexterm>APARs<indexterm>PK63960</indexterm></indexterm><indexterm>APARs<indexterm>PK79200</indexterm></indexterm>
+    </section>
+<refsyn><title>Format</title><indexterm>APARs</indexterm><indexterm>PM09610</indexterm>
+<syntaxdiagram>
+<groupseq>
+<kwd>JTOPTS</kwd>
+</groupseq>
+<groupseq importance="optional" rev="v86speapars">
+<kwd>ALEACTION</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">100</kwd>
+<var>alert action limit</var>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="required">
+<kwd importance="default">000</kwd>
+<var/>
+<var>nnn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>BACKUP</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">400</kwd>
+<var>backup frequency</var>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v851spe">
+<kwd>CONDSUB</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v83speap">
+<kwd>CRITJOBS</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>CURRPLAN</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">CURRENT</kwd>
+<kwd>NEW</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="critpath">
+<kwd>DLIMFDBK</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">100</kwd>
+<var>limit for deadline feedback</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="critpath">
+<kwd>DSMOOTHING</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">50</kwd>
+<var>deadline smoothing factor</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>DUAL</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>ERRRES</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<repsep>,</repsep>
+<var>error code</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>ETT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" otherprops="v93fp1" rev="v93fp1">
+<kwd>ETTGENSEARCH</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="optional">
+<kwd>JOBONLY</kwd>
+<kwd>SRONLY</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v851apars">
+<kwd>ETTNEWDEP</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd>YES</kwd>
+<kwd importance="default">NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>EVELIM</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>nnnn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" otherprops="v93" rev="v93">
+<kwd>FIRSTFDBK</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="tws811" otherprops="ibm">
+<kwd>FTWJSUB</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>HIGHRC</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">4</kwd>
+<var>highest no-error return code</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<!--APAR PI56564-->
+<groupseq importance="optional" rev="93_refresh">
+<kwd>HOSTJSUB</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v92">
+<kwd>ITOM</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd>YES</kwd>
+<kwd importance="default">NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>JOBCHECK</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+<kwd>SAME</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>JOBSUBMIT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="95_spe1">
+<kwd>JTAPPLCNT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">100000</kwd>
+<var>number of JT events</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="95_spe1">
+<kwd>JTAPPLMCP</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">18000</kwd>
+<var>hundredths of seconds</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>JTLOGS</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">5</kwd>
+<var>nn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v861">
+<kwd>LARGEUSERBUFFER</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>LIMFDBK</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">100</kwd>
+<var>limit for duration feedback</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>MAXJSFILE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>maximum size of JS data set</var>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>MAXOCCNUM</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">32767</kwd>
+<var>nnnnnnn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v93dspace">
+<kwd>MCPDATASPACE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>NEWOILIMIT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">30</kwd>
+<var>days operator instructions are new</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>NOERROR</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<repsep>,</repsep>
+<var>error code entry</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v95">
+<kwd>NOPWAIT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v95">
+<kwd>NOTSTARTCOMP</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>OFFDELAY</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">1</kwd>
+<var>delay time</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+        <groupseq importance="optional" rev="95_spe3" otherprops="95_spe3">
+          <kwd>OPIADEP</kwd>
+          <delim>(</delim>
+          <groupchoice importance="required">
+            <kwd importance="default">YES</kwd>
+            <kwd>TIME</kwd>
+            <kwd>NO</kwd>
+          </groupchoice>
+          <delim>)</delim>
+        </groupseq>
+<groupseq importance="optional">
+<kwd>OPINFOSCOPE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">IP</kwd>
+<kwd>ALL</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>OPREROUTEDEFAULT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">Y</kwd>
+<kwd>N</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>OPRESTARTDEFAULT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">Y</kwd>
+<kwd>N</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v86">
+<kwd>OPSUMWS</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">Y</kwd>
+<kwd>N</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>OUTPUTNODE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">FINAL</kwd>
+<kwd>ANY</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>OVERCOMMIT</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>nnnn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>PLANSTART</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">6</kwd>
+<var>planning period start</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>PRTCOMPLETE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>QUEUELEN</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">5</kwd>
+<var>queue length</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v83speap">
+<kwd>RECCPCOMPL</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>RISKCONFIDENCE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd>1 - 99</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>SHUTDOWNPOLICY</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>nnn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v95">
+<kwd>SMOOTHCRITNET</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>SMOOTHING</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">50</kwd>
+<var>smoothing factor</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v95">
+<kwd>SMOOTHSUBMISSION</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd>YES</kwd>
+<kwd importance="default">NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v95">
+<kwd>SMOOTHSUBRATE</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>average num of operations to submit</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>STATMSG</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<repsep>,</repsep>
+<kwd>CPLOCK</kwd>
+<kwd>EVENTS</kwd>
+<kwd>WSATASK</kwd>
+<kwd>GENSERV</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>STATIM</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>nn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" otherprops="v92spe" rev="v92spe">
+<kwd>STEPINFO</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>SUBFAILACTION</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">R</kwd>
+<kwd>C</kwd>
+<kwd>E</kwd>
+<kwd rev="v83speap">RH</kwd>
+<kwd>XC</kwd>
+<kwd>XE</kwd>
+<kwd>XR</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>SUPPRESSACTION</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">R</kwd>
+<kwd>C</kwd>
+<kwd>E</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>SUPPRESSPOLICY</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">0</kwd>
+<var>nnn</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>TRACK</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">ALL</kwd>
+<kwd>OPCASUB</kwd>
+<kwd>JOBOPT</kwd>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="required">
+<kwd importance="default">ANY</kwd>
+<kwd>READYFIRST</kwd>
+<kwd>READYONLY</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v82ref" otherprops="ibm">
+<kwd>TWSJOBNAME</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">OCCNAME</kwd>
+<kwd>JOBNAME</kwd>
+<kwd>EXTNOCC</kwd>
+<kwd>EXTNAME</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<!--APAR PI47790-->
+<groupseq importance="optional" rev="93_refresh">
+<kwd>USINRC</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">NO</kwd>
+<kwd>YES</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="v82ref">
+<kwd>UX001FAILACTION</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">R</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="95_spe2">
+<kwd>WSCLASS</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<repsep>,</repsep>
+<var>wsname</var>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional" rev="95_spe2">
+<kwd>WSSYSAFF</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<repsep>,</repsep>
+<groupchoice importance="required">
+<var>wsname:</var>
+</groupchoice>
+<groupchoice importance="required">
+<repsep>,</repsep>
+<var>system.destination</var>
+</groupchoice>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>WSFAILURE</kwd>
+<delim>(</delim>
+<groupseq importance="required">
+<groupchoice importance="required">
+<kwd importance="default">LEAVE</kwd>
+<kwd>ERROR</kwd>
+<kwd>RESTART</kwd>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="optional">
+<kwd importance="default">LEAVE</kwd>
+<kwd>REROUTE</kwd>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="optional">
+<kwd importance="default">MANUAL</kwd>
+<kwd>IMMED</kwd>
+</groupchoice>
+</groupseq>
+<delim>)</delim>
+</groupseq>
+<groupseq importance="optional">
+<kwd>WSOFFLINE</kwd>
+<delim>(</delim>
+<groupseq importance="required">
+<groupchoice importance="required">
+<kwd importance="default">LEAVE</kwd>
+<kwd>ERROR</kwd>
+<kwd>RESTART</kwd>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="optional">
+<kwd importance="default">LEAVE</kwd>
+<kwd>REROUTE</kwd>
+</groupchoice>
+<delim importance="required">,</delim>
+<groupchoice importance="optional">
+<kwd importance="default">IMMED</kwd>
+<kwd>MANUAL</kwd>
+</groupchoice>
+</groupseq>
+<delim>)</delim>
+</groupseq>
+<!--APAR PI56564-->
+<groupseq importance="optional" rev="93_refresh" otherprops="zc">
+<kwd>ZCENJSUB</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+<!--APAR PM66520-->
+<groupseq importance="optional" rev="v86apars" otherprops="zc">
+<kwd>ZCHIGHRC</kwd>
+<delim>(</delim>
+<groupchoice importance="required">
+<kwd importance="default">YES</kwd>
+<kwd>NO</kwd>
+<kwd>DEF (HIGHEST NO ERROR RC)</kwd>
+</groupchoice>
+<delim>)</delim>
+</groupseq>
+</syntaxdiagram>
+</refsyn>
+<section id="jccoptsparameters"><title>Parameters</title> <parml>
+<plentry rev="v851apars">
+<pt rev="v86speapars">ALEACTION (<synph><var>alert action limit</var></synph>
+<synph><kwd importance="default">100</kwd>,<var>nnn</var>
+<kwd>000</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ALEACTION
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>ALEACTION keyword</indexterm></indexterm><indexterm>ALEACTION,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PK79509</indexterm></indexterm><indexterm>APARs<indexterm>PM18667</indexterm></indexterm>The
+            limit to take an alert action for an operation in the current plan that is active for an
+            unexpectedly long time (for more details, see the DURATION parameter in
+            <!--<xref href="eqqc1defstm.dita#defstm"/>-->). If you specify ALEACTION, its value is
+            used to select the operations for which a long duration alert must be issued. If you do
+            not specify ALEACTION, the value set for LIMFDBK is used instead. <p rev="93_refresh"
+                  ><indexterm>APARs<indexterm>PI70574</indexterm></indexterm>The values for the
+              alert action limit are in the range 100 through 999, or 0 if the alert action is to be
+              taken as soon as possible after detecting that the operation is active longer than its
+              estimated duration (a delay might occur for several reasons, for example heavy
+              workload, Workstation Analyzer tasks, Event Manager tasks, or locking conditions).
+              </p><p>A second parameter is available. The value ranges from 000 to 999, and it
+              represents a lower boundary time expressed in seconds, below which the Long Duration
+              messages (EQQE028I and EQQE038I) are not logged even if the long duration policy
+              defined by the aleaction value is matched. For example, assuming that ALEACTION
+              (500,060), and that the planned duration for job is equal to 10 seconds, because of
+              the ALEACTION settings, that job is considered to have a long duration when its actual
+              duration becomes at least 50 seconds long. Because of the second option, the Long
+              Duration message is issued only if the actual duration exceeds 60 seconds. <note>Both
+                values of this parameter must be always specified in 3-digit form.</note></p></pd>
+</plentry>
+<plentry>
+<pt>BACKUP (<synph><kwd>NO</kwd></synph>|<synph><var>backup frequency</var></synph>|<synph><kwd
+importance="default">400</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>BACKUP
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>BACKUP keyword</indexterm></indexterm><indexterm>BACKUP
+                command<indexterm>keyword of
+            JTOPTS</indexterm></indexterm><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            uses a primary and alternate data set for the current plan.
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            reorganizes the current-plan data set that is in use by copying it to the inactive data
+            set, and then switching to the newly copied data set. The value you specify for the
+            BACKUP parameter defines if the current plan should be automatically copied, and
+            determines how frequently the automatic copy process occurs. <p>Specify a backup
+              frequency if you want
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              to perform the copy process automatically. The backup frequency value defines how many
+              records are to be written to the job-tracking log before a copy process is performed.
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              includes both tracked events and audit records when counting the number of records
+              written to the job-tracking log.</p> Specify NO if you do not want
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            to perform the copy process automatically. If you specify NO, ensure that you request
+            backups at regular intervals, depending on the workload at your installation. <p>You can
+              request that
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              performs a copy process by using the <ph otherprops="xhtml"
+                ><!--<xref href="../src_man/eqqr1backup.dita#backup"/>--></ph><ph otherprops="pdf"
+                >BACKUP</ph> TSO command or the EQQUSIN or EQQUSINB subroutine, regardless of the
+              value specified in the BACKUP parameter. <indexterm>BACKUP command<indexterm>backup
+                  keyword</indexterm></indexterm>
+              <ph otherprops="pdf">For more information about the BACKUP TSO command, see
+                <!--<cite conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/bibtwszosmtws"/>-->.</ph>
+              For more information about the EQQUSIN and EQQUSINB subroutines, see
+              <!--<xref href="eqqc1repevents.dita#repevents"/>-->.</p> If the copy process is
+            performed automatically and you issue a BACKUP request,
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            counts the number of records from the time of the requested backup before performing
+            another automatic copy. <p>Copying of the current plan data sets also occurs when the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+              is started or stopped, before and after daily planning, and during recovery of
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              system data sets. These copies occur regardless of the value specified for
+            BACKUP.</p></pd>
+</plentry>
+<plentry rev="v851spe">
+<pt>CONDSUB (<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd><indexterm>APARs<indexterm>PM11388</indexterm></indexterm><indexterm>initialization
+statements<indexterm>JTOPTS<indexterm>CONDSUB
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>CONDSUB keyword</indexterm></indexterm><indexterm>CONDSUB, keyword of
+JTOPTS</indexterm>Specify YES if conditional dependencies defined on status S (started) have to be
+evaluated as soon as the status of the conditional predecessor becomes S (started) without waiting
+for the job-start event reported by the tracker component. <p>Specify NO if conditional dependencies
+defines on status S (started) must wait for the job-start event reported by the tracker component
+before being evaluated. NO is the default value.</p></pd>
+</plentry>
+<plentry rev="v83speap">
+<pt>CRITJOBS(NO|<u><b>YES</b></u>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>CRITJOBS
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>CRITJOBS keyword</indexterm></indexterm><indexterm>CRITJOBS, keyword of
+JTOPTS</indexterm>Specify CRITJOBS(NO) to prevent the creation of the critical job table and the
+start of the critical path handler task at controller startup, thus deactivating the critical path
+capability without resetting the critical operation option and running LTP and DP batch. Consider
+running with CRITJOBS(NO) in the following conditions: <ul>
+<li>During recovery procedures.</li>
+<li>When the critical path capability does not fit the current workload execution scenario.</li>
+</ul>To reactivate the critical path capability, perform the following steps: <ol>
+<li>Scrap the EQQJTABL log data set, if it is not empty.</li>
+<li>Restart the controller with CRITJOBS(YES).</li>
+<li>Submit a replan job to re-synchronize the critical job table with the current plan.</li>
+</ol></pd>
+</plentry>
+<plentry>
+<pt>CURRPLAN (<synph><kwd>NEW</kwd></synph>|<synph><kwd importance="default">CURRENT</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>CURRPLAN
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>CURRPLAN keyword</indexterm></indexterm><indexterm>CURRPLAN,
+              keyword of JTOPTS</indexterm>This parameter defines from which current-plan data set
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            starts. The default is that
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            uses either the primary current-plan data set (ddname EQQCP1DS) or the alternate
+            current-plan data set (ddname EQQCP2DS). If both of these data sets are damaged or
+            contain logical errors, if the EQQCKPT data set has been reallocated, or when
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            is started for the first time after migration,
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            can be started from the new-current-plan data set (ddname EQQNCPDS). To do so, specify
+            CURRPLAN(NEW). Starting from the new-current-plan data set is done automatically if you
+            have created a new plan while
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            was inactive. <p>Use CURRPLAN(NEW) only when you cannot start
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              using the primary or the alternate current-plan data set. Do not use CURRPLAN(NEW)
+              when you start
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              for the first time with all data sets empty.</p></pd>
+</plentry>
+<plentry rev="critpath">
+<pt>DLIMFDBK (<synph><var>limit for deadline feedback</var></synph>|<synph><kwd importance="default"
+>100</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>DLIMFDBK
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>DLIMFDBK keyword</indexterm></indexterm><indexterm>DLIMFDBK, keyword of
+JTOPTS</indexterm>The limit for deadline feedback. This parameter determines if the estimated
+deadline in the application description run cycle or operation is updated when an occurrence of the
+application reaches the complete status. The DLIMFDBK value is used only if you did not set a value
+in the application description. <p>Feedback values are in the range 100 through 999, or 0 if the
+deadline must be always updated, regardless of the estimated and actual values.</p>
+<p>The feedback limits for <i>ADL</i> are calculated as follows: <ul compact="yes">
+<li>Lower limit = <i>ODL</i> * 100/<i>DLF</i></li>
+<li>Upper limit = <i>ODL</i> * <i>DLF</i>/100</li>
+</ul>Where: <dl>
+<dlentry>
+<dt><i>ADL</i></dt>
+<dd>The actual deadline, considered as the elapsed minutes between the <tm tmtype="reg"
+trademark="IA">IA</tm> and the completion time of the occurrence or operation. </dd>
+</dlentry>
+<dlentry>
+<dt><i>ODL</i></dt>
+<dd>The old deadline estimated for the run cycle or operation (considered as offset in minutes from
+the <tm tmtype="reg" trademark="IA">IA</tm>) currently stored in the application description
+database. </dd>
+</dlentry>
+<dlentry>
+<dt><i>DLF</i></dt>
+<dd>The limit for deadline feedback.</dd>
+</dlentry>
+</dl></p><indexterm>APARs<indexterm>PK53080</indexterm></indexterm>
+<p rev="v83speap">When the deadline feedback limit is set to 100, no new estimated deadline is
+stored in the application description database and no missed feedback record is generated. If the
+actual deadline lies within the feedback limits, a smoothing factor is applied before the
+application description is updated.</p> If the limit for deadline feedback is set to 0, the
+application description database is always updated, unless: <ul>
+<li>A feedback limit is specified also in the application</li>
+<li>The smoothing factor does not allow the change</li>
+</ul> If the completion time occurs before the <tm tmtype="reg" trademark="IA">IA</tm> time, the
+deadline is not updated and a missed feedback record is generated. <p>When the occurrence is
+generated, an identifier of the run cycle that generates the occurrence is stored in the occurrence
+record. This identifier is used to determine which run cycle must be updated. If the application
+description or the occurrence input arrival was modified, the run cycle might no longer be
+matchable. In this case, the deadline is not updated and a missed feedback record is generated.</p>
+</pd>
+</plentry>
+<plentry rev="critpath">
+<pt>DSMOOTHING (<synph><var>deadline smoothing factor</var></synph>|<synph><kwd importance="default"
+>50</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>DSMOOTHING
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>DSMOOTHING keyword</indexterm></indexterm><indexterm>DSMOOTHING, keyword of
+JTOPTS</indexterm>The deadline smoothing factor. It determines how much the actual deadline
+influences the new deadline estimated for a run cycle or operation in the application description
+database. The smoothing factor is applied only if the actual deadline lies within the deadline
+feedback limits. The DSMOOTHING value is used only if you did not set a smoothing factor in the
+application description. <p>The smoothing factor is in the range 0 through 999. A value of 0 means
+that the deadline is not updated, a value of 100 means that the actual deadline replaces the
+existing estimated deadline.</p> The new deadline is calculated as follows:
+<codeblock><i>NDL</i> = <i>ODL</i> + ((<i>ADL</i> - <i>ODL</i>) * <i>DSF</i>/100)</codeblock>Where: <dl>
+<dlentry>
+<dt><i>NDL</i></dt>
+<dd>The new deadline estimated for the run cycle or operation (considered as offset in minutes from
+the <tm tmtype="reg" trademark="IA">IA</tm>) to be stored in the application description database.
+</dd>
+</dlentry>
+<dlentry>
+<dt><i>ODL</i></dt>
+<dd>The old deadline estimated for the run cycle or operation (considered as offset in minutes from
+the <tm tmtype="reg" trademark="IA">IA</tm>) currently stored in the application description
+database. </dd>
+</dlentry>
+<dlentry>
+<dt><i>ADL</i></dt>
+<dd>The actual deadline, considered as the elapsed minutes between the <tm tmtype="reg"
+trademark="IA">IA</tm> and the completion time of the occurrence or operation.</dd>
+</dlentry>
+<dlentry>
+<dt><i>DSF</i></dt>
+<dd>The deadline smoothing factor. </dd>
+</dlentry>
+</dl>
+</pd>
+</plentry>
+<plentry>
+<pt>DUAL (<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>DUAL
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>DUAL keyword</indexterm></indexterm><indexterm>DUAL, keyword of
+              JTOPTS</indexterm>Specify YES if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should perform dual logging of the job-tracking-log data sets
+              (EQQJT<synph><var>nn</var></synph>). When it is started,
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            opens data sets pointed to by the EQQDL<synph><var>nn</var></synph> ddnames in the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+            JCL procedure. The suffix <synph><var>nn</var></synph> is a number from 01 to 99. The
+            number of EQQJT<synph><var>nn</var></synph> data sets and
+              EQQDL<synph><var>nn</var></synph> data sets must be the same. <p>Specify NO if
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              should not write job-tracking information to dual data sets. NO is the default
+              value.</p></pd>
+</plentry>
+<plentry>
+<pt id="ierrres">ERRRES (<synph><var>error code,...,error code</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ERRRES
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>ERRRES keyword</indexterm></indexterm><indexterm>ERRRES, keyword
+              of JTOPTS</indexterm>Defines a list of error codes that, for job-tracking purposes,
+            result in an automatic reset of an operation. The operation is reset to status A
+            (arriving) and contains the message <i>Error, automatically reset</i> in its operation
+            details panel. <p>An error code can be: <ul compact="yes">
+                <li>A 4-digit job or started-task return code (<synph><var>nnnn</var></synph>)</li>
+                <li>A system abend code (S<synph><var>xxx</var></synph>)</li>
+                <li>A user abend code (U<synph><var>xxx</var></synph>)</li>
+                <li>An
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc"/>-->-defined
+                  code</li>
+              </ul><note>
+                <ol>
+                  <li><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                    converts the decimal value of a user abend code to a hexadecimal error code. For
+                    example, user abend 123 is shown as error code <ph>X'U07B'</ph>.</li>
+                  <li>The OSEQ error code is a special case and cannot be reset by ERRRES.</li>
+                  <li rev="v82ref3"><indexterm>APARs<indexterm>PQ87904</indexterm></indexterm>The
+                    ERRRES logic does not apply if the error code is generated by the EQQCLEAN step,
+                    that is a step inserted into a restarted job by the Restart and Cleanup
+                    function.</li>
+                  <li rev="v851" otherprops="zc">The ERRRES parameter applies also to operations
+                    that are run on z-centric agent workstations.</li>
+                  <li><indexterm>APARs<indexterm>PK69541</indexterm></indexterm>The only valid error
+                    codes are those listed in the appendix of
+                    <!--<cite conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/bibtwszosmtw"/>-->.</li>
+                </ol>
+              </note></p><p>For example, a user submits a job outside of
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              for which an operation exists in the current plan. The job abends with code S806,
+              which is specified in the ERRRES list.
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              sets the operation to status A. If the user then resubmits the job after correcting
+              the error,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              again automatically tracks the job. The status of the operation is changed from A to S
+              when the job is started.</p><p>An operation that has been automatically reset by
+              ERRRES processing is not resubmitted by
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              even if SUBMIT=Y is specified for the operation. Therefore, if an operation that is
+              normally submitted by
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              is reset, manually change the status to R (ready) using the MCP dialog, or through
+              PIF, if you want
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              to submit the job again.</p><p>If you stop and restart
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->,
+              or if a new daily plan has been created, operations that have been reset will have
+              their error reset indication removed and will be eligible for submission.</p></pd>
+</plentry>
+<plentry>
+<pt>ETT (<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ETT
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>ETT keyword</indexterm></indexterm><indexterm>ETT, keyword of
+              JTOPTS</indexterm>Specify YES if the event-triggered-tracking function should be
+            initially active when
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            is started. Specify NO if the ETT function should not be initially active. Note that you
+            can activate or deactivate ETT while
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            is running, using the Service Functions dialog. </pd>
+</plentry>
+<plentry otherprops="v93fp1" rev="v93fp1">
+<pt>ETTGENSEARCH (NO|<u><b>YES</b></u>, JOBONLY|<b>SRONLY</b>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ETTGENSEARCH
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>ETTGENSEARCH keyword</indexterm></indexterm><indexterm>ETTGENSEARCH, keyword of
+JTOPTS</indexterm><indexterm>APARs<indexterm>PI46850</indexterm></indexterm>The ETTGENSEARCH
+contains two values: <ul>
+<li>The first value can be YES (default) or NO. Specify YES if the event-triggered-tracking function
+must search the SI file first for an exact match or for the best match hereafter. This is because
+the percent sign (%) or asterisk (*) can be used in the ETT criteria definition. Specify NO if the
+event-triggered-tracking function must search the SI file only for an exact match. Use this value
+when the SI file does not contain ETT criteria using the percent sign (%) or asterisk (*).</li>
+<li>The second value is ignored if you specify NO as first keyword value. It defines whether the
+best generic match has to be applied only to the special resources events or only to the jobs events:<dl>
+<dlentry>
+<dt>JOBONLY</dt>
+<dd>The best generic match has to be applied only to job events. </dd>
+</dlentry>
+<dlentry>
+<dt>SRONLY</dt>
+<dd>The best generic match has to be applied only to special resource events.</dd>
+</dlentry>
+</dl>If the first value is YES and the second value is not specified, the best generic match is
+applied to both job events and special resource events.</li>
+<?Pub Caret 511?>
+</ul></pd>
+</plentry>
+<plentry rev="v851apars">
+<pt>ETTNEWDEP (<u><b>NO</b></u>|YES)</pt>
+<pd><indexterm>APARs<indexterm>PK88065</indexterm></indexterm><indexterm>initialization
+statements<indexterm>JTOPTS<indexterm>ETTNEWDEP
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>ETTNEWDEP keyword</indexterm></indexterm><indexterm>ETTNEWDEP, keyword of
+JTOPTS</indexterm>Determines the input arrival time used by the scheduler when solving dependencies
+for occurrences that: <ul>
+<li>Are being added through ETT.</li>
+<li>Correspond to applications defined with a run cycle referring to the period ETTRCY1. In this
+condition, to resolve dependencies the scheduler uses the input arrival time associated to the run
+cycle, instead of using the actual input arrival time, that is the time when the occurrence is
+added.</li>
+</ul><p rev="v91">The ETTNEWDEP parameter affects the selection of any successor added in the
+current plan in the previous conditions. ID does not apply to the resolution of mandatory successors
+(because the successor intervals are created before the predecessor occurrence is
+added).</p><p>Specify YES to have the scheduler use the ETTRCY1 input arrival time both for the
+occurrences that are being added to the current plan and the candidate successors, provided that the
+successor is an occurrence added through ETT and corresponding to an application with run cycle
+referring to ETTRCY1.</p><p>Specify NO to have the scheduler use the ETTRCY1 input arrival time only
+for the occurrences that are being added to the current plan. In this case, for the candidate
+successors the scheduler uses the actual input arrival time.</p></pd>
+</plentry>
+<plentry>
+<pt>EVELIM (<synph><var>nnnn</var></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>EVELIM
+keyword</indexterm></indexterm></indexterm><indexterm>EVELIM, keyword of
+JTOPTS</indexterm><indexterm>JTOPTS initialization statement<indexterm>EVELIM
+keyword</indexterm></indexterm>This parameter defines how often statistic messages related to the
+STATMSG parameter are issued. <p>It is considered only if the value of STATIM is 0, and it defines
+the number of events that the event-manager task must process before issuing a new set of
+messages.</p><p>Valid values are from 0 to 9999.</p><p>If the current value of STATIM is 0 and the
+current value of EVELIM is 0, the statistics messages are issued every <synph><var>n</var></synph>
+events, where <synph><var>n</var></synph> is half the BACKUP value.</p><p>The value of EVELIM can be
+dynamically updated using the modify command, /F
+<synph><var>procname</var></synph>,EVELIM=<synph><var>nnnn</var></synph>. </p></pd>
+</plentry>
+<plentry otherprops="v93" rev="v93">
+<pt>FIRSTFDBK (<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>FIRSTFDBK
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>FIRSTFDBK keyword</indexterm></indexterm><indexterm>FIRSTFDBK, keyword of
+JTOPTS</indexterm><p>First feedback for duration. If you specify YES, every new job that you define
+in the AD database is updated with the actual duration at its first run, regardless of the estimated
+values. At the next run, the duration is updated according to the values that you set for LIMFDBK
+and SMOOTHING.</p></pd>
+</plentry>
+<plentry rev="tws811" otherprops="ibm">
+<pt>FTWJSUB (<synph><kwd>NO</kwd></synph>|<synph><kwd importance="default">YES</kwd></synph>) </pt>
+<pd rev="93_refresh"><indexterm>initialization statements<indexterm>JTOPTS<indexterm>FTWJSUB
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>FTWJSUB keyword</indexterm></indexterm><indexterm>FTWJSUB,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PI56564</indexterm></indexterm>Specify
+            YES if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should submit jobs running on fault-tolerant workstations. Specify NO if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should not automatically submit jobs running on fault-tolerant workstations. <p>The
+              job-submit option can be changed through the Service Functions dialog while
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              is running.</p></pd>
+</plentry>
+<plentry>
+<pt>HIGHRC (<synph><var>highest no-error return code</var></synph>|<synph><kwd importance="default"
+>4</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>HIGHRC
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>HIGHRC keyword</indexterm></indexterm><indexterm>HIGHRC, keyword
+              of JTOPTS</indexterm>Defines the highest error code that can be generated in an
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            job or started task without causing
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            to process the operation as having ended in error. <note rev="v82ref3"
+                  ><indexterm>APARs<indexterm>PQ87904</indexterm></indexterm>The HIGHRC logic does
+              not apply when the error return code is generated by the EQQCLEAN step, that is a step
+              inserted into a restarted job by the Restart and Cleanup function. In this case the
+              operation status is set to ended in error.</note></pd>
+</plentry>
+<plentry rev="93_refresh">
+<pt>HOSTJSUB (<synph><kwd>NO</kwd></synph>|<synph><kwd importance="default">YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>HOSTJSUB
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>HOSTJSUB keyword</indexterm></indexterm><indexterm>HOSTJSUB,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PI56564</indexterm></indexterm>Specify
+            YES if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should submit jobs, start started tasks, and issue write-to-operator messages for WTO
+            operations. Specify NO if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should not perform these functions automatically. This parameter is incompatible with
+              JOBSUBMIT.<p>The job-submit option can be changed through the Service Functions dialog
+              while
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              is running.</p></pd>
+</plentry>
+<plentry rev="v92">
+<pt>ITOM (<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ITOM
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>ITOM keyword</indexterm></indexterm><indexterm>ITOM, keyword of
+              JTOPTS</indexterm>YES specifies that
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/ITOM"/>--> and
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            are integrated so that the job logs of operations run by
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            can be viewed and managed with
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/TOM"/>-->.<p>With
+              this configuration setup,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/tws4zos"/>-->
+              inserts a particular string in the log of every operation. The string contains a
+                <codeph>>&lt;TWS OCCURRENCE</codeph> heading followed by this information:<ul>
+                <li>ID of the application</li>
+                <li>Number of the operation</li>
+                <li>Input arrival date and time</li>
+              </ul>For example:
+              <codeblock>//TWSEF020 JOB ACCT,TWS,CLASS=A,MSGCLASS=Q
+/<b>/*>&lt;TWS OCCURRENCE-->DEVAPP 020 1311050201</b></codeblock>This
+              string is then located by
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/TOM"/>-->,
+              trimmed of the heading, and used as Output Manager archive name.</p><p>The integration
+              must be configured also on
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/TOM"/>-->.
+              For details about how to enable
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/tws4zos"/>-->
+              to integrate with
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/TOM"/>-->,
+              see
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszmanwork"/>-->.</p></pd>
+</plentry>
+<plentry>
+<pt>JOBCHECK (<synph><kwd>NO</kwd></synph>|<synph><kwd>SAME</kwd></synph>|<synph><kwd
+importance="default">YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>JOBCHECK
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>JOBCHECK keyword</indexterm></indexterm><indexterm>JOBCHECK,
+              keyword of JTOPTS</indexterm>The JOBCHECK keyword specifies if and how
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            checks the job card before submitting the job. <p>JOBCHECK(YES) means that
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              checks the job card only for validity. If the job card is not valid, the job is not
+              submitted.
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              considers the job card to be valid if it is in the following format: <codeblock>//<i>jobname</i>  JOB</codeblock>
+              <dl>
+                <dlentry>
+                  <dt><varname>jobname</varname></dt>
+                  <dd>Consists of 1 to 8 alphanumeric or national characters where the first
+                    character is alphabetic or national.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>JOB</dt>
+                  <dd>Must be preceded and followed by at least one blank. If the job card is valid
+                    but the job name is not the same as the job name in the current
+                    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                    operation, a warning message is written to the
+                    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                    message log.</dd>
+                </dlentry>
+              </dl></p><p>JOBCHECK(NO) means that the job card is not checked at all.
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              submits the job without checking the job card.</p><note>JOBCHECK(YES) and JOBCHECK(NO)
+              allow
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              to submit a job with a job name that does not match the job name in the current
+              operation. This implies that
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc"/>--> is
+              unable to track the status of the submitted operation correctly. Use JOBCHECK(SAME) if
+              you need the status to be tracked.</note><p>JOBCHECK(SAME) means that the job card is
+              checked for validity, and also checked to see that the job name is the same as the job
+              name in the current
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              operation. The job is submitted only if it has a valid job card with the job name
+              matching that in the current operation.</p> No checking is performed for operations
+            that run on a workstation with a user-defined destination ID connected through TCP/IP or
+            APPC.</pd>
+</plentry>
+<plentry>
+<pt>JOBSUBMIT(<synph><kwd>NO</kwd></synph>|<synph><kwd importance="default">YES</kwd></synph>) </pt>
+<pd rev="93_refresh"><indexterm>initialization statements<indexterm>JTOPTS<indexterm>JOBSUBMIT
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>JOBSUBMIT keyword</indexterm></indexterm><indexterm>JOBSUBMIT,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PI56564</indexterm></indexterm>Specify
+            YES if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should submit the jobs running on host<ph otherprops="zc">, z-centric, dynamic,</ph> and
+            remote engine workstations. Specify NO if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should not automatically submit the jobs running on host<ph otherprops="zc">, z-centric,
+              dynamic,</ph> and remote engine workstations. This parameter is incompatible with
+            HOSTJSUB and ZCENJSUB. <p>The job-submit option can be changed through the Service
+              Functions dialog while
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              is running.</p></pd>
+</plentry>
+<plentry rev="95_spe1">
+<pt>JTAPPLCNT(<synph><var>number of JT events</var></synph>|<synph><kwd importance="default"
+>100000</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>JTAPPLCNT
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>JTAPPLCNT keyword</indexterm></indexterm><indexterm>JTAPPLCNT,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PH08907</indexterm></indexterm>How many
+            JT events must be logged before
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            issues message EQQN228I. The message is issued only only when re-applying the events.
+              <p>The default is 100 000, the maximum value allowed is 9 999 999. A value of 0 is
+              replaced with the default value.</p></pd>
+</plentry>
+<plentry rev="95_spe1">
+<pt>JTAPPLMCP(<synph><var>hundredths of seconds</var></synph>|<synph><kwd importance="default"
+>18000</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>JTAPPLMCP
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>JTAPPLMCP keyword</indexterm></indexterm><indexterm>JTAPPLMCP,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PH08907</indexterm></indexterm>How much
+            time (expressed in hundredths of seconds) must have been spent in executing MCP actions
+            before
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            issues message EQQN228I. The message is issued only when re-applying the events. <p>The
+              default is 18 000 (3 minutes), the maximum value allowed is 9 999 999. A value of 0 is
+              replaced with the default value.</p></pd>
+</plentry>
+<plentry>
+<pt>JTLOGS(<synph><var>number of JT logs</var></synph>|<synph><kwd importance="default"
+>5</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>JTLOGS
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>JTLOGS keyword</indexterm></indexterm><indexterm>JTLOGS, keyword
+              of JTOPTS</indexterm>Specifies the number of auditing logs that
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            must open when it is started. The number must be a value in the range from 2 to 99, the
+            default value is 5. <p otherprops="93audit" rev="93audit">The job-tracking log data sets
+              are identified by the EQQJT<i>nn</i> ddname in the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+              JCL procedure. If you use the extended auditing feature (by setting AMOUNT(EXTENDED)
+              in the AUDIT statement), the extended auditing log data sets are identified by the
+                EQQDB<i>nn</i> ddname in the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+              JCL procedure.</p><p otherprops="93audit" rev="93audit"
+              ><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              attempts to open data sets starting with EQQJT01 or EQQDB01 and continue for the
+              number specified in the JTLOGS keyword. For example, if you specify a value of 3 for
+              JTLOGS,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              attempts to open logs EQQ<i>xx</i>01, EQQ<i>xx</i>02, and EQQ<i>xx</i>03, where
+                <i>xx</i> can be JT or DB.</p></pd>
+</plentry>
+<plentry rev="v861">
+<pt>LARGEUSERBUFFER(<synph><kwd>NO</kwd></synph>|<synph><kwd importance="default"
+>YES</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>LARGEUSERBUFFER
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>LARGEUSERBUFFER
+              keyword</indexterm></indexterm><indexterm>LARGEUSERBUFFER, keyword of
+              JTOPTS</indexterm><indexterm>sizing CSA buffers</indexterm><indexterm>allocating
+              memory buffers</indexterm><indexterm>improving UI communication</indexterm>The default
+            value (YES) allocates memory buffers sized to 64KB in the common storage area (CSA) to
+            improve the communication rate with the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            engine from all user interfaces (ISPF, DWC, or PIF). This improves performances when
+            running sizeable queries on the plan, but be aware that 64KB are allocated for every
+            connected user, and you must weight the impact of this on your environment (for example,
+            300 concurrent users consume 19MB of CSA).<p>Specify NO if you want to keep 32KB as the
+              size of the allocated memory buffers. This is the size used by default until Version
+              8.6 SPEs.</p></pd>
+</plentry>
+<plentry>
+<pt id="limfdkw">LIMFDBK(<synph><var>limit for duration feedback</var></synph>|<synph><kwd
+importance="default">100</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>LIMFDBK
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>LIMFDBK keyword</indexterm></indexterm><indexterm>LIMFDBK,
+              keyword of JTOPTS</indexterm><indexterm>application description<indexterm>feedback
+                algorithms</indexterm></indexterm>Limit for duration feedback. <ph rev="v86">This
+              parameter is ignored for shadow jobs. </ph>
+            <p><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              job tracking automatically monitors actual durations. These can be used to modify
+              estimated operation durations in the application description database.
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              uses two factors, limit for duration feedback and duration smoothing, to control how
+              actual durations are used. </p><p>The LIMFDBK value determines if estimated durations
+              in the application description are updated when an occurrence of the application
+              reaches complete status. The LIMFDBK keyword value is used only if no value is
+              specified in the application description.</p><p rev="critpath">Feedback values are in
+              the range 100 through 999, or 0 if the duration must be always updated, regardless of
+              the estimated and actual values. The feedback limits are calculated as
+              follows:</p><p>Limits for duration
+              feedback<codeblock>Lower limit = <i>OD</i> * 100/<i>LF</i>
+Upper limit = <i>OD</i> * <i>LF</i>/100</codeblock></p><p>where:
+                <dl compact="yes">
+                <dlentry>
+                  <dt><i><codeph>OD</codeph></i></dt>
+                  <dd>The old estimated duration currently stored in the application description
+                    database.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><i><codeph>LF</codeph></i></dt>
+                  <dd>The limit for duration feedback.</dd>
+                </dlentry>
+              </dl></p><p rev="critpath">If the limit for duration feedback is set to 0, the
+              application description database is always updated, unless: <ul>
+                <li>A feedback limit is specified also in the application</li>
+                <li>The smoothing factor does not allow the change</li>
+              </ul></p><p>If an estimated duration lies within feedback limits, a smoothing factor
+              is applied before the application description is updated. See the SMOOTHING keyword,
+              which is described in the list of JTOPTS <xref href="#jccopts/jccoptsparameters"
+              />.</p><p><xref href="#jccopts/lofex"/> shows examples of how the limit-for-feedback
+              algorithm works. <table frame="all" id="lofex" pgwide="0">
+                <title>Limit for feedback examples</title>
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="1" colnum="1" colwidth="13*"/>
+                  <colspec colname="2" colnum="2" colwidth="86*"/>
+                  <thead>
+                    <row>
+                      <entry align="left" colname="1">LF value</entry>
+                      <entry align="left" colname="2">Result</entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row>
+                      <entry align="left" colname="1">100</entry>
+                      <entry align="left" colname="2">No new estimated duration are stored in the
+                        application-description database.</entry>
+                    </row>
+                    <row>
+                      <entry align="left" colname="1">110</entry>
+                      <entry align="left" colname="2">The new estimated duration is stored if the
+                        actual duration is approximately between 90% and 110% of the old estimated
+                        duration.</entry>
+                    </row>
+                    <row>
+                      <entry align="left" colname="1">200</entry>
+                      <entry align="left" colname="2">The new estimated duration is stored if the
+                        actual duration is between half and double the old estimated
+                        duration.</entry>
+                    </row>
+                    <row>
+                      <entry align="left" colname="1">500</entry>
+                      <entry align="left" colname="2">The new estimated duration is stored if the
+                        actual duration is between one-fifth and five times the old estimated
+                        duration.</entry>
+                    </row>
+                    <row>
+                      <entry align="left" colname="1">999</entry>
+                      <entry align="left" colname="2">The new estimated duration is stored if the
+                        actual duration is between one-tenth and 10 times the old estimated
+                        duration.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table></p>
+            <indexterm>APARs<indexterm>PK79509</indexterm></indexterm>The feedback limit used to
+            select the operations for which a long duration alert must be issued is the value
+            specified for ALEACTION. If ALEACTION is not set, the value for LIMFDBK is used instead.
+            In this case, the value for the feedback limit that you can optionally enter in the
+            application description is ignored.</pd>
+</plentry>
+<plentry>
+<pt>MAXJSFILE(<synph><kwd>NO</kwd></synph>|<synph><var>maximum size of JS data
+set</var></synph>|<synph><kwd importance="default">0</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>MAXJSFILE
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>MAXJSFILE keyword</indexterm></indexterm><indexterm>MAXJSFILE,
+              keyword of
+            JTOPTS</indexterm><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            uses a primary and alternate data set for the JCL repository.
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            reorganizes the JCL repository data set that is in use by copying it to the inactive
+            data set and then switching to the newly copied data set. The value you specify on the
+            MAXJSFILE keyword defines whether the JCL repository should be automatically copied and
+            determines how frequently the automatic copy process should occur. <p rev="v86s10"
+              >Specify a maximum size if you want
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              to copy automatically. This value also defines how large the current JCL repository
+              data set is allowed to become before it is automatically copied to the alternate data
+              set. The size must be specified in megabytes (1MB equals 1,024 kilobytes). The maximum
+              value you can specify is 67 108 864 megabytes. Any greater values produce
+              unpredictable results. The value specified is converted into cylinders and rounded to
+              the next whole number. Any value equivalent to less than 2 cylinders (other than the
+              default value) is set to 2 cylinders. If you do not specify MAXJSFILE or specify the
+              default value 0,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              performs a copy after the first 50 jobs have been inserted since it was started. The
+              size of the data set (converted into cylinders) after this first copy, plus the
+              equivalent of one cylinder, is then used as the value for MAXJSFILE. After every 50
+              inserts,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              checks the size of the JS file using an algorithm that is based on the high_used_RBA.
+              If the high_used_RBA is equal to or greater than the value of MAXJSFILE, a copy is
+              performed.</p> Specify NO if you do not want
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            to copy automatically. If you specify NO, ensure that you request backups at regular
+            intervals, depending on the workload at your installation. <p>You can request that
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              performs a copy process using the BACKUP command or EQQUSIN or EQQUSINB subroutine,
+              regardless of the value specified on the MAXJSFILE keyword. <indexterm>BACKUP
+                  command<indexterm>maxjsfile keyword</indexterm></indexterm> For more information
+              about the BACKUP command, see
+                <cite><!--<i conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opcsched"/>--></cite>.
+              For more information about the EQQUSIN and EQQUSINB subroutines, see
+              <!--<xref href="eqqc1repevents.dita#repevents"/>-->. </p></pd>
+</plentry>
+<plentry>
+<pt>MAXOCCNUM(<i>nnnnnnn</i>|<synph><kwd importance="default">32767</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>MAXOCCNUM
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>MAXOCCNUM keyword</indexterm></indexterm><indexterm>MAXOCCNUM,
+              keyword of
+            JTOPTS</indexterm><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            maintains an upper limit on the number of occurrences in the current plan. When this
+            limit is reached, no more occurrences can be added, either by dialog, the program
+            interface, the event triggered tracking, or the automatic recovery. If the keyword is
+            omitted, the limit is 32767 occurrences. It is advisable not to set the parameter to a
+            larger number than required by actual workload needs, due to the increased overhead
+            incurred. Doubling the default value of MAXOCCNUM, setting it to 65534, should not cause
+            any noticeable performance problems; however any change to values greater than this
+            number must be done gradually.
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            can start with a current plan exceeding the limit and also take over a plan exceeding
+            the limit from daily planning.</pd>
+</plentry>
+<plentry rev="v93dspace" otherprops="v93dspace">
+<pt>MCPDATASPACE(<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>MCPDATASPACE
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>MCPDATASPACE
+              keyword</indexterm></indexterm><indexterm>MCPDATASPACE, keyword of
+            JTOPTS</indexterm>Specify YES for the Modify Current Plan to load portions of the
+            in-storage operations and occurrences into the data space, when performing MCP actions.
+              <p>Setting this parameter to YES is particularly helpful when you modify operations
+              and occurrences belonging to big networks, because it optimizes the use of storage. If
+              the current plan was generated with BATCHOPT CPDATASPACE(YES), this parameter must
+              also be set to YES. </p><p>With a current plan that includes more than one million
+              operations, you must also allocate the following CP data sets as extended VSAM: <ul>
+                <li>EQQACPDS</li>
+                <li>EQQCP1DS</li>
+                <li>EQQCP2DS</li>
+                <li>EQQNCPDS</li>
+                <li>EQQSCPDS</li>
+              </ul><ph otherprops="xhtml">For more details, see
+                <!--<xref href="../src_man/eqqr1manageonemillion.dita#manageonemillion"/>-->.</ph>
+              <ph otherprops="pdf">For more details about managing a current plan with one million
+                jobs, see
+                <!--<cite conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/bibtwszosmtws"/>-->.</ph></p>
+          </pd>
+</plentry>
+<plentry>
+<pt>NEWOILIMIT(<synph><var>days operator instructions are new</var></synph>|<synph><kwd
+importance="default">30</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>NEWOILIMIT
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>NEWOILIMIT keyword</indexterm></indexterm><indexterm>NEWOILIMIT,
+              keyword of JTOPTS</indexterm>Defines the number of days that
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            considers an operator instruction record to be new after it is changed. The number of
+            days between the occurrence input arrival and the last update of the operator
+            instruction is calculated. If the result is less than the value specified for
+            NEWOILIMIT, or if the occurrence input arrival is earlier than the last update of the
+            operator instruction, the operator instruction is treated as a new instruction. New
+            operator instructions are represented in tailorable lists by a plus character (+) in the
+            OI column.</pd>
+</plentry>
+<plentry>
+<pt>NOERROR(<synph><var>error code entry,...,error code entry</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>NOERROR
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>NOERROR keyword</indexterm></indexterm><indexterm>NOERROR,
+              keyword of JTOPTS</indexterm><indexterm>error codes<indexterm>treating as normal
+                completion codes<indexterm>NOERROR</indexterm></indexterm></indexterm>Defines a list
+            of error codes that, for job-tracking purposes, are treated as normal completion codes.
+            You can also specify error codes on the NOERROR statement. See
+            <!--<xref href="eqqc1monpol.dita#monpol/noerris"/>-->. <p>This parameter follows the
+              same rule as the LIST parameter of the NOERROR statement. For a description of these
+              rules, see the list of NOERROR
+              <!--<xref href="eqqc1monpol.dita#monpol/noerrorparameters"/>-->. <note>Do not use this
+                parameter to dynamically rebuild the NOERROR table using a modify command with the
+                NEWNOERR or NOERRMEM option. If you need to dynamically rebuild the NOERROR table,
+                use the NOERROR statement as described in
+                <!--<xref href="eqqc1monpol.dita#monpol/noerris"/>-->.</note></p></pd>
+</plentry>
+<plentry rev="v95">
+<pt>NOPWAIT (<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>NOPWAIT
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>NOPWAIT keyword</indexterm></indexterm><indexterm>NOPWAIT, keyword of
+JTOPTS</indexterm>Specify YES if an operation that you are NOPing will be actually NOPed after that
+time dependencies and special resources, if any, are resolved. The default is NO, meaning that the
+operation is NOPed immediately.</pd>
+</plentry>
+<plentry>
+<pt>OFFDELAY(<synph><var>delay time</var></synph>|<synph><kwd importance="default">1</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>OFFDELAY
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>OFFDELAY keyword</indexterm></indexterm><indexterm>OFFDELAY,
+              keyword of JTOPTS</indexterm>The OFFDELAY parameter defines, in minutes, the time that
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            delays actions that are defined in the WSOFFLINE parameter when a workstation changes
+            status to offline. The status of the workstation changes immediately as a response to
+            the offline event being received at the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->,
+            but
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            does not take reroute or restart actions until the time specified for OFFDELAY has
+            elapsed. If an event that changes the status of the workstation to available is received
+            during the delay time, no WSOFFLINE actions are performed. <p>OFFDELAY is used
+                <i>only</i> when a workstation changes status to offline, not for a failure
+              indication. </p> The OFFDELAY parameter also functions as the delay time for setting a
+            workstation to offline during <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+            startup. The
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+            initially keeps the status of the workstation as it was when the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+            subsystem was stopped. The OFFDELAY parameter defines the length of time that the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+            waits for a
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->
+            to establish communication. If it is not performed during the specified time, the
+            workstation represented by this
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->
+            is set to OFFLINE status. <note>
+              <ol id="ol_hyr_yxj_4mb">
+                <li>If you have workstations that specify a user-defined destination ID, ensure that
+                  the OFFDELAY keyword is set high enough to allow sufficient time to set the
+                  destination to active status when
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc"/>-->
+                  is started. </li>
+                <li rev="95_apars">If you have <i>not</i> installed APAR PH23439 and you set this
+                  parameter to 0, the default value 1 is assumed.<p>If you <i>have</i> installed
+                    APAR PH23439 and you set this parameter to 0, the value is considered valid and
+                    <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/IBMtwszos"/>-->
+                    does not delay the WSOFFLINE actions when a workstation changes status to
+                    offline. </p></li>
+              </ol>
+            </note></pd>
+</plentry>
+<plentry rev="v93dspace" otherprops="v93dspace">
+<pt>NOTSTARTCOMP(<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>NOTSTARTCOMP
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>NOTSTARTCOMP
+              keyword</indexterm></indexterm><indexterm>NOTSTARTCOMP, keyword of
+            JTOPTS</indexterm>An alert is issued or an action is taken according to the value you
+            set in the following fields at operation level:<dl>
+              <dlentry>
+                <dt>Not started alert</dt>
+                <dd>If an operation has not started when the start day and time are reached, an
+                  alert message is issued in the EQQMLOG and system log.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>Not started action</dt>
+                <dd>If an operation has not started when the start day and time are reached, an
+                  action is taken. </dd>
+              </dlentry>
+              <dlentry>
+                <dt>Deadline action</dt>
+                <dd>If an operation is still not completed when the deadline day and time are
+                  reached, an action is taken. </dd>
+              </dlentry>
+            </dl>For details about how these fields are specified in the ISPF panels, see <ph
+              otherprops="pdf"
+              ><!--<cite conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/r3oper"/>--></ph><ph
+              otherprops="xhtml"
+              ><!--<xref href="../src_man/eqqr1arrivtimedeadlnspec.dita#arrivtimedeadlnspec"/>--></ph>. </pd>
+</plentry>
+        <plentry otherprops="95_spe3" rev="95_spe3">
+          <pt>OPIADEP(<synph><kwd importance="default"
+              >YES</kwd></synph>|<synph><kwd>TIME</kwd></synph>1<synph><kwd>NO</kwd></synph>) </pt>
+          <pd><indexterm>initialization statements<indexterm>BATCHOPT<indexterm>OPIADEP
+                  keyword</indexterm></indexterm></indexterm><indexterm>BATCHOPT initialization
+                statement<indexterm>OPIADEP keyword</indexterm></indexterm><indexterm>OPIADEP,
+              keyword of BATCHOPT</indexterm><p>How
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              uses the operation IA date and time:<dl>
+                <dlentry>
+                  <dt>YES</dt>
+                  <dd>Operation IA is used to determine the matching predecessor. This is the
+                    default.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>TIME</dt>
+                  <dd>If the operation is time-dependent, the operation IA is not used to determine
+                    the matching predecessor; the occurrence IA is used instead.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>NO</dt>
+                  <dd>Operation IA is not used to determine the matching predecessor.</dd>
+                </dlentry>
+              </dl>
+            </p></pd>
+        </plentry>
+<plentry id="opinfoscope">
+<pt id="opinsc">OPINFOSCOPE(<synph><kwd>ALL</kwd></synph>|<synph><kwd importance="default"
+>IP</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>OPINFOSCOPE
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>OPINFOSCOPE
+              keyword</indexterm></indexterm><indexterm>OPINFOSCOPE, keyword of JTOPTS<indexterm>
+                definition</indexterm></indexterm>Defines how
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            selects an operation when an event is created that updates the USERDATA field. The event
+            can be created through an OPINFO TSO command, EQQUSIN or EQQUSINO subroutine, or API
+            CREATE request. <p>Specify IP (in progress), which is the default, if
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              should select the operation only from operations in status R, A, *, S, I, and E. If
+              there is more than one operation that matches the selection criteria,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              chooses the operation by investigating these characteristics in the stated order: <ol>
+                <li>The operation has priority 9.</li>
+                <li>Earliest latest start time.</li>
+                <li>Priority 8-1.</li>
+                <li>Input arrival time specified for the operation or the occurrence input arrival
+                  if the operation does not have input arrival specifically defined.</li>
+                <li>Longest in Ready status.</li>
+              </ol></p> Specify ALL if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should also check operations in status C and W, if no matching in-progress operation was
+            found. The operation with the earliest latest-start-time is selected. </pd>
+</plentry>
+<plentry>
+<pt>OPREROUTEDEFAULT(<synph><kwd>N</kwd></synph>|<synph><kwd importance="default">Y</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>OPREROUTEDEFAULT
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>OPREROUTEDEFAULT keyword</indexterm></indexterm><indexterm>OPREROUTEDEFAULT,
+keyword of JTOPTS</indexterm>Defines the default for operations that have a blank value specified
+for the reroutable option in the operation details. <p>Specify N if operations that have reroutable
+set to blank are not eligible for rerouting if the workstation becomes inactive.</p> Specify Y if
+ready operations should be rerouted to the alternate workstation if a blank value is specified, and
+the installation default action allows operations to be rerouted when the workstation status is set
+to failed or offline. The default action can be specified in: <ul>
+<li>The MCP dialog when the workstation is manually varied to offline or failed.</li>
+<li>The WSSTAT command or EQQUSIN or EQQUSINW subroutine when the workstation is set to offline or
+failed.</li>
+<li>The second value of the WSOFFLINE or WSFAILURE keywords on the JTOPTS statement. This default
+applies to all workstations.</li>
+</ul></pd>
+</plentry>
+<plentry>
+<pt>OPRESTARTDEFAULT(<synph><kwd>N</kwd></synph>|<synph><kwd importance="default">Y</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>OPRESTARTDEFAULT
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>OPRESTARTDEFAULT keyword</indexterm></indexterm><indexterm>OPRESTARTDEFAULT,
+keyword of JTOPTS</indexterm>Defines the default for operations that have a blank value specified
+for the restartable option in the operation details. <p>Specify N if operations that have
+restartable set to blank are not eligible for automatic restart if the workstation becomes
+inactive.</p> Specify Y if started operations should restart on the alternate workstation if a blank
+value is specified, and the installation default action allows operations to be restarted when the
+workstation status is set to failed or offline. The default action can be specified in: <ul>
+<li>The MCP dialog when the workstation is manually varied to offline or failed.</li>
+<li>The WSSTAT command or EQQUSIN or EQQUSINW subroutine when the workstation is set to offline or
+failed.</li>
+<li>The first value of the WSOFFLINE or WSFAILURE keywords on the JTOPTS statement. This default
+applies to all workstations.</li>
+</ul></pd>
+</plentry>
+<plentry>
+<pt>OPSUMWS(<synph><kwd>N</kwd></synph>|<synph><kwd importance="default">Y</kwd></synph>)</pt>
+<pd><indexterm>APARs<indexterm>PM09610</indexterm></indexterm><indexterm>initialization
+                  statements<indexterm>JTOPTS<indexterm>OPSUMWS
+              keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>OPSUMWS keyword</indexterm></indexterm><indexterm>OPSUMWS,
+              keyword of JTOPTS</indexterm>Determines which data is to be retrieved for
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/dwc"/>-->.
+              <p>Specify Y if you want to retrieve the data from the workstations' statistics.
+              Specify N if you want the query to be performed by reading all the operation
+                records.<note rev="v95"><!--defect WA75487 ebuja oct 18-->After installing APARs
+                PI79321 and PI80105, the OPSUMWS parameter will be no longer valid.</note></p></pd>
+</plentry>
+<plentry>
+<pt id="outnode">OUTPUTNODE(<synph><kwd>ANY</kwd></synph>|<synph><kwd importance="default"
+>FINAL</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>OUTPUTNODE
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>OUTPUTNODE keyword</indexterm></indexterm><indexterm>OUTPUTNODE,
+              keyword of JTOPTS</indexterm>Defines whether
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should process A3P (JES2 job termination) events from any NJE node that job SYSOUT is
+            spooled to, or from only the NJE node that is the final destination. The OUTPUTNODE
+            keyword is valid only for JES2 environments. <p>Because you can send JES2 job SYSOUT, or
+              parts of the SYSOUT, to several different NJE nodes, more than one job termination
+              (A3P) event could be produced for the same job. Also, if the job completion checker
+              (JCC) is used, each event can also have different job-completion-code information
+              depending on the output sent to a particular node and the checking that the JCC
+              performs at that node. The status assigned to the operation depends on which of the
+              A3P events was first processed by the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->.</p>
+            Specify FINAL if you use the JCC to scan SYSOUT and set error codes. Then, only the part
+            of the SYSOUT that contains the JESYSMSG (previously $SYSMSGS, DSID=4), which has
+            reached its final NJE node, is used to change the status of the corresponding computer
+            operation from status S (started) to status C (complete) or E (ended in error). FINAL is
+            the default value. <p>Specify ANY if the JCC is not used to scan SYSOUT and set error
+              codes.</p> OUTPUTNODE defaults to FINAL if RCLEANUP(YES) is specified in the OPCOPTS
+            statement. <p>If SYSOUT is routed to an NJE node that is not controlled by
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->,
+              the A3P event from the executing node is used to change the status of the
+              corresponding operation, regardless of the value you specify for OUTPUTNODE.</p></pd>
+</plentry>
+<plentry>
+<pt id="jtovcom">OVERCOMMIT(<synph><var>nnnn</var></synph>|<synph><kwd importance="default"
+>0</kwd></synph>) </pt>
+<pd rev="tws811"><indexterm>initialization statements<indexterm>JTOPTS<indexterm>OVERCOMMIT
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>OVERCOMMIT keyword</indexterm></indexterm><indexterm>OVERCOMMIT, keyword of
+JTOPTS</indexterm>Defines the number of job, started-task, and WTO operations that can be started on
+the automatically reporting workstations besides the number specified as the parallel server
+capacity for the workstation. For example, if a computer workstation has 10 parallel servers defined
+and OVERCOMMIT specifies 2, then up to 12 operations can be started for that workstation. <p>The
+workstation must use control on parallel servers for OVERCOMMIT to have meaning. The default value
+is 0, maximum 9999.</p></pd>
+</plentry>
+<plentry>
+<pt>PLANSTART(<synph><var>planning period start</var></synph>|<synph><kwd importance="default"
+>6</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>PLANSTART
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>PLANSTART keyword</indexterm></indexterm><indexterm>PLANSTART, keyword of
+JTOPTS</indexterm>Defines the time-of-day in hours when the daily planning period starts. This value
+must be the same as the value you specify for PLANHOUR on the BATCHOPT statement.</pd>
+</plentry>
+<plentry>
+<pt>PRTCOMPLETE(<synph><kwd>NO</kwd></synph>|<synph><kwd importance="default">YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>PRTCOMPLETE
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>PRTCOMPLETE
+              keyword</indexterm></indexterm><indexterm>PRTCOMPLETE, keyword of
+            JTOPTS</indexterm>Specify YES if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should set print operations to complete when a batch job is purged from the JES spool.
+            Specify NO if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should not set print operations to complete when a batch job is purged from JES. Here,
+            print operations are set to complete only by print-end events. <p>Consider setting
+              PRTCOMPLETE to YES if some of your jobs or started tasks conditionally create SYSOUT,
+              or if FREE=CLOSE is specified on the DD statement.</p></pd>
+</plentry>
+<plentry>
+<pt>QUEUELEN(<synph><var>queue length</var></synph>|<synph><kwd importance="default"
+>5</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>QUEUELEN
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>QUEUELEN keyword</indexterm></indexterm><indexterm>QUEUELEN, keyword of
+JTOPTS</indexterm>Defines the maximum number of ready operations that the workstation analyzer (WSA)
+subtask starts each time it has control of the current plan resource. The default value is 5. If you
+specify a value less than 5, the default value is used. <p>If you specify a high value for QUEUELEN
+and there are many ready operations, this could affect the performance of other tasks that use the
+current plan resource.</p><p rev="v83">The value of QUEUELEN can be dynamically updated using the
+modify command, <codeph>/f <i>procname</i>,QUELEN=<i>nnnn</i></codeph></p></pd>
+</plentry>
+<plentry rev="v83speap">
+<pt>RECCPCOMPL(NO|<u><b>YES</b></u>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>RECCPCOMPL
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>RECCPCOMPL keyword</indexterm></indexterm><indexterm>RECCPCOMPL, keyword of
+JTOPTS</indexterm>Set RECCPCOMPL(N) to avoid path recalculation when an operation on the critical
+path completes and its successor on the same critical path has an uncompleted predecessor. <p>Use
+the default RECCPCOMPL(Y) to have the critical paths recalculated for all the available
+recalculation triggers.</p></pd>
+</plentry>
+<plentry rev="v93">
+<pt>RISKCONFIDENCE(1-99)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>RISKCONFIDENCE
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>RISKCONFIDENCE keyword</indexterm></indexterm><indexterm>RISKCONFIDENCE, keyword
+of JTOPTS</indexterm>The value of this keyword influences the trigger that sets the high risk level
+for a critical job. <p>When the confidence value of a critical job is lower than the RISKCONFIDENCE
+value, the critical path handler task sets the critical job to a high risk level and notifies it to
+the controller EQQMLOG. If this keyword is not specified, the critical path handler task sets the
+critical job to a high risk level when its estimated end time becomes later than the deadline.</p><p
+rev="93_refresh">Setting RISKCONFIDENCE to 50 generates the closest behavior to the versions earlier
+than V9.3, that is a high risk level is set when the estimated end time becomes later than the
+deadline. </p></pd>
+</plentry>
+<plentry>
+<pt>SHUTDOWNPOLICY(<synph><var>nnn</var></synph>|<synph><kwd importance="default">0</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SHUTDOWNPOLICY
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>SHUTDOWNPOLICY
+              keyword</indexterm></indexterm><indexterm>SHUTDOWNPOLICY, keyword of
+              JTOPTS</indexterm>The SHUTDOWNPOLICY value is a percentage in the range 0 to 999. It
+            lets you specify whether
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should start an operation when there is little time left before a workstation is closed.
+            A workstation must have <codeph>CONTROL ON SERVERS=Y</codeph> for this keyword to have
+            any effect. <p>The estimated duration of an operation is multiplied by the
+              SHUTDOWNPOLICY percentage, and the result is compared to the time remaining in the
+              workstation-open interval. If the result is greater than the time remaining in the
+              open interval for the workstation and a nonzero factor is specified,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              does not start the operation.</p><p>The following examples show how SHUTDOWNPOLICY is
+              used. In these examples, an operation has an estimated duration of 60 minutes, and the
+              workstation it uses will close down in 45 minutes. <dl>
+                <dlentry>
+                  <dt><codeph>SHUTDOWNPOLICY(0)</codeph></dt>
+                  <dd>The operation is started regardless of the end of the current workstation-open
+                    interval.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><codeph>SHUTDOWNPOLICY(50)</codeph></dt>
+                  <dd>The operation is started because 30 minutes (50% of 60 minutes) is less than
+                    the 45 minutes remaining in the workstation-open interval.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><codeph>SHUTDOWNPOLICY(100)</codeph></dt>
+                  <dd>The operation is not started because 60 minutes (100% of 60 minutes) is
+                    greater than the time remaining in the workstation-open interval.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><codeph>SHUTDOWNPOLICY(200)</codeph></dt>
+                  <dd>The operation is not started because 120 minutes (200% of 60 minutes) is
+                    greater than the time remaining in the workstation-open interval.</dd>
+                </dlentry>
+              </dl></p><p rev="95_spe2">The SHUTDOWNPOLICY value is also applied to the destinations
+              specified with the WSSYSAFF(<i>wsname</i>:<i>system</i>.<i>destination</i>) parameter,
+              to filter the list of <i>systems</i> by deleting those whose <i>destinations</i> do
+              not pass the SHUTDOWNPOLICY check. As a consequence, the deleted systems are not added
+              to the SYSAFF parameter of the job card. An additional check on the execution
+              destinations is performed by using the workstation-open interval, if any, of the
+              workstation (<i>wsname</i>). If the destination does not exist in the workstation
+              definition, therefore no workstation-open interval is applicable, the SHUTDOWNPOLICY
+              check is not performed and the system is added to the SYSAFF parameter of the job
+              card.</p><p rev="95_spe2">If, after performing the SHUTDOWNPOLICY check, the list of
+              execution systems results empty, the job execution is forced on the submission system.
+              This means that the following SYSAFF parameter is added to the job card:
+            </p><codeblock> SYSAFF=*</codeblock></pd>
+</plentry>
+<plentry rev="v95">
+<pt>SMOOTHCRITNET(<synph><synph><kwd importance="default">NO</kwd></synph>|<kwd>YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SMOOTHCRITNET
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>SMOOTHCRITNET keyword</indexterm></indexterm><indexterm>SMOOTHCRITNET, keyword
+of JTOPTS</indexterm>Set this parameter to YES to prioritize the submission of the operations
+belonging to the whole critical network. This setting is effective provided that SMOOTHSUBMISSION is
+set to YES. The default value is NO.</pd>
+</plentry>
+<plentry id="smooth">
+<pt>SMOOTHING(<synph><var>smoothing factor</var></synph>|<synph><kwd importance="default"
+>50</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SMOOTHING
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>SMOOTHING keyword</indexterm></indexterm><indexterm>SMOOTHING,
+              keyword of JTOPTS</indexterm><indexterm>feedback algorithms, smoothing
+              factor</indexterm><indexterm>smoothing factor</indexterm>The smoothing factor
+            determines how much the actual duration of an operation influences the new estimated
+            duration that is stored in the application description database. The smoothing factor is
+            applied only if the actual duration lies within the limits determined by feedback (see
+            the LIMFDBK keyword in the list of JTOPTS <xref href="#jccopts/jccoptsparameters"/>).
+              <ph rev="v86">This parameter is ignored for shadow jobs. </ph>
+            <note otherprops="v93" rev="v93">When the controller has the Dynamic Critical Path
+              feature active, any SMOOTHING value that is greater than 100 is internally managed as
+              if the smoothing factor default value was set (50). For example, if the smoothing
+              factor is set to 200 and the Dynamic Critical Path is active, the affected durations
+              will be updated by applying the SMOOTHING default value
+              50.</note><p><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              uses the value you specify on the SMOOTHING keyword if you do not specify a smoothing
+              factor in the details of an operation. The smoothing factor is in the range 0 to 999.
+              A value of 0 means that the operation is not updated. A value of 100 means that the
+              actual duration replaces the existing estimated duration of the operation. The new
+              estimated duration is calculated as follows: <fig expanse="column" frame="none">
+                <codeblock>New estimated duration
+<i>ND</i> = <i>OD</i> + ((<i>AD</i> - <i>OD</i>) * <i>SF</i>/100)</codeblock>
+                <p>where:<dl>
+                    <dlentry>
+                      <dt><codeph><i>ND</i></codeph></dt>
+                      <dd>The new estimated duration to be stored in application description
+                        database.</dd>
+                    </dlentry>
+                    <dlentry>
+                      <dt><codeph><i>OD</i></codeph></dt>
+                      <dd>The old estimated duration currently stored there.</dd>
+                    </dlentry>
+                    <dlentry>
+                      <dt><codeph><i>AD</i></codeph></dt>
+                      <dd>The actual duration.</dd>
+                    </dlentry>
+                    <dlentry>
+                      <dt><codeph><i>SF</i></codeph></dt>
+                      <dd>The smoothing factor.</dd>
+                    </dlentry>
+                  </dl></p>
+              </fig></p><p><xref href="#jccopts/smfac"/> provides examples of how the smoothing
+              factor algorithm works.</p><table frame="all" id="smfac" pgwide="0">
+              <title>Smoothing factor examples</title>
+              <tgroup cols="2" colsep="1" rowsep="1">
+                <colspec colname="1" colnum="1" colwidth="13*"/>
+                <colspec colname="2" colnum="2" colwidth="86*"/>
+                <thead>
+                  <row>
+                    <entry align="left" colname="1"><b>Factor</b></entry>
+                    <entry align="left" colname="2"><b>Result</b></entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry align="left" colname="1">0</entry>
+                    <entry align="left" colname="2">There is no feedback.</entry>
+                  </row>
+                  <row>
+                    <entry align="left" colname="1">10</entry>
+                    <entry align="left" colname="2">The new estimated duration is the old estimated
+                      duration, plus one-tenth the difference between the actual and old estimated
+                      duration.</entry>
+                  </row>
+                  <row>
+                    <entry align="left" colname="1">50</entry>
+                    <entry align="left" colname="2">The new estimated duration is the old estimated
+                      duration, plus one-half the difference between the actual and old estimated
+                      duration.</entry>
+                  </row>
+                  <row>
+                    <entry align="left" colname="1">100</entry>
+                    <entry align="left" colname="2">The actual duration replaces the old estimated
+                      duration.</entry>
+                  </row>
+                  <row>
+                    <entry align="left" colname="1">999</entry>
+                    <entry align="left" colname="2">The new estimated duration is the old estimated
+                      duration, plus 10 times the difference between the actual and old estimated
+                      duration.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></pd>
+</plentry>
+<plentry rev="v95">
+<pt>SMOOTHSUBMISSION(<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default"
+>NO</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SMOOTHSUBMISSION
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>SMOOTHSUBMISSION
+              keyword</indexterm></indexterm><indexterm>SMOOTHSUBMISSION, keyword of
+              JTOPTS</indexterm>Activates the Smooth Submission feature. By setting this parameter
+            to YES, the submission of operations that are urgent (with priority 9) or belong to a
+            critical path is prioritized. Moreover, if you set the SMOOTHSUBCONFLEVEL and
+            SMOOTHSUBDELAY parameters in the <!--<xref href="eqqc1authdef.dita#authdef"/>-->
+            statement of the last DP batch run, the controller adds a random delay in submitting not
+            urgent and not critical operations. The default is No.<p>For more detailed information,
+              see <!--<xref href="eqqc1waopt.dita#waopt"/>-->. </p>
+          </pd>
+</plentry>
+<plentry rev="v95">
+<pt>SMOOTHSUBRATE(<synph><var>average num of operations to submit</var></synph>|<synph><kwd
+importance="default">0</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SMOOTHSUBRATE
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>SMOOTHSUBRATE keyword</indexterm></indexterm><indexterm>SMOOTHSUBRATE, keyword
+of JTOPTS</indexterm>The average number of operations to be submitted, in 1 minute, on computer
+automatic workstations, with the exception of the operations that are urgent (with priority 9)<ph
+otherprops="ibm"> and operations running on fault-tolerant workstations</ph>. <p>To prioritize also
+the operations belonging to a critical path (that is, the submission rate is not applied to them),
+set SMOOTHSUBMISSION(YES). In this way, the following operations will also be excluded from the
+submission rate restrictions: <ul>
+<li>Operations belonging to a critical path.</li>
+<li>Operations eligible for WLM assistance.</li>
+</ul></p><p>Valid range is from 1 to 99999. The default value is 0, meaning that this parameter is
+not set. </p></pd>
+</plentry>
+<plentry>
+<pt>STATMSG(<synph><var>option list</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>STATMSG
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>STATMSG keyword</indexterm></indexterm><indexterm>STATMSG,
+              keyword of JTOPTS</indexterm>Defines the status message types that
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            will produce. You can specify one or more of the these values: <dl>
+              <dlentry>
+                <dt>CPLOCK</dt>
+                <dd>The event-manager subtask issues messages EQQE004I and EQQE005I, which describe
+                  how often different tasks have referenced the current-plan data set.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>EVENTS</dt>
+                <dd>The event-manager subtask issues messages EQQE000I, EQQE006I, and EQQE007I,
+                  which describe how many events were processed and provide statistics for different
+                  event types.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>WSATASK</dt>
+                <dd>The event manager task issues messages EQQE008I and EQQE009I, which describe
+                  statistic information collected by the WSA task. <p>All these messages are issued
+                    according to the following criteria: <ul>
+                      <li>If STATIM has been set to a value different from 0 (by specifying
+                            STATIM(<synph><var>n</var></synph>) in the JTOPS keyword, or by using
+                        the modify command <codeph>/f
+                            <synph><var>procname</var></synph>,STATIM=<i>n</i></codeph>), the
+                        message is issued approximately every <synph><var>n</var></synph> minutes,
+                        if any events have been processed.</li>
+                      <li>Otherwise, if EVELIM has been set to a nonzero value (by specifying
+                            EVELIM(<synph><var>n</var></synph>) in the JTOPS keyword, or by using
+                        the modify command <codeph>/f
+                              <synph><var>procname</var></synph>,EVELIM=<synph><var>n</var></synph></codeph>),
+                        the message is issued approximately every <synph><var>n</var></synph>
+                        events.</li>
+                      <li>Otherwise, the message is issued approximately once every
+                            <synph><var>n</var></synph> events, where <synph><var>n</var></synph> is
+                        half the JTOPTS BACKUP keyword value (default BACKUP value is 400).</li>
+                    </ul></p></dd>
+              </dlentry>
+              <dlentry>
+                <dt>GENSERV</dt>
+                <dd>The general-service subtask issues messages EQQG010I to EQQG013I, which describe
+                  how often different tasks have been processed and how long the general-service
+                  queue has been.
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  issues these messages every 30 minutes, or every <synph><var>n</var></synph>
+                  minutes if the value of STATIM is nonzero (by specifying
+                      STATIM(<synph><var>n</var></synph>) in the JTOPTS keyword, or by using the
+                  modify command <codeph>/f
+                    <synph><var>procname</var></synph>,STATIM=<i>n</i></codeph>), if any requests
+                  have been processed.</dd>
+              </dlentry>
+            </dl>
+            <p>For more information about any of these messages, refer to
+                <cite><!--<i conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opcmc"/>-->.</cite></p></pd>
+</plentry>
+<plentry>
+<pt>STATIM(<synph><var>nn</var></synph>)</pt>
+<pd>Defines the time interval, in minutes, to be used for issuing the statistic messages related to
+the STATMSG keyword. Valid values are from 0 to 99. <p>If this keyword is omitted, or if 0 is
+specified, the time interval is not used, and statistic messages are issued every
+<synph><var>n</var></synph> events, where <synph><var>n</var></synph> is the EVELIM values or half
+of the BACKUP value if EVELIM is set to 0.</p> The value for STATIM can be dynamically updated using
+the modify command, <codeph>/f
+<synph><var>procname</var></synph>,STATIM=<synph><var>nn</var></synph></codeph>. </pd>
+</plentry>
+<plentry otherprops="v92spe" rev="v92spe">
+<pt>STEPINFO(<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>) </pt>
+<pd rev="v83"><indexterm>initialization statements<indexterm>JTOPTS<indexterm>STEPINFO
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>STEPINFO keyword</indexterm></indexterm><indexterm>STEPINFO, keyword of
+JTOPTS</indexterm><p>If you specify YES, the primary controller stores the list of step events that
+was generated and sent by the tracker, enabling you to browse the information. STEPINFO(YES) is
+meaningful only if you set EWTROPTS STEPINFO(YES) on the tracker.
+</p><!--<p>This value might affect the controller performance.</p>--><p>If you specify NO the list
+of step events is only logged on the primary controller, which, if a backup controller is
+configured, sends it to the backup controller, where the data is stored.</p><p>Set STEPINFO(YES) on
+the backup controller to ensure that when the backup controller takes over from the primary
+controller, you can browse the list of steps for all the jobs that are in
+plan.</p><!--<p>If you set STEPINFO(YES) on the backup controller, when the backup
+controller takes over from the primary controller you can browse the
+steps events related to all the jobs that were run on both controllers.
+If you set STEPINFO(NO) on the backup controller, when the backup
+controller takes over from the primary controller you can browse the
+steps events related only to the jobs that were run on the previous
+primary controller.</p>--></pd>
+</plentry>
+<plentry>
+<pt>SUBFAILACTION(<synph><kwd>C</kwd></synph>|<synph><kwd>E</kwd></synph>|<synph><kwd
+importance="default">R</kwd></synph>|<synph rev="v83speap"
+><kwd>RH</kwd></synph>|<synph><kwd>XC</kwd></synph>|<synph><kwd>XE</kwd></synph>|<synph><kwd>XR</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SUBFAILACTION
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>SUBFAILACTION
+              keyword</indexterm></indexterm><indexterm>SUBFAILACTION keyword of
+            JTOPTS</indexterm>Defines what action
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should take if a failure occurs while retrieving the JCL during the submission of a job
+            or the starting of a started task. Specify one of these actions: <dl>
+              <dlentry>
+                <dt>C</dt>
+                <dd>The operation is set to complete. If EQQUX001 is called and returns an error
+                  code, then the error code is ignored.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>E</dt>
+                <dd>The operation is set to ended-in-error with error code OSUF. If EQQUX001 is
+                  called and returns an error code, then the error code is ignored.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>R</dt>
+                <dd>The operation remains on the ready list with status R (ready) and extended
+                  status E (error). If the failure was reported by the
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/ux9name"/>-->
+                  (EQQUX009), the operation remains on the ready list with status S (started) and
+                  extended status E (error). If EQQUX001 is called and returns an error code, then
+                  the error code is ignored.</dd>
+              </dlentry>
+              <dlentry rev="v83speap">
+                <dt>RH</dt>
+                <dd><indexterm>APARs<indexterm>PK87319</indexterm></indexterm>This acts in the same
+                  way as <synph><kwd>R</kwd></synph>, unless EQQUX001 is called and returns an error
+                  code different from '0000', in which case the operation is set to ready and manual
+                  hold.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>XC</dt>
+                <dd>This acts in the same way as <synph><kwd>C</kwd></synph>, unless EQQUX001 is
+                  called and returns an error code different from '0000', in which case the
+                  operation ends in error with the error code returned by the user exit.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>XE</dt>
+                <dd>This acts in the same way as <synph><kwd>E</kwd></synph>, unless EQQUX001 is
+                  called and returns an error code different from '0000', in which case the
+                  operation ends in error with the error code returned by the user exit.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>XR</dt>
+                <dd>This acts in the same way as <synph><kwd>R</kwd></synph>, unless EQQUX001 is
+                  called and returns an error code different from '0000', in which case the
+                  operation ends in error with the error code returned by the user exit.</dd>
+              </dlentry>
+            </dl></pd>
+</plentry>
+<plentry>
+<pt>SUPPRESSACTION(<synph><kwd>C</kwd></synph>|<synph><kwd>E</kwd></synph>|<synph><kwd
+importance="default">R</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SUPPRESSACTION
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>SUPPRESSACTION
+              keyword</indexterm></indexterm><indexterm>SUPPRESSACTION, keyword of
+              JTOPTS</indexterm>Defines what action
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should take if a suppress-if-late time-dependent operation becomes late. Specify one of
+            these actions: <dl>
+              <dlentry>
+                <dt>C</dt>
+                <dd>The operation is set to complete.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>E</dt>
+                <dd>The operation is set to ended-in-error with error code OSUP.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>R</dt>
+                <dd>The operation remains on the ready list with status R (ready) and extended
+                  status L (late).</dd>
+              </dlentry>
+            </dl>
+            <indexterm>APARs<indexterm>PQ94960</indexterm></indexterm><indexterm>APARs<indexterm>PK21129</indexterm></indexterm><ph
+              otherprops="ibm">The suppress actions are not all applicable to the operations defined
+              on
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/ftws"/>-->
+              in an end-to-end with fault tolerance capabilities environment: for operations with
+              the centralized script option, the applicable suppress actions are C, E, and R; for
+              the other operations defined on fault-tolerant workstations, the applicable suppress
+              action is only R. If a different value is specified, the default value R is used for
+              these operations. </ph><note>
+              <ol>
+                <li rev="v83apars" otherprops="ibm">For operations running on
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/ftws"/>-->,
+                  status E is allowed only for centralized scripts. However, for the controller and
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/fta"/>-->
+                  the status does not match until a batch DP job (Symphony Renew, CP extend, CP
+                  replan) is run.</li>
+                <li><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  considers the time buffer created by the SUPPRESSPOLICY keyword when deciding if a
+                  time-dependent operation is late.</li>
+              </ol>
+            </note>
+            <note> </note></pd>
+</plentry>
+<plentry>
+<pt>SUPPRESSPOLICY(<synph><var>nnn</var></synph>|<synph><kwd importance="default">0</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>SUPPRESSPOLICY
+                  keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>SUPPRESSPOLICY
+              keyword</indexterm></indexterm><indexterm>SUPPRESSPOLICY, keyword of
+              JTOPTS</indexterm>Specifies how
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should control time-dependent operations with the suppress-if-late option. You can use
+            SUPPRESSPOLICY to create an input-arrival buffer for these time-dependent operations
+            rather than a specific input-arrival time. <p>The SUPPRESSPOLICY value is a percentage
+              in the range 0 to 999. A value of 0 means that
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              does not try to start the operation if its input-arrival time has passed. If you
+              specify a nonzero value,
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              multiplies the estimated duration of the operation by this percentage. If the
+              resulting figure lies within the time remaining until the operation deadline, the
+              operation is started. Otherwise, the operation is considered late and is not started
+              by
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->.</p><p>The
+              following examples show how SUPPRESSPOLICY is used. In these examples, an operation
+              has become ready. The input-arrival time of the operation passed 15 minutes ago, and
+              its deadline will expire in 45 minutes. The operation has an estimated duration of 60 minutes.<dl>
+                <dlentry>
+                  <dt><codeph>SUPPRESSPOLICY(0)</codeph></dt>
+                  <dd>The operation is considered late because the input-arrival time has passed.
+                    The action specified on the SUPPRESSACTION keyword is taken.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><codeph>SUPPRESSPOLICY(50)</codeph></dt>
+                  <dd>The operation is started because 30 minutes (50% of 60 minutes) is less than
+                    the 45 minutes remaining to the deadline.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><codeph>SUPPRESSPOLICY(100)</codeph></dt>
+                  <dd>The operation is considered late because 60 minutes (100% of 60 minutes) is
+                    greater than the time remaining to the deadline. The action specified on the
+                    SUPPRESSACTION keyword is taken. </dd>
+                </dlentry>
+                <dlentry>
+                  <dt><codeph>SUPPRESSPOLICY(200)</codeph></dt>
+                  <dd>The operation is considered late because 120 minutes (200% of 60 minutes) is
+                    greater than the time remaining to the deadline. The action specified on the
+                    SUPPRESSACTION keyword is taken.</dd>
+                </dlentry>
+              </dl></p>
+            <indexterm>APARs<indexterm>PQ94960</indexterm></indexterm>
+            <p rev="v82ref3" otherprops="ibm">The suppress-if-late option on operations defined on
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/ftws"/>-->
+              with no centralized script option and not using any special resource is not managed
+              directly by the controller, but is stored in the <tm tmtype="tm" trademark="Symphony"
+                >Symphony</tm> file as "until time". The until time value is set by using the
+              SUPPRESSPOLICY value with the same algorithm like for the other operations, if the
+              expected operation end time is earlier than the deadline time. Otherwise it is set to
+              the operation input arrival time plus one minute. </p></pd>
+</plentry>
+<plentry>
+<pt>TRACK(<synph><kwd>OPCASUB</kwd></synph>|<synph><kwd>JOBOPT</kwd></synph>|<synph><kwd
+importance="default">ALL</kwd></synph>,
+<synph><kwd>READYFIRST</kwd></synph>|<synph><kwd>READYONLY</kwd></synph>|<synph><kwd
+importance="default">ANY</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>TRACK
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>TRACK keyword</indexterm></indexterm><indexterm>TRACK, keyword of
+JTOPTS</indexterm>The TRACK parameter contains two keyword values: <ul>
+<li>The first value specifies which jobs or started tasks
+                <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                tracks. If a job is tracked, it means that events for that job cause the current
+                plan to be updated. The status of the operation in the current plan that represents
+                the job is updated by events such as <i>job start</i> and <i>job completion</i>. For
+                example, when a job ends execution on a system (computer workstation), the status of
+                the corresponding operation in the current plan is changed from S (started) to C
+                (completed). <p>If you use event-triggered tracking with job-name replace (J-type
+                  events with JR=Y), both operands of the TRACK parameter are ignored for jobs
+                  submitted from outside of
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->.
+                  Such jobs are always tracked.</p><indexterm>jobname replace function of
+                  ETT</indexterm><indexterm>event-triggered tracking (ETT)<indexterm>and the SUBMIT
+                    option</indexterm></indexterm><indexterm>SUBMIT
+                  option</indexterm><indexterm>tracking jobs and the SUBMIT option</indexterm>
+                <p>Specify OPCASUB when all your
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->-planned
+                  jobs and started tasks are submitted by
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->;
+                  that is, when they are all defined with the SUBMIT option set to YES. This is the
+                  recommended method of handling submission.
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  tracks work that it submitted itself; work submitted outside of
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  is not tracked, even if it corresponds to an operation that is defined in the
+                  current plan.</p>
+                <p>Specify JOBOPT when some of your
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->-planned
+                  jobs are submitted by
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  and some are submitted outside of
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->,
+                  but you always know in advance which are submitted by each method. You must ensure
+                  that: <ul>
+                    <li>Jobs submitted by
+                      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                      have their SUBMIT option set to YES, and these jobs are <i>not</i> submitted
+                      outside of
+                      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->.</li>
+                    <li>Jobs submitted outside of
+                      <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                      have their SUBMIT option set to NO.</li>
+                  </ul></p><p>When you use JOBOPT,
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  tracks jobs it submitted itself, and jobs that were submitted outside of
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  but were defined with their SUBMIT option set to NO. JOBOPT causes
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  to track jobs where the mode of submission correctly matches the SUBMIT option for
+                  the job. If you define a job with the SUBMIT option set to YES but the job is
+                  submitted outside of
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->,
+                  the job is <i>not</i> tracked.</p><p>Specify ALL when you do not know in advance
+                  if
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->-planned
+                  jobs will be submitted by
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  or outside of
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->.
+                  All
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->-planned
+                  jobs are tracked, regardless of how they were submitted or what the job SUBMIT
+                  option is set to.</p></li>
+<li>The second keyword value determines how
+                <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                selects the matching operation when a job or started task is submitted outside of
+                <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->.
+                The product uses this value only when you specify JOBOPT or ALL for the first
+                keyword value. <p>Specify READYFIRST to select the ready operation with the earliest
+                  latest-start time. If no ready operation is found,
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  selects the waiting operation with the earliest latest-start time.
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  sets the status of this operation to E (ended in error) with error code
+                  OSEQ.</p><p>Specify READYONLY to select the ready operation with the earliest
+                  latest-start time. If no ready operation is found, the job or started task is not
+                  tracked by
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->.</p><p>Specify
+                  ANY to select the operation with the earliest latest-start time, which is in
+                  either waiting or ready status. ANY is the default value.</p></li>
+</ul></pd>
+</plentry>
+<plentry otherprops="ibm">
+<pt>TWSJOBNAME(<synph><kwd>EXTNAME</kwd></synph>|<synph><kwd>EXTNOCC</kwd></synph>|<synph><kwd>JOBNAME</kwd></synph>|<synph><kwd
+importance="default">OCCNAME</kwd></synph>)</pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>TWSJOBNAME
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>TWSJOBNAME keyword</indexterm></indexterm><indexterm>TWSJOBNAME, keyword of
+JTOPTS</indexterm>Defines the criterion used to generate the job name in the <tm tmtype="tm"
+trademark="Symphony">Symphony</tm> file. <p>If you set OCCNAME, the job name in the <tm tmtype="tm"
+trademark="Symphony">Symphony</tm> file is made up according to either of the following formats: <dl>
+<dlentry>
+<dt><i>X</i>_<i>Num</i>_<i>ApplicationName</i></dt>
+<dd>When the job is created.</dd>
+</dlentry>
+<dlentry>
+<dt><i>X</i>_<i>Num</i>_<i>Ext</i>_<i>ApplicationName</i></dt>
+<dd>When the job is deleted and re-created in the current plan.</dd>
+</dlentry>
+</dl>where: <dl>
+<dlentry>
+<dt><i>X</i></dt>
+<dd>Can be one of the following values: <ul compact="yes">
+<li><codeph>J</codeph>, for normal operations</li>
+<li><codeph>P</codeph>, for jobs representing pending predecessors</li>
+<li><codeph>R</codeph>, for recovery jobs</li>
+</ul></dd>
+</dlentry>
+<dlentry>
+<dt><i>Num</i></dt>
+<dd>The operation number.</dd>
+</dlentry>
+<dlentry>
+<dt><i>Ext</i></dt>
+<dd>A sequential decimal number that is increased every time an operation is deleted and
+re-created</dd>
+</dlentry>
+<dlentry>
+<dt><i>ApplicationName</i></dt>
+<dd>The name of the occurrence to which the operation belongs.</dd>
+</dlentry>
+</dl></p>
+<p>If you set EXTNAME, EXTNOCC, or JOBNAME the job name in the <tm tmtype="tm" trademark="Symphony"
+>Symphony</tm> file is made up according to either of the following formats: <dl>
+<dlentry>
+<dt><i>X</i>_<i>Num</i>_<i>JobInfo</i></dt>
+<dd>When the job is created.</dd>
+</dlentry>
+<dlentry>
+<dt><i>X</i>_<i>Num</i>_<i>Ext</i>_<i>JobInfo</i></dt>
+<dd>When the job is deleted and re-created in the current plan.</dd>
+</dlentry>
+</dl>where: <dl>
+<dlentry>
+<dt><i>X</i></dt>
+<dd>Can be one of the following values: <ul compact="yes">
+<li><codeph>J</codeph>, for normal operations</li>
+<li><codeph>P</codeph>, for jobs representing pending predecessors</li>
+<li><codeph>R</codeph>, for recovery jobs</li>
+</ul>
+<p>For jobs representing pending predecessors, the job name is in all cases generated by using the
+OCCNAME criterion. This is because, in the case of pending predecessors, the current plan does not
+contain the required information (excepting the name of the occurrence) to build the <tm tmtype="tm"
+trademark="Symphony">Symphony</tm> name according to the other criteria. </p></dd>
+</dlentry>
+<dlentry>
+<dt><i>Num</i></dt>
+<dd>The operation number.</dd>
+</dlentry>
+<dlentry>
+<dt><i>Ext</i></dt>
+<dd>The hexadecimal value of a sequential number that is increased every time an operation is
+deleted and re-created</dd>
+</dlentry>
+<dlentry>
+<dt><i>JobInfo</i></dt>
+<dd>Depends on the chosen criterion: <dl>
+<dlentry>
+<dt>For EXTNAME</dt>
+<dd><i>JobInfo</i> is filled with the first 32 characters of the extended job name associated to
+that job (if it exists) or with the 8-character job name (if the extended name does not exist). Note
+that the extended job name, in addition to being defined in the database, must also exist in the
+current plan. </dd>
+</dlentry>
+<dlentry>
+<dt>For EXTNOCC</dt>
+<dd><i>JobInfo</i> is filled with the first 32 characters of the extended job name associated to
+that job (if it exists) or with the application name (if the extended name does not exist). Note
+that the extended job name, in addition to being defined in the database, must also exist in the
+current plan.</dd>
+</dlentry>
+<dlentry>
+<dt>For JOBNAME</dt>
+<dd><i>JobInfo</i> is filled with the 8-character job name.</dd>
+</dlentry>
+</dl></dd>
+</dlentry>
+</dl></p><p>The criterion used to generate an <keyword
+conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/tws"/> job name are maintained throughout the
+entire life of the job.</p><p>To choose the EXTNAME, EXTNOCC, or JOBNAME criterion, the EQQTWSOU
+data set must have a record length of 160 bytes. Before using any of the above keywords, you must
+migrate the EQQTWSOU data set. Sample EQQMTWSO is available to migrate this data set from 120 to 160
+bytes.</p><p>Limitations when using the EXTNAME and EXTNOCC criteria: <ul>
+<li>The job name in the symphony file can contain only alphanumeric characters, dashes and
+underscores. All the other characters accepted for the extended job name are converted into dashes.
+Note that a similar limitation applies also with JOBNAME: when defining members of partitioned data
+sets (such as the script or the job libraries), national characters can be used, but they are
+converted into dashes in the symphony file.</li>
+<li>The job name in the symphony file must be in uppercase. All lowercase characters in the extended
+                  name are automatically converted to uppercase by
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twsz"/>-->.</li>
+</ul></p><note>Using the job name (or the extended name as part of the job name) in the symphony
+file implies that it becomes a key for identifying the job. This means also that the extended name
+or job name is used as a key for addressing all the events directed to the agents. For this reason,
+be aware of the following facts for the operations included in the symphony file: <ul>
+<li>Editing the extended name is inhibited for operations created when the TWSJOBNAME keyword is set
+to EXTNAME or EXTNOCC.</li>
+<li>Editing the job name is inhibited for operations created when the TWSJOBNAME keyword is set to
+EXTNAME or JOBNAME.</li>
+</ul></note>
+</pd>
+</plentry>
+<!--APAR PI47790-->
+<plentry rev="93_refresh">
+<pt>USINRC(<synph><kwd>YES</kwd></synph>|<synph><kwd importance="default">NO</kwd></synph>)</pt>
+<pd>Specify YES if you want that the ERROR_CODE field set by a status change program (for example,
+the EQQUSIN subroutine invoked by System Automation) is processed, even if the operation status was
+changed to C (Complete). The error code, when set, is used to evaluate any conditional dependency
+defined for the operation. <p>The default value is No, meaning that the ERROR_CODE field set by a
+status change program for a complete operation is always ignored.</p></pd>
+</plentry>
+<plentry rev="v82ref">
+<pt>UX001FAILACTION(<synph><kwd importance="default">R</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>UX001FAILACTION
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>UX001FAILACTION keyword</indexterm></indexterm><indexterm>UX001FAILACTION,
+keyword of JTOPTS</indexterm><indexterm>APARs<indexterm>PQ82402</indexterm></indexterm>This keyword
+is specified when the EQQUX001 exit is involved. <p>If EQQUX001 is called and returns an error code
+different from <codeph>0000</codeph>, operations remain in ready list with extended status E. The
+only value of UX001FAILACTION is R. The UX001FAILACTION and SUBFAILACTION(XR/XE) keywords are
+exclusive.</p></pd>
+</plentry>
+<plentry rev="95_spe2">
+<pt>WSCLASS(<synph><var>wsname,...,wsname</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>WSCLASS
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>WSCLASS keyword</indexterm></indexterm><indexterm>WSCLASS, keyword of
+JTOPTS</indexterm>Use this parameter to force the class of the jobs submitted on the workstation
+identified by <codeph><i>wsname</i></codeph>. The value applied will be the class defined for the
+job in the current plan. Consider that if  the job class in CP is set to blank, no class forcing is
+performed.  <p><codeph><i>wsname</i></codeph> identifies the name of the workstation where the job
+is submitted, included virtual workstations. Wildcard characters are not allowed.</p></pd>
+</plentry>
+<plentry rev="95_spe2">
+<pt>WSSYSAFF(<synph><var>wsname:system.destination,...,wsname:system.destination</var></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>WSSYAFF
+keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>WSSYAFF keyword</indexterm></indexterm><indexterm>WSSYAFF, keyword of
+JTOPTS</indexterm>Use this parameter to customize the SYSAFF keyword of the job card, so that a job
+submitted on <codeph><i>wsname</i></codeph> is forced to be executed on the system identified by
+<codeph><i>system.destination</i></codeph>, where:<dl>
+<dlentry>
+<dt><i>wsname</i></dt>
+<dd>Name of the workstation where the job is submitted, included virtual workstations. Started task
+workstations are not applicable. <p>The maximum length is 4 alphanumeric characters. Wildcard
+characters are not allowed. </p></dd>
+</dlentry>
+<dlentry>
+<dt><i>system.destination</i></dt>
+<dd>Name of the system within a SYSPLEX, followed by a period and the name of the destination, as
+specified in the workstation definition. The wildcard character asterisk (*) is allowed, meaning the
+local destination.<p>You can specify more than one couple <codeph><i>system.destination</i></codeph>
+for a single <codeph><i>wsname</i></codeph>, provided that those systems belong to the same SYSPLEX.
+Also, consider that a system can be associated with only one destination.</p><p>The
+<i><codeph>system</codeph></i> is inserted in the SYSAFF keyword of the job card <i>only</i> if the
+associated <codeph><i>destination</i></codeph> exists in the workstation definition and is available
+in terms of workstation-open intervals, parallel servers, workstation resources. <note>
+<ol>
+<li>If the <codeph><i>destination</i></codeph> does not exist in the workstation definition,
+therefore no availability checks can be performed, the <i><codeph>system</codeph></i> is anyway
+added to the SYSAFF keyword.</li>
+<li>If a SYSAFF parameter was already set in the job card, it is overwritten with this value.</li>
+<li>The SYSTEM parameter of the job card, if any, is deleted.</li>
+</ol>
+</note></p><p>If no system pass the availability checks, the job will be forced to be executed on
+the system where it was submitted. This means that the SYSAFF keyword will be
+<codeph>SYSAFF=*</codeph></p><!--<p>The destinations are used only to check for the workstation availability (for example, workstation-open intervals, parallel servers, workstation resources), provided that the destinations exist in the workstation definition, otherwise the value is ignored. This means that if you want to force the execution of a job on a specific system, regardless of the workstation checks, you can set a destination that is not defined on the associated workstation. For example, <b>??????????? aspetto input</b></p>--></dd>
+</dlentry>
+</dl><!--<p>The following example shows :<codeblock>WSSYSAFF(VIR1:S512.DEST512,S514.DEST514,
+                 S555.DEST555,
+               VIR3:SYS2.*,
+               VIR4:*.*)
+</codeblock></p>--></pd>
+</plentry>
+<plentry>
+<pt>WSFAILURE(<synph><kwd>ERROR</kwd></synph>|<synph><kwd>RESTART</kwd></synph>|<synph><kwd
+importance="default">LEAVE</kwd></synph>, <synph><kwd>REROUTE</kwd></synph>|<synph><kwd
+importance="default">LEAVE</kwd></synph>, <synph><kwd>IMMED</kwd></synph>|<synph><kwd
+importance="default">MANUAL</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>WSFAILURE
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>WSFAILURE keyword</indexterm></indexterm><indexterm>WSFAILURE,
+              keyword of JTOPTS</indexterm>Defines the actions to be taken when a workstation
+            failure occurs. A workstation is set to failed status either when there is no
+            communication with the <tm tmtype="reg" trademark="z/OS">z/OS</tm> system or if it is
+            set manually in the
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twsz"/>-->
+            dialogs. Workstations that specify a user-defined destination ID can have failed status
+            reported by the WSSTAT command, or EQQUSIN or EQQUSINW subroutine. <p>The WSFAILURE
+              parameter contains three keyword values: <ul>
+                <li>The first keyword value defines the restart actions to be taken when a
+                  workstation fails and the started operation is restartable. Specify ERROR to set
+                  started operations to ended-in-error status. The error code will be OSSI, OSSQ,
+                  OSSS, or OSSC. Operations whose error code is OSSS have a stepcode of OSYS.
+                  Specify RESTART to immediately reset the started operations at this workstation to
+                  ready. Specify LEAVE to leave started operations on a failed workstation in
+                  started status; this is the default value.
+                      <indexterm>APARs<indexterm>PK51074</indexterm></indexterm>
+                  <note rev="v83speap">
+                    <ol>
+                      <li>If you set the restartable option of an operation to NO, the operation is
+                        not processed. It remains in the started status.</li>
+                      <li>Consider this note if you use a standby controller, running with the
+                        TAKEOVER(HOSTFAIL) parameter in the XCFOPTS statement. If you selected the
+                        WSFAILURE(RESTART,REROUTE,IMMED) options and the controller abnormally ends
+                        or is cancelled, while the LPAR that the controller is running on remains
+                        active, jobs might be submitted again even though they are currently
+                        running, resulting in the same job being run twice.</li>
+                      <li rev="v861">For <ph otherprops="ddm">dynamic and </ph>remote engine
+                        workstation types, this parameter supports only the value LEAVE. If you
+                        specify any other value, it is forced to LEAVE.</li>
+                    </ol>
+                  </note></li>
+                <li>The second parameter value defines reroute actions for workstation failure
+                  situations. Specify REROUTE to route operations, whose reroutable option is YES,
+                  to the alternate workstation. Specify LEAVE to leave operations to be scheduled on
+                  the original workstation; this is the default value. Rerouting does not occur for
+                  these operations. </li>
+                <li>The third parameter value defines the action to be taken when a workstation
+                  becomes active again after a failure situation. Specify IMMED to automatically set
+                  the status of the workstation to available and withdraw any rerouting
+                    <i>immediately</i> when an event indicates that the workstation is operational.
+                  Specify MANUAL to indicate that the status of the workstation should be changed
+                  manually when a <i>workstation available</i> indication is received; this is the
+                  default value.
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opc"/>-->
+                  issues an MLOG message to inform the operator that the event has been
+                  received.</li>
+              </ul></p></pd>
+</plentry>
+<plentry>
+<pt>WSOFFLINE(<synph><kwd>ERROR</kwd></synph>|<synph><kwd>RESTART</kwd></synph>|<synph><kwd
+importance="default">LEAVE</kwd></synph>, <synph><kwd>REROUTE</kwd></synph>|<synph><kwd
+importance="default">LEAVE</kwd></synph>, <synph><kwd>MANUAL</kwd></synph>|<synph><kwd
+importance="default">IMMED</kwd></synph>) </pt>
+<pd>
+<p rev="v91"><indexterm>initialization statements<indexterm>JTOPTS<indexterm>WSOFFLINE
+                    keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                  statement<indexterm>WSOFFLINE keyword</indexterm></indexterm><indexterm>WSOFFLINE,
+                keyword of JTOPTS</indexterm>Defines the actions that are to be taken when a
+              workstation offline situation occurs (unless the workstation is 'waiting for
+              connection' at start and no previous offline situation occurred). This means that the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+              cannot communicate with the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->
+              at the destination defined for the workstation. This might occur because the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opctrk"/>-->
+              has not been started yet (having experienced a previous offline condition status) or
+              has ended abnormally, or because the
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/opccont"/>-->
+              has not received an ID event from the destination for two consecutive pulse intervals.
+              Pulse intervals are specified by the PULSE parameter of ROUTOPTS.</p>
+<p>Workstations that specify a user-defined destination ID are set to offline status when
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twsz"/>-->
+              is started. Offline status for these workstations can also be reported by the WSSTAT
+              command or the EQQUSIN or EQQUSINW subroutine.</p>
+<p>The WSOFFLINE parameter contains three keyword values: <ul>
+<li>The first keyword value defines restart actions for a workstation whose status has been changed
+to offline. Specify ERROR to set started operations, whose restartable option is YES, to
+ended-in-error status. The error code will be OFSI, OFSQ, OFSS, or OFSC. Operations whose error code
+is OFSS, have a stepcode of OFFL. Specify RESTART to immediately reset the started operations at
+this workstation to ready. Specify LEAVE to leave started operations at an offline workstation in
+started status; this is the default value.
+<indexterm>APARs<indexterm>PK51074</indexterm></indexterm>
+<note rev="v83speap">
+<ol>
+<li>If you set the restartable option of an operation to NO, the operation is not processed. It
+remains in the started status.</li>
+<li>Consider this note if you use a standby controller, running with the TAKEOVER(HOSTFAIL)
+parameter in the XCFOPTS statement. If you selected the WSOFFLINE(RESTART,REROUTE,IMMED) options and
+the controller abnormally ends or is cancelled, while the LPAR that the controller is running on
+remains active, jobs might be submitted again even though they are currently running, resulting in
+the same job being run twice.</li>
+<li rev="v861">For <ph otherprops="ddm">dynamic and </ph>remote engine workstation types, this
+keyword supports only the value LEAVE. If you specify any other value, it is forced to LEAVE.</li>
+</ol>
+</note></li>
+<li>The second keyword value defines reroute actions for workstation offline situations. Specify
+REROUTE to route operations, whose reroutable option is YES, to the alternate workstation. Specify
+LEAVE to leave operations to be scheduled on the original workstation; this is the default value.
+Rerouting does not occur for these operations. </li>
+<li>The third keyword value defines the action to be taken when a workstation becomes active again.
+                  Specify MANUAL to indicate that the status of the workstation should be changed
+                  manually when a <i>workstation available</i> indication is received.
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  issues an MLOG message to inform the operator that the event has been received.
+                  Specify IMMED to automatically set the status of the workstation to available and
+                  withdraw any rerouting <i>immediately</i> when an event indicates that the
+                  workstation is operational; this is the default value.</li>
+</ul></p>
+</pd>
+</plentry>
+<plentry rev="93_refresh" otherprops="zc">
+<pt>ZCENJSUB (<synph><kwd>NO</kwd></synph>|<synph><kwd importance="default">YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ZCENJSUB
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>ZCENJSUB keyword</indexterm></indexterm><indexterm>ZCENJSUB,
+              keyword of
+              JTOPTS</indexterm><indexterm>APARs<indexterm>PI56564</indexterm></indexterm>Specify
+            YES if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should submit jobs running on <ph otherprops="zc">z-centric, dynamic, and </ph>remote
+            engine workstations. Specify NO if
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            should not automatically submit jobs running on <ph otherprops="zc">z-centric, dynamic,
+              and </ph>remote engine workstations. This parameter is incompatible with
+              JOBSUBMIT.<p>The job-submit option can be changed through the Service Functions dialog
+              while
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              is running.</p></pd>
+</plentry>
+<!--APAR PM66520-->
+<plentry rev="v86apars" otherprops="zc">
+<pt>ZCHIGHRC (<synph><kwd>NO</kwd></synph>|<synph><kwd>DEF (HIGHEST NO-ERROR
+RC)</kwd></synph>|<synph><kwd importance="default">YES</kwd></synph>) </pt>
+<pd><indexterm>initialization statements<indexterm>JTOPTS<indexterm>ZCHIGHRC
+                keyword</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+                statement<indexterm>ZCHIGHRC keyword</indexterm></indexterm><indexterm>ZCHIGHRC,
+              keyword of JTOPTS</indexterm>The ZCHIGHRC keyword defines the highest error code that
+            can be generated in an
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            job that runs on z-centric or Dynamic Workstations without causing
+            <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+            to set the operation in error. Negative return codes are not supported, in the same way
+            as for HIGHRC keyword in the JTOPTS.<dl>
+              <dlentry>
+                <dt><codeph>YES</codeph></dt>
+                <dd>Default value. All the jobs running on z-centric or dynamic workstations are
+                  handled the same way as <tm tmtype="reg" trademark="z/OS">z/OS</tm> jobs, that is
+                  <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+                  applies the value of the highest in JTOPTS to these non-<tm tmtype="reg"
+                    trademark="z/OS">z/OS</tm> jobs unless a different value is specified at
+                  operation level.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><codeph>NO</codeph></dt>
+                <dd>The HIGHRC feature is deactivated for jobs running on z-centric and dynamic
+                  workstations. Any nonzero return code is handled as an error condition, regardless
+                  of the value specified at operation level in the HIGHRC.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><codeph>DEF (HIGHEST NO-ERROR RC)</codeph></dt>
+                <dd>The value specified is used as global HIGHRC for all the jobs running on
+                  z-centric and dynamic workstations, unless a different value is specified at
+                  operation level.</dd>
+              </dlentry>
+            </dl>
+          </pd>
+</plentry>
+</parml> </section>
+<example><title>Examples</title><indexterm>initialization statements<indexterm>JTOPTS<indexterm>example
+of</indexterm></indexterm></indexterm><indexterm>JTOPTS initialization
+statement<indexterm>example of</indexterm></indexterm> <fig frame="all">
+<codeblock>  JTOPTS BACKUP(1000)                               1
+         ETT(YES)                                   2
+         HIGHRC(0)                                  3
+         JOBCHECK(SAME)                             4
+         NOERROR(U001,ABC123.*.*.0016,*.P1.S1.U*)   5
+         SHUTDOWNPOLICY(50)                         6
+         STATIM(25)                                 7
+         STATMSG(CPLOCK,EVENTS,WSTASK)              8
+         SUBFAILACTION(E)                           9
+         SUPPRESSACTION(C)                          10
+         SUPPRESSPOLICY(50)                         11
+         TRACK(JOBOPT)                              12
+         WSFAILURE(LEAVE,LEAVE,IMMED)               13
+         WSOFFLINE(LEAVE,LEAVE,IMMED)               14</codeblock>
+</fig> <p>In this example of a JTOPTS statement:   <dl><dlentry>
+<dt>1</dt>
+<dd>Whenever the number of records in the current plan data set reaches
+1000, the data set is copied to the job-tracking log.</dd>
+</dlentry><dlentry>
+<dt>2</dt>
+<dd>The event-triggered-tracking function is initially active when
+              <!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>-->
+              starts.</dd>
+</dlentry><dlentry>
+<dt>3</dt>
+<dd>If the operation completion code is greater than 0, the job or
+started task is treated as having ended in error.</dd>
+</dlentry><dlentry>
+<dt>4</dt>
+<dd><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>--> submits
+              jobs only if they have a valid job card where the job name matches the operation
+              name.</dd>
+</dlentry><dlentry>
+<dt>5</dt>
+<dd>Any job or started task with user abend code U001 is not considered
+to be in error. Operation ABC123 is not considered to be in error
+if it has error code 0016. Any user abend code for any job or started
+task in procedure step P1, step S1, is not considered an error.</dd>
+</dlentry><dlentry>
+<dt>6</dt>
+<dd>An operation is started if the time remaining in the workstation-open
+interval is not less than 50% of the estimated duration of the operation. </dd>
+</dlentry><dlentry>
+<dt>7</dt>
+<dd>The statistics message will be issued approximately every 25 minutes. </dd>
+</dlentry><dlentry>
+<dt>8</dt>
+<dd>The event-manager subtask issues messages showing:   <ul
+compact="yes">
+<li>How often different tasks have referenced the current plan data
+set</li>
+<li>Which tasks have updated the current plan</li>
+<li>How many events have been processed</li>
+<li>Statistics collected by the WSA task</li>
+</ul></dd>
+</dlentry><dlentry>
+<dt>9</dt>
+<dd><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>--> sets an
+              operation to ended-in-error if a failure occurs during the submission of a job or the
+              starting of a started task.</dd>
+</dlentry><dlentry>
+<dt>10</dt>
+<dd>If a time-dependent operation becomes late (after the SUPPRESSPOLICY
+buffer has expired) and the suppress-if-late option is set to Y for
+this operation, the operation will be set to complete.</dd>
+</dlentry><dlentry>
+<dt>11</dt>
+<dd>In the example, a time-dependent operation with the suppress-if-late
+option is started if the time remaining until its deadline is not
+less than 50% of the estimated duration of the operation.</dd>
+</dlentry><dlentry>
+<dt>12</dt>
+<dd><!--<keyword conref="../../distr/src_tsweb/awsco-conref.dita#awsco-conref/twszos"/>--> tracks
+              jobs only if the mode of submission matches the JOB SUBMIT option in the application
+              description.</dd>
+</dlentry><dlentry>
+<dt>13</dt>
+<dd>If the status of a workstation is changed to FAILED, started operations
+at the workstation are left in the started status. Ready operations
+are not rerouted to an alternate workstation. They will be scheduled
+on the original workstation when it becomes active again. When the
+workstation becomes active again, it is immediately made available.</dd>
+</dlentry><dlentry>
+<dt>14</dt>
+<dd>If the status of a workstation is changed to OFFLINE, started
+operations at the workstation are left in the started status. Ready
+operations are not rerouted to an alternate workstation. They will
+be scheduled on the original workstation when it becomes active again.
+When the workstation becomes active again, it is immediately made
+available.</dd>
+</dlentry></dl></p> </example>
+</refbody>
+</reference>
+<?Pub *0000120701?>

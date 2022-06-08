@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="managing_change" xml:lang="en-us">
+<title>Managing change and releases</title>
+<titlealts>
+<navtitle>Managing change and releases</navtitle>
+<searchtitle>Managing change and releases</searchtitle>
+</titlealts>
+<shortdesc>Learn how to manage change and release in the product.</shortdesc><?Pub
+Caret 42?>
+<prolog><metadata>
+<keywords><indexterm>managing change and releases</indexterm></keywords>
+</metadata></prolog>
+<conbody>
+<ul outputclass="ullinks">
+<li audience="notwebhelp"><xref href="../../com.ibm.rational.clearquest.user_web.doc/topics/default_topic.dita"
+format="dita" scope="peer" outputclass="ulchildlinktext">Using your <keyword
+conref="variables/variables.dita#vars/cq_product_short"/> Web client</xref></li>
+<li audience="notwebhelp"><xref href="../../com.ibm.rational.clearquest.user_ec.doc/topics/c_underst_client.dita"
+format="dita" scope="peer" outputclass="ulchildlinktext">Using your <keyword
+conref="variables/variables.dita#vars/cq_product_short"/> Client</xref></li>
+<li audience="notwebhelp"><xref href="../../com.ibm.rational.clearquest.user_win.doc/topics/default_topic.dita"
+format="dita" scope="peer" outputclass="ulchildlinktext">Using your <keyword
+conref="variables/variables.dita#vars/cq_product_short"/> for Windows Client</xref></li>
+<li audience="notwebhelp"><xref href="../../com.ibm.rational.clearquest.alm.doc/topics/alm_intro.dita" format="dita"
+scope="peer" outputclass="ulchildlinktext">Using your <keyword
+conref="variables/variables.dita#vars/cq_product_short"/> for ALM</xref></li>
+  
+<li audience="webhelp"><xref
+  href="https://help.hcltechsw.com/compass/2.0.0/com.hcl.compass.doc/webhelp/oxy_ex-1/com.ibm.rational.clearquest.user_web.doc/topics/default_topic.html"
+  format="html" scope="external">Using your <keyword
+   conref="variables/variables.dita#vars/cq_product_short"/> Web client </xref> </li> 
+ <li audience="webhelp"><xref
+  href="https://help.hcltechsw.com/compass/2.0.0/com.hcl.compass.doc/webhelp/oxy_ex-1/com.ibm.rational.clearquest.user_ec.doc/topics/c_underst_client.html"
+  format="html" scope="external">Using the <keyword
+   conref="variables/variables.dita#vars/cq_product_short"/> client</xref> </li> 
+ <li audience="webhelp"><xref
+  href="https://help.hcltechsw.com/compass/2.0.0/com.hcl.compass.doc/webhelp/oxy_ex-1/com.ibm.rational.clearquest.user_win.doc/topics/default_topic.html"
+  format="html" scope="external">Using <keyword
+   conref="variables/variables.dita#vars/cq_product_short"/> for Windows Client.</xref> </li> 
+ <li audience="webhelp"><xref
+  href="https://help.hcltechsw.com/compass/2.0.0/com.hcl.compass.doc/webhelp/oxy_ex-1/com.ibm.rational.clearquest.alm.doc/topics/alm_intro.html"
+  format="html" scope="external">Using <keyword
+   conref="variables/variables.dita#vars/cq_product_short"/> ALM</xref> </li> 
+</ul>
+</conbody>
+</concept>
+<?Pub *0000000654?>

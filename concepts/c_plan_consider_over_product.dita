@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Arbortext, Inc., 1988-2006, v.4002-->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="c_plan_consider_over_product" xml:lang="en-us">
+<title>Installation considerations</title>
+<titlealts></titlealts>
+<shortdesc>Part of planning entails making decisions about installation locations,
+working with other applications, extending Eclipse, upgrading, migrating,
+and configuring help content.</shortdesc>
+<prolog><metadata></metadata></prolog>
+<conbody>
+<p><draft-comment>This can be used as an overview topic for installation considerations.
+It should contain links to the consideration topics.</draft-comment></p>
+</conbody>
+</concept>

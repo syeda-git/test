@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"  "reference.dtd">
+<reference id="embeddingapi" translate="no" xml:lang="en-us">
+	<title>Embedding API</title>
+	<shortdesc>The Embedding API is used to embed a Volt form directly in another webpage without using
+		an <codeph>&lt;iframe></codeph>. The Volt form is inserted into the DOM of the hosting page
+		and can be interacted with using the JavaScript API or any custom JavaScript. Additionally,
+		the style of items in the form can be customized by the CSS of the hosting page.</shortdesc>
+	<refbody>
+		<section>
+			<title>Example 1 - Declarative</title>
+			<codeblock>&lt;html> 
+…  
+&lt;body> 
+ 
+	&lt;div id="myVoltDiv"> &lt;!-- Volt form will go here --> &lt;/div> 
+ 
+	&lt;script src="https://volt.example.com/volt-apps/volt.js" 
+		data-leap-config="{launch: {appId: 'e9ec1ed3-c12b-4b5c-8f5e-7a6ff4800a55', formId: 'F_Form1', targetId: 'myVoltDiv'}}">
+	&lt;/script> 
+ 
+&lt;/body> 
+&lt;/html> 			</codeblock>
+		</section>
+		<section id="section_z15_dvq_snb">
+			<title>test</title>
+			<p>
+				<codeblock>&lt;html>
+&lt;body>
+&lt;p> This is body&lt;/p>
+&lt;/body>
+&lt;/html></codeblock>
+			</p>
+		</section>
+		<section>
+			<title>Example 2 - Programmatic</title>
+				<codeblock>&lt;html> 
+… 
+&lt;body> 
+ 
+&lt;div id="myVoltDiv"> &lt;!-- Volt form will go here --> &lt;/div> 
+
+&lt;script src="https://volt.example.com/volt-apps/volt.js">&lt;/script> 
+
+&lt;script> 
+  function onVoltFormSubmitted (BO) 
+  { 
+	 alert ("submitted record id: " + submittedBO.getDataId());       
+  } 
+
+  function onVoltFormLoaded (app, launchParams) 
+  { 
+	 app.getForm(launchParams.formId).connectEvent("afterSave", onVoltFormSubmitted); 
+  } 
+
+  Volt.onReady = function() { 
+	  var launchParams =  
+	  { 
+		 appId: 'e9ec1ed3-c12b-4b5c-8f5e-7a6ff4800a55', 
+		 formId: 'F_Form1', 
+		 target: document.getElementById("myVoltDiv"), 
+		 locale: 'fr-FR' 
+		 callback: onVoltFormLoaded 
+	  }; 
+	  Volt.launch(launchParams);  
+  }; 
+
+&lt;/script> 
+ 
+&lt;/body> 
+&lt;/html>  		</codeblock>
+		</section>
+		<section>
+			<title>Loading the Embedding UI</title>
+			<codeblock>&lt;script src="https://volt.example.com/volt-apps/volt.js" data-leap-config="[volt configuration]" id="leapJS'">&lt;/script>			</codeblock>
+			<ul>
+				<li>
+					<parmname>id</parmname> (optional) - fallback for older browsers; the value
+					should always be <varname>leapJS</varname>
+				</li>
+				<li>
+					<parmname>data-leap-config</parmname> (optional) - JSON or the name of an existing JavaScript object. Properties:
+					<ul>
+						<li>
+							<parmname>locale</parmname> (optional) - indicates the preferred locale
+							to the Volt API. For example, <varname>fr-FR</varname>
+						</li>
+						<li>
+							<parmname>launch</parmname> (optional) - equivalent to calling
+								<parmname>Volt.launch({…})</parmname> function with respective
+							parameters (see below for more details) </li>
+						<li>
+							<parmname>overwriteExistingDojoConfig</parmname> (optional) - In some environments, such as HCL Digital Experience or IBM WebSphere Portal, the <parmname>djConfig</parmname> or <parmname>dojoConfig</parmname> object may be defined on a page and not used. Set the value of this property to <parmname>true</parmname> to override it.
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p>Loading the API will result in the creation of global object named <parmname>Volt</parmname>. </p>
+			<p>After initial load of the <filepath>volt.js</filepath>, you can define a
+					<parmname>Volt.onReady()</parmname> function which will be called when the
+				necessary resources have been loaded into the page and the API is ready to be used. </p>
+		</section>
+		<section>
+			<title>Embedding a form programmatically</title>
+			<p>To embed a Volt form programmatically, call
+				<parmname>Volt.launch({launch_params});</parmname></p>
+			<p><parmname>{launch_params}</parmname> properties:</p>
+			<table>
+				<tgroup cols="3">
+					<colspec colname="col1"/>
+					<colspec colname="col2"/>
+					<colspec colname="col3"/>
+					<thead>
+						<row valign="bottom">
+							<entry colname="col1">Property</entry>
+							<entry colname="col2">Required?</entry>
+							<entry colname="col3">Description</entry>
+						</row>
+					</thead>
+					
+					<tbody>
+						<row>
+							<entry colname="col1">
+								<parmname>appId</parmname>
+							</entry>
+							<entry colname="col2">
+								Yes
+							</entry>
+							<entry colname="col3">
+								<p>The Volt application UUID.</p>
+								<p>For example, <codeph>e9ec1ed3-c12b-4b5c-8f5e-7a6ff4800a55</codeph></p>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>formId</parmname>
+							</entry>
+							<entry colname="col2">
+								Yes
+							</entry>
+							<entry colname="col3">
+								<p>The Volt form ID.</p>
+								<p>For example, <codeph>F_Form1</codeph></p>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>targetId</parmname>
+							</entry>
+							<entry colname="col2">
+								Either <parmname>target</parmname> or <parmname>targetId</parmname> must be provided.
+							</entry>
+							<entry colname="col3">
+								<p>The id of the HTML DOM element to embed the Volt form within.</p>
+								<p>For example, <codeph>myVoltFormDiv</codeph></p>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>target</parmname>
+							</entry>
+							<entry colname="col2">
+								Either <parmname>target</parmname> or <parmname>targetId</parmname> must be provided.
+							</entry>
+							<entry colname="col3">
+								<p>The HTML DOM element to place the Volt form within.</p>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>mode</parmname>
+							</entry>
+							<entry colname="col2">
+								No
+							</entry>
+							<entry colname="col3">
+								<p>Determines the mode for embedding.</p>
+								<p>Possible values:</p>
+								<ul>
+									<li>
+										<parmname>'iframe'</parmname> - embeds the form in an
+											<codeph>&lt;iframe></codeph> element. For complete
+										isolation of the form, if necessary </li>
+									<li>
+										<parmname>'embed'</parmname> (default) - embeds the form
+										into the hosting page in a <codeph>&lt;div></codeph>
+									</li>
+								</ul>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>locale</parmname>
+							</entry>
+							<entry colname="col2">
+								No
+							</entry>
+							<entry colname="col3">
+								<p>Indicates the preferred locale for the embedded form.</p>
+								<p>For example, <codeph>fr-FR</codeph></p>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>prefSecMode</parmname>
+							</entry>
+							<entry colname="col2">
+								No
+							</entry>
+							<entry colname="col3">
+								<p>If the form supports both anonymous and authenticated usage, this property can be used to automatically choose the preferred security mode.</p>
+								<p>Possible values:</p>
+								<ul>
+									<li>
+										<parmname>'anon'</parmname> - for anonymous usage
+									</li>
+									<li>
+										<parmname>'secure'</parmname> - for authenticated usage
+									</li>
+								</ul>
+							</entry>
+						</row>
+						
+						<row>
+							<entry colname="col1">
+								<parmname>callback</parmname>
+							</entry>
+							<entry colname="col2">
+								No
+							</entry>
+							<entry colname="col3">
+								<p>A callback function which will be called when the application launch completes successfully and the form is ready to be interacted with.</p>
+								<p>The callback function will be passed the following parameters:</p>
+								<ul>
+									<li>
+										<parmname>app</parmname> - the JavaScript API application
+										object. For more details, see <xref
+											href="ref_jsapi_user_interface_objects.dita"
+											type="reference" format="dita" scope="local"/>
+									</li>
+									<li>
+										<parmname>launchParams</parmname> - the original launch parameters object, for convenience
+									</li>
+								</ul>
+							</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		<section>
+			<title>Known Limitations</title>
+			<ul>
+				<li> Only one Volt form can be embedded on the page at a time. </li>
+				<li> Once the Volt form is embedded, it cannot be changed to a different form or reloaded. </li>
+				<li> The hosting page cannot contain any version of the Dojo JavaScript library. The Embedding
+					API will load its own copy of the Dojo JavaScript library into the hosting page. </li>
+				<li> For authentication, it is expected that the hosting page and the Volt server are configured
+					with single sign-on (SSO). Volt’s login UI will not display properly within the
+					hosting page. </li>
+			</ul>
+		</section>
+		<section>
+			<title>Cross-Domain Usage</title>
+			<p> If Volt and the hosting page are in different domains, the Volt server (or its front-end
+				technology) must be configured to return appropriate Cross-Origin Resource Sharing
+				(CORS) headers.</p>
+			<p>The typical technique for enabling a cross-domain solution is to ensure the
+				appropriate Access-Control-* response headers are returned. These response headers
+				inform the browser that the Volt server will allow requests to be made to it from a
+				HTML page hosted in a different domain.</p>
+			<p>For example, with Apache HTTP Server, add the following to
+				httpd.conf:<codeblock>Header set Access-Control-Allow-Origin "https://volt-embed.example.com"</codeblock></p>
+			<p>
+				<note>For security reasons, only return the minimal set of CORS headers that are
+					required your solution.</note>
+			</p>
+			<p>See <xref href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" format="html"
+					scope="external">Cross-Origin Resource Sharing (CORS)</xref> for more
+				information. </p>
+		</section>
+	</refbody>
+</reference>

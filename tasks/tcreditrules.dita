@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2011, v.4002-->
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN"
+ "task.dtd">
+<?Pub Sty _display FontColor="red"?>
+<task id="tcreditrules" xml:lang="en-us">
+<title>Configuring code review rules</title><?Pub Caret -2?>
+<shortdesc>The code review tool uses a set of predefined rules. You can select the default rule
+configuration file for the code review tool. MISRA 2004 and MISRA 2012 from <keyword
+conref="../../com.ibm.help.sourcedita.doc/topics/prodnames.dita#auroraproducts/RTRT_fam"/> V8.2.0
+are the default installed rule configuration files. You can disable or set the severity level to
+Warning. You cal also configure the entry-point option if your application is
+multi-threaded.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>code review<indexterm>configuration settings</indexterm></indexterm>
+<indexterm>changing settings<indexterm>code review</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<taskbody>
+<context>By default all rules are enabled and produce either an error or a warning in the code
+review report. You can save multiple customized rule policies. The default rule policy files MISRA
+2004 and MISRA 2012 are located in: <filepath><varname>&lt;installation
+directory></varname>/plugins/Common/lib/confrule.xml</filepath>. Do not modify the default rule
+configuration files. The only change that can be done in the default rule configuration files is to
+change or disable the severity level of the rule. <note>For all new projects, you must select the
+configuration file that must be used. When you make any changes to the rule policy file, you can
+save the new policy file in the project.</note><p/><p>
+<dl>
+<dlentry>
+<dt>To select the configuration file and disable or set the severity level of code review
+rules:</dt>
+<dd>In the project explorer, right-click the project on which you want to change the settings and
+click <uicontrol>Properties</uicontrol>. </dd>
+<dd>Click <menucascade>
+<uicontrol>C/C++ Build</uicontrol>
+<uicontrol>Settings</uicontrol>
+</menucascade> and select <uicontrol>Build Settings</uicontrol>.</dd>
+<dd>Expand <uicontrol>Code review</uicontrol> to access the code review settings.</dd>
+<dd>Click Browse <uicontrol>...</uicontrol> to select a rule configuration file. Select the default
+MISRA 2004 or MISRA 2012 rule configuration file that are installed with the product. Alternatively,
+click <uicontrol>+</uicontrol> to select a new rule configuration in your browser. Click
+<uicontrol>OK</uicontrol>. The path to the selected rule configuration displays in the value column
+on the Rule Configuration line. </dd>
+<dd>In the <uicontrol>Rule configuration</uicontrol> line, click the <image
+        href="../images/configuration_32.gif">
+        <alt>configuration file</alt>
+       </image> button to open the <wintitle>Rule Configuration</wintitle> window. <p>On the left,
+        select the rule that you want to configure. Rules are grouped into categories. When a rule
+        is selected, its description is displayed on the right.</p><p>
+        <dl>
+         <dlentry>
+          <dt>On the right, select the severity level:</dt>
+          <dd><uicontrol>Disabled</uicontrol>: The selected rule is ignored and is not displayed in
+           the code review report.</dd>
+          <dd><uicontrol>Warning</uicontrol>: When the rule condition is found, a warning is
+           displayed in the code review report.</dd>
+          <dd><uicontrol>Error</uicontrol>: When the rule condition is found, an error is displayed
+           in the code review report.</dd>
+         </dlentry>
+        </dl>
+       </p></dd>
+<dd>Select  <uicontrol>Show only the first occurrence</uicontrol> to only show the first occurrence
+of a rule condition in a file. Any subsequent occurrences of the condition are not reported. </dd>
+</dlentry>
+</dl>
+</p><p/><p>If your application is multi-threaded, you can provide the list of entry points to avoid
+that the rules about 'non-used functions' are raised.</p><dl>
+<dlentry>
+<dt>To configure the <uicontrol>Multi_thread</uicontrol> option, follow these steps: </dt>
+<dd>In the project explorer, right-click the project on which you want to change the settings and
+click <uicontrol>Properties</uicontrol>. </dd>
+<dd>Click <menucascade>
+<uicontrol>C/C++ Build</uicontrol>
+<uicontrol>Settings</uicontrol>
+</menucascade> and select <uicontrol>Build Settings</uicontrol>.</dd>
+<dd>In the right panel, click  <menucascade>
+<uicontrol>Settings</uicontrol>
+</menucascade><uicontrol>General</uicontrol> > <uicontrol>Multi-Thread option</uicontrol>.</dd>
+<dd>Click <uicontrol>... </uicontrol> in the value field of the <uicontrol>Entry points</uicontrol>
+option to open the editor. </dd>
+<dd>In the editor, enter the list of entry points for each thread and click
+<uicontrol>OK</uicontrol>.</dd>
+<dd>Click <uicontrol>OK</uicontrol>, <uicontrol>Apply</uicontrol> the changes and close the
+<wintitle>Properties</wintitle> window.</dd>
+</dlentry>
+</dl><note>The Entry point option applies to rule E16.50 (MISRA_2004) and M2.2.2 (MISRA
+2012).</note></context>
+</taskbody>
+<related-links>
+<link format="dita" href="ccrovw.dita" scope="local" type="concept">
+</link>
+<link format="dita" href="rcrrules.dita" scope="local" type="reference">
+</link>
+</related-links>
+</task>
+<?Pub *0000003328?>
